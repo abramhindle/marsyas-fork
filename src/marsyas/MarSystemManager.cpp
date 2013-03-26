@@ -185,6 +185,7 @@
 #include "RadioDrumInput.h"
 #include "RealvecSink.h"
 #include "RealvecSource.h"
+#include "RealvecGrainSource.h"
 #include "Reassign.h"
 #include "Reciprocal.h"
 #include "RemoveObservations.h"
@@ -468,6 +469,7 @@ MarSystemManager::MarSystemManager()
 	registerPrototype("RadioDrumInput", new RadioDrumInput("radiodrump"));
 	registerPrototype("RealvecSink", new RealvecSink("realvecSink"));
 	registerPrototype("RealvecSource", new RealvecSource("realvecSrc"));
+	registerPrototype("RealvecGrainSource", new RealvecGrainSource("realvecGrainSrc"));
 	registerPrototype("Reassign", new Reassign("reassignpr"));
 	registerPrototype("Reciprocal", new Reciprocal("reciprocal"));
 	registerPrototype("RemoveObservations", new RemoveObservations("removeobservationspr"));
