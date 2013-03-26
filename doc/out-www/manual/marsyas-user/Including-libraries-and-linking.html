@@ -1,0 +1,264 @@
+<html lang="en">
+<head>
+<title>Including libraries and linking - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Writing-applications.html#Writing-applications" title="Writing applications">
+<link rel="next" href="Example-programs.html#Example-programs" title="Example programs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Including-libraries-and-linking"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Example-programs.html#Example-programs">Example programs</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Writing-applications.html#Writing-applications">Writing applications</a>
+<hr>
+</div>
+
+<h3 class="section">9.1 Including libraries and linking</h3>
+
+<p><a name="index-Compiling_002c-programs-32"></a><a name="index-Linking_002c-programs-33"></a>To use any marsyas code in your program(s), you need to include the
+Marsyas libraries in your project.
+
+<h4 class="subsection">9.1.1 ... using qmake</h4>
+
+<p>The easiest way to compile Marsyas programs is to use qmake.  You may do
+this even if you used autotools to configure Marsyas itself; the author
+of this documentation uses autotools to build Marsyas, and qmake to
+build his programs.
+
+   <p>Create a <samp><span class="file">my_program_name.pro</span></samp> file:
+
+<pre class="verbatim">#  your files
+SOURCES = my_program_name.cpp
+#HEADERS += extra_file.h
+#SOURCES += extra_file.cpp
+
+
+### if running inside the source tree
+### adjust as necessary:
+MARSYAS_INSTALL_DIR = ../../
+INCLUDEPATH += $$MARSYAS_INSTALL_DIR/src/marsyas/
+LIBPATH += $$MARSYAS_INSTALL_DIR/lib/release/
+
+
+### if installed elsewhere
+#MARSYAS_INSTALL_DIR = /usr/local
+#MARSYAS_INSTALL_DIR = ${HOME}/usr/
+#INCLUDEPATH += $$MARSYAS_INSTALL_DIR/marsyas/
+#LIBPATH += $$MARSYAS_INSTALL_DIR/lib/
+
+
+### basic OS stuff; do not change!
+win32-msvc2005:LIBS += marsyas.lib
+unix:LIBS += -lmarsyas -L$$MARSYAS_INSTALL_DIR/lib
+!macx:LIBS += -lasound
+macx:LIBS += -framework CoreAudio -framework CoreMidi -framework CoreFoundation
+
+</pre>
+
+   <p>Then type <code>qmake</code> to generate a Makefile.  Now you many compile
+normally.
+
+<h4 class="subsection">9.1.2 ... writing your own Makefile</h4>
+
+<p>We <em>highly</em> recommend that you use qmake to create a Makefile. 
+However, if you enjoy swearing at your computer and cursing k&amp;r, rms,
+gnu, and every other three-letter programmer acronym in existence,
+go ahead. read on.
+
+   <p>Here are sample Makefiles to get you started:
+
+   <p><a href="../examples/Makefile.linux">Makefile.linux</a>
+
+   <p><a href="../examples/Makefile.osx">Makefile.osx</a>
+
+<h4 class="subsection">9.1.3 ... on Windows Visual Studio</h4>
+
+<p>Create the <code>.cpp</code> and <code>.h</code> files you will be working
+with in the project.  Don't worry about the VS project file, it
+will be generated by qmake.
+
+   <p>Type <code>qmake -project</code> at the command line to generate the
+.pro file, which Qt uses to create the Makefile (or you can make
+your own as above).  Don't worry about linking to external
+libraries, we will take care of that in Visual Studio.
+
+   <p>Once you have a <code>.pro</code> file, type
+
+<pre class="example">     qmake -tp vc -spec win32-msvc2008
+</pre>
+   <p class="noindent">Or equivalent based on your system.  This will generate a .vcproj
+file.  Open this in Visual Studio.
+
+   <p>Navigate to Tools-&gt;Options-&gt;Projects and Solutions-&gt;VC++ Directories and ensure:
+
+     <ul>
+<li>Executable files includes qt's bin directory
+Include files includes %qt-root%\include, %marsyas-root%\src\marsyas, %marsyas-root%\src\marsyasqt\, %marsyas-root% (for config.h)
+
+     <li>Library files include dsdk, marsyas, and qt's lib directories
+
+     <li>In project properties-&gt;linker:
+General-&gt;
+Ignore import libary: No
+Link Library Dependencies: Yes
+Input-&gt;
+Additional Dependencies: add <code>c:\marsyas\build\lib\Release\marsyas.lib
+c:\marsyas\build\lib\Release\marsyasqt.lib
+"C:\Program Files\Microsoft DirectX SDK (November 2008)\Lib\x86\dsound.lib"
+imm32.lib
+winmm.lib
+ws2_32.lib
+</code>
+System-&gt;
+Subsystem: Console
+</ul>
+
+   <p>These settings worked for the author.
+
+   </body></html>
+

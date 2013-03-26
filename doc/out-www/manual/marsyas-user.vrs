@@ -1,0 +1,9 @@
+\initial {B}
+\entry {\code {\xeatspaces {Brief note explaining what is missing.}}}{4}
+\initial {C}
+\entry {\code {\xeatspaces {\emph {can} be done; read the source code.}}}{91}
+\initial {D}
+\entry {\code {\xeatspaces {descriptions of all these programs}}}{26}
+\entry {\code {\xeatspaces { descriptions of composites, add the other composites }}}{50}
+\initial {O}
+\entry {\code {\xeatspaces { Once you have learned how to use an undocumented MarSystem, please help document it. The source documentation only requires adding a special comment in the source file, so it is very easy! Please see \develref {Contributing source documentation}.}}}{64}

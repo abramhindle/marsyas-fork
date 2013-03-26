@@ -1,0 +1,188 @@
+<html lang="en">
+<head>
+<title>Contributing non-MarSystem system code - Marsyas Developer's Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas Developer's Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Contributing-system-code.html#Contributing-system-code" title="Contributing system code">
+<link rel="prev" href="Adding_002fremoving-to_002ffrom-the-build-system.html#Adding_002fremoving-to_002ffrom-the-build-system" title="Adding/removing to/from the build system">
+<link rel="next" href="Contributing-MarSystems.html#Contributing-MarSystems" title="Contributing MarSystems">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Contributing-non-MarSystem-system-code"></a>
+<a name="Contributing-non_002dMarSystem-system-code"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Contributing-MarSystems.html#Contributing-MarSystems">Contributing MarSystems</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Adding_002fremoving-to_002ffrom-the-build-system.html#Adding_002fremoving-to_002ffrom-the-build-system">Adding/removing to/from the build system</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Contributing-system-code.html#Contributing-system-code">Contributing system code</a>
+<hr>
+</div>
+
+<h4 class="subsection">1.6.2 Contributing non-MarSystem system code</h4>
+
+<p>If you have created a useful library or set of functions which you
+want to share with others, you may add it to the Marsyas source
+code.  The new files should be placed in the <samp><span class="file">src/marsyas/</span></samp>
+directory, and added to the build process.
+
+<h4 class="subheading">Automatically</h4>
+
+<p>There is a Python script which automates this process; please see
+<a href="Adding_002fremoving-to_002ffrom-the-build-system.html#Adding_002fremoving-to_002ffrom-the-build-system">Adding/removing to/from the build system</a>.  If you are a
+masochist and wish to do this manually, see below.
+
+<h4 class="subheading">Manually</h4>
+
+<p>The easiest way is to look for any appearances of <code>realvec</code>
+in the below files, and duplicate these entries using your
+<samp><span class="file">myfile</span></samp>.
+
+     <ul>
+<li><samp><span class="file">src/marsyas/CMakeLists.txt</span></samp>
+</ul>
+
+   </body></html>
+

@@ -1,0 +1,214 @@
+<html lang="en">
+<head>
+<title>peakClustering - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Auditory-Scene-Analysis.html#Auditory-Scene-Analysis" title="Auditory Scene Analysis">
+<link rel="prev" href="peakSynth.html#peakSynth" title="peakSynth">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="peakClustering"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="peakSynth.html#peakSynth">peakSynth</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Auditory-Scene-Analysis.html#Auditory-Scene-Analysis">Auditory Scene Analysis</a>
+<hr>
+</div>
+
+<h4 class="subsection">4.6.2 <code>peakClustering</code></h4>
+
+<p><a name="index-peakClustering-18"></a>
+peakClustering performs sinusoidal analysis
+<a name="index-sinusoidal-analysis-19"></a>followed by a spectral
+clustering
+<a name="index-spectral-clustering-20"></a>for grouping spectral peaks that operates across time and
+frequency over &ldquo;texture&rdquo; windows. It can be used for predominant
+melody separation on polyphonic audio signals. More technical
+information can be found in the paper &ldquo;Normalized Cuts for Predominant
+Melodic Source Separation&rdquo; published in the IEEE Transactions on Audio,
+Speech and Language processing. Examples of usage:
+
+<pre class="example">     peakClustering foo.wav
+</pre>
+   <p>This will result in a file named fooSep.wav that contains the separated
+predominant melody source such as a singing voice in a rock song or a
+saxophone line in a jazz tune.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-n --fftsize</span></samp>&rsquo;<dd>      size of fft
+<br><dt>&lsquo;<samp><span class="samp">-w --winsize</span></samp>&rsquo;<dd>      size of window
+<br><dt>&lsquo;<samp><span class="samp">-s --sinusoids</span></samp>&rsquo;<dd>      number of sinusoids per frame
+<br><dt>&lsquo;<samp><span class="samp">-b --buffersize</span></samp>&rsquo;<dd>      audio buffer size
+<br><dt>&lsquo;<samp><span class="samp">-o --outputdirectoryname</span></samp>&rsquo;<dd>     output directory path
+<br><dt>&lsquo;<samp><span class="samp">-N --noisename</span></samp>&rsquo;<dd>      name of degrading audio file
+<br><dt>&lsquo;<samp><span class="samp">-p --panning</span></samp>&rsquo;<dd>      panning informations &lt;foreground level (0..1)&gt;-&lt;foreground pan (-1..1)&gt;-&lt;background level&gt;-&lt;background pan&gt;
+<br><dt>&lsquo;<samp><span class="samp">-t --typeSimilarity</span></samp>&rsquo;<dd>      similarity information a (amplitude) f (frequency) h (harmonicity)
+<br><dt>&lsquo;<samp><span class="samp">-q -quitAnalyse</span></samp>&rsquo;<dd>   quit processing after specified number f seconds
+<br><dt>&lsquo;<samp><span class="samp">-T --textureSize</span></samp>&rsquo;<dd>       number of frames in a texture window
+<br><dt>&lsquo;<samp><span class="samp">-c -clustering</span></samp>&rsquo;<dd>    number of clusters in a texture window
+<br><dt>&lsquo;<samp><span class="samp">-v --voices</span></samp>&rsquo;<dd>    number of voices
+<br><dt>&lsquo;<samp><span class="samp">-F --clusterFiltering</span></samp>&rsquo;<dd>    cluster filtering
+<br><dt>&lsquo;<samp><span class="samp">-A --attributes</span></samp>&rsquo;<dd>    set attributes
+<br><dt>&lsquo;<samp><span class="samp">-g --ground</span></samp>&rsquo;<dd>    set ground
+<br><dt>&lsquo;<samp><span class="samp">-SC --clusterSynthetize</span></samp>&rsquo;<dd>    cluster synthetize
+<br><dt>&lsquo;<samp><span class="samp">-P --peakStore</span></samp>&rsquo;<dd>    set peak store
+<br><dt>&lsquo;<samp><span class="samp">-k -keep</span></samp>&rsquo;<dd>      keep the specified number of clusters in the texture window
+<br><dt>&lsquo;<samp><span class="samp">-S --synthetise</span></samp>&rsquo;<dd>   synthetize using an oscillator bank (0), an IFFT mono (1), or an IFFT stereo (2)
+<br><dt>&lsquo;<samp><span class="samp">-r --residual</span></samp>&rsquo;<dd>      output the residual sound (if the synthesis stage is selected)
+<br><dt>&lsquo;<samp><span class="samp">-i --intervalFrequency</span></samp>&rsquo;<dd>   &lt;minFrequency&gt;_&lt;maxFrequency&gt; select peaks in this interval (default 250-2500 Hz)
+<br><dt>&lsquo;<samp><span class="samp">-f --fileInfo</span></samp>&rsquo;<dd>      provide clustering parameters in the output name (s20t10i250_2500c2k1uTabfbho means 20 sines per frames in the 250_2500 Hz frequency Interval, 1 cluster selected among 2 in one texture window of 10 frames, no precise parameter estimation and using a combination of similarities abfbho)
+<br><dt>&lsquo;<samp><span class="samp">-npp --noPeakPicking</span></samp>&rsquo;<dd>      do not perform peak picking in the spectrum
+<br><dt>&lsquo;<samp><span class="samp">-u --unprecise</span></samp>&rsquo;<dd>   do not perform precise estimation of sinusoidal parameters
+<br><dt>&lsquo;<samp><span class="samp">-if --ignoreFrequency</span></samp>&rsquo;<dd>       ignore frequency similarity between peaks
+<br><dt>&lsquo;<samp><span class="samp">-ia --ignoreAmplitude</span></samp>&rsquo;<dd>    ignore amplitude similarity between peaks
+<br><dt>&lsquo;<samp><span class="samp">-ih --ignoreHWPS</span></samp>&rsquo;<dd>       ignore harmonicity (HWPS) similarity between peaks
+<br><dt>&lsquo;<samp><span class="samp">-ip --ignorePan</span></samp>&rsquo;<dd>      ignore panning similarity between peaks
+<br><dt>&lsquo;<samp><span class="samp">-uo --useOnsets</span></samp>&rsquo;<dd>       use onset detector for dynamically adjusting the length of texture windows
+
+   </dl>
+
+   </body></html>
+

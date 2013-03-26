@@ -1,0 +1,40 @@
+\form#0:$x[t]$
+\form#1:$t$
+\form#2:$x[t-1]$
+\form#3:$x[t+1]$
+\form#4:$y=a t + b$
+\form#5:$a$
+\form#6:$\Delta[t]$
+\form#7:\[\Delta[t] = \frac{x[t+1] - x[t-1]}{2}\]
+\form#8:\[ y(t) = (1 - \alpha) x(t) + \alpha y(t - 1) \]
+\form#9:$ z = \alpha $
+\form#10:$ \alpha > 0 $
+\form#11:$ \alpha < 0 $
+\form#12:$ x(t) $
+\form#13:$ (1-\alpha) $
+\form#14:$ \alpha $
+\form#15:\[\begin{array}{ccccc} R_{xx}[0] & R_{xx}[1] & R_{xx}[2] & R_{xx}[3] & R_{xx}[4] \\ R_{yy}[0] & R_{yy}[1] & R_{yy}[2] & R_{yy}[3] & R_{yy}[4] \\ \end{array}\]
+\form#16:$R_{xx}[n]$
+\form#17:$n$
+\form#18:$R_{yy}[n]$
+\form#19:$R_{xx}[0], R_{xx}[1], \ldots, R_{xx}[4], R_{yy}[0], R_{yy}[1], \ldots, R_{yy}[4] $
+\form#20:$ w(t) $
+\form#21:\[ w(t) = \alpha + \beta \cos \left( \frac{2 \pi t}{N-1} \right) \]
+\form#22:$ t $
+\form#23:$ N $
+\form#24:$ \beta $
+\form#25:\[ w(n)=\frac{2}{N}\cdot\left(\frac{N}{2}-\left |n-\frac{N-1}{2}\right |\right) \]
+\form#26:\[ w(n) = \frac{2}{N-1}\cdot\left(\frac{N-1}{2}-\left |n-\frac{N-1}{2}\right |\right) \]
+\form#27:\[ w(n) = \exp \left( -\frac{1}{2} \left( \frac{n-(N-1)/2}{\sigma (N-1)/2} \right)^{2} \right) \]
+\form#28:\[ w(n) = a_0 - a_1 \cos \left ( \frac{2 \pi n}{N-1} \right) + a_2 \cos \left ( \frac{4 \pi n}{N-1} \right) \]
+\form#29:$ a_0=\frac{1-\alpha}{2} $
+\form#30:$ a_1=\frac{1}{2} $
+\form#31:$ a_2=\frac{\alpha}{2}$
+\form#32:\[ w(n) = a_0 - a_1 \cos \left ( \frac{2 \pi n}{N-1} \right)+ a_2 \cos \left ( \frac{4 \pi n}{N-1} \right)- a_3 \cos \left ( \frac{6 \pi n}{N-1} \right) \]
+\form#33:$ a_0=0.35875 $
+\form#34:$ a_1=0.48829 $
+\form#35:$ a_2=0.14128 $
+\form#36:$ a_3=0.01168 $
+\form#37:\[ w(n) = \sin \left( \pi \frac{n}{N-1} \right)\]
+\form#38:\[ w(n) = 0.54 - 0.46 \cos \left ( \frac{2\pi n}{N-1} \right) \]
+\form#39:\[ w(n) = 0.5 - 0.5 \cos \left ( \frac{2\pi n}{N-1} \right) \]

@@ -1,0 +1,39 @@
+@numchapentry{Contributing to Marsyas}{1}{Contributing to Marsyas}{1}
+@numsecentry{Contributing documentation}{1.1}{Contributing documentation}{1}
+@numsubsecentry{Manual}{1.1.1}{}{1}
+@numsubsecentry{Examples}{1.1.2}{}{1}
+@numsecentry{Contributing source documentation}{1.2}{Contributing source documentation}{1}
+@numsecentry{Code style}{1.3}{Code style}{2}
+@numsecentry{Playing in the mudbox}{1.4}{Playing in the mudbox}{3}
+@numsecentry{Contributing applications}{1.5}{Contributing applications}{3}
+@numsecentry{Contributing system code}{1.6}{Contributing system code}{3}
+@numsubsecentry{Adding/removing to/from the build system}{1.6.1}{Adding/removing to/from the build system}{3}
+@numsubsecentry{Contributing non-MarSystem system code}{1.6.2}{Contributing non-MarSystem system code}{4}
+@numsubsecentry{Contributing MarSystems}{1.6.3}{Contributing MarSystems}{4}
+@numsecentry{Sending a patch}{1.7}{Sending a patch}{4}
+@numsecentry{Building documentation}{1.8}{Building documentation}{5}
+@numsecentry{Build system details}{1.9}{Build system details}{5}
+@numsecentry{Command-line arguments}{1.10}{Command-line arguments}{5}
+@numsecentry{Making a release}{1.11}{Making a release}{6}
+@numchapentry{Automatic testing}{2}{Automatic testing}{7}
+@numsecentry{Unit tests}{2.1}{Unit tests}{7}
+@numsubsecentry{What are unit tests?}{2.1.1}{What are unit tests?}{7}
+@numsubsecentry{What testing framework does Marsyas use?}{2.1.2}{What testing framework does Marsyas use?}{7}
+@numsubsecentry{How do I add a new test?}{2.1.3}{How do I add a new test?}{8}
+@numsubsecentry{How do I run the tests?}{2.1.4}{How do I run the tests?}{8}
+@numsecentry{Black-box tests}{2.2}{Black-box tests}{9}
+@numsubsecentry{What does "black-box" mean?}{2.2.1}{What does black-box mean?}{9}
+@unnsubsubsecentry{Definition}{10000.2.1.1}{}{9}
+@numsubsecentry{How do I write a black-box test?}{2.2.2}{How do I write a black-box test?}{9}
+@numsubsecentry{How do the tests work?}{2.2.3}{How do the tests work?}{10}
+@unnsubsubsecentry{List of tests}{10000.2.3.1}{}{10}
+@unnsubsubsecentry{Approximate matching (no rounding errors)}{10000.2.3.2}{}{10}
+@numsubsecentry{When a test fails...}{2.2.4}{When a test fails...}{10}
+@unnsubsubsecentry{Don't panic!}{10000.2.4.1}{}{10}
+@unnsubsubsecentry{Updating the test}{10000.2.4.2}{}{10}
+@unnsubsubsecentry{Temporarily disabling a test}{10000.2.4.3}{}{11}
+@numsubsecentry{Why should I care?}{2.2.5}{Why should I care?}{11}
+@unnsubsubsecentry{Developers}{10000.2.5.1}{}{11}
+@unnsubsubsecentry{New users}{10000.2.5.2}{}{11}
+@numsecentry{Daily Auto-tester}{2.3}{Daily Auto-tester}{11}
+@unnchapentry{The Index}{10001}{The Index}{12}

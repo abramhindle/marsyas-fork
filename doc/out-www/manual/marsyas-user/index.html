@@ -1,0 +1,497 @@
+<html lang="en">
+<head>
+<title>Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<h1 class="settitle">Marsyas User Manual</h1>
+<div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="index.html#Top">Marsyas User Manual</a>
+<li><a name="toc_General-information" href="General-information.html#General-information">1 General information</a>
+<ul>
+<li><a href="History.html#History">1.1 History</a>
+<li><a href="Context-and-Related-Work.html#Context-and-Related-Work">1.2 Context and Related Work</a>
+<li><a href="About-the-documentation.html#About-the-documentation">1.3 About the documentation</a>
+<ul>
+<li><a href="About-the-documentation.html#About-the-documentation">1.3.1 Latest version</a>
+<li><a href="About-the-documentation.html#About-the-documentation">1.3.2 User manual and Developer's manual</a>
+<li><a href="About-the-documentation.html#About-the-documentation">1.3.3 Help wanted!</a>
+</li></ul>
+<li><a href="Beyond-the-manuals.html#Beyond-the-manuals">1.4 Beyond the manuals</a>
+<ul>
+<li><a href="Beyond-the-manuals.html#Beyond-the-manuals">1.4.1 Examples</a>
+<li><a href="Beyond-the-manuals.html#Beyond-the-manuals">1.4.2 MarSystem source documentation</a>
+<li><a href="Beyond-the-manuals.html#Beyond-the-manuals">1.4.3 Source code</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Source-installation" href="Source-installation.html#Source-installation">2 Source installation</a>
+<ul>
+<li><a href="Prerequisites.html#Prerequisites">2.1 Prerequisites</a>
+<ul>
+<li><a href="CMake-installation.html#CMake-installation">2.1.1 CMake installation</a>
+<li><a href="Compiler-configuration.html#Compiler-configuration">2.1.2 Compiler configuration</a>
+<ul>
+<li><a href="Compiler-configuration.html#Compiler-configuration">Linux compiler configuration</a>
+<li><a href="Compiler-configuration.html#Compiler-configuration">MacOS X compiler configuration</a>
+<li><a href="Compiler-configuration.html#Compiler-configuration">Windows compiler configuration</a>
+</li></ul>
+</li></ul>
+<li><a href="Download.html#Download">2.2 Download</a>
+<ul>
+<li><a href="Download.html#Download">Stable(-ish) Version</a>
+<li><a href="Download.html#Download">Development Version</a>
+</li></ul>
+<li><a href="Configuring-with-CMake.html#Configuring-with-CMake">2.3 Configuring with CMake</a>
+<ul>
+<li><a href="Configuring-with-CMake.html#Configuring-with-CMake">2.3.1 Windows</a>
+<li><a href="Configuring-with-CMake.html#Configuring-with-CMake">2.3.2 Unix (including MacOS X)</a>
+</li></ul>
+<li><a href="Marsyas-options.html#Marsyas-options">2.4 Marsyas options</a>
+<ul>
+<li><a href="Marsyas-options.html#Marsyas-options">2.4.1 Input/Output</a>
+<li><a href="Marsyas-options.html#Marsyas-options">2.4.2 Code messages and optional portions</a>
+<li><a href="Marsyas-options.html#Marsyas-options">2.4.3 Logging options</a>
+<li><a href="Marsyas-options.html#Marsyas-options">2.4.4 Optional software (WITH_*)</a>
+</li></ul>
+<li><a href="Compiling.html#Compiling">2.5 Compiling</a>
+<ul>
+<li><a href="Compiling.html#Compiling">2.5.1 Testing</a>
+</li></ul>
+<li><a href="Specific-installation-examples.html#Specific-installation-examples">2.6 Specific installation examples</a>
+<ul>
+<li><a href="Compiling-on-MacOS-X-10_002e6-Snow-Leopard.html#Compiling-on-MacOS-X-10_002e6-Snow-Leopard">2.6.1 Compiling on MacOS X 10.6 Snow Leopard</a>
+<li><a href="Compiling-on-Ubuntu-11_002e04-_002d-Natty-Narwhal-_00282011_0029.html#Compiling-on-Ubuntu-11_002e04-_002d-Natty-Narwhal-_00282011_0029">2.6.2 Compiling on Ubuntu 11.04 - Natty Narwhal (2011)</a>
+<li><a href="Compiling-on-Ubuntu.html#Compiling-on-Ubuntu">2.6.3 Compiling on Ubuntu</a>
+<li><a href="Compiling-with-Visual-Studio-Express-2008-on-Windows-XP.html#Compiling-with-Visual-Studio-Express-2008-on-Windows-XP">2.6.4 Compiling with Visual Studio Express 2008 on Windows XP</a>
+<li><a href="Compiling-with-MinGW-on-Windows-XP.html#Compiling-with-MinGW-on-Windows-XP">2.6.5 Compiling with MinGW on Windows XP</a>
+<li><a href="MacOS-X-additional-notes.html#MacOS-X-additional-notes">2.6.6 MacOS X additional notes</a>
+</li></ul>
+<li><a href="Post_002dinstall-setup.html#Post_002dinstall-setup">2.7 Post-install setup</a>
+<ul>
+<li><a href="Vim-editor-support.html#Vim-editor-support">2.7.1 Vim editor support</a>
+<li><a href="Datasets.html#Datasets">2.7.2 Datasets</a>
+</li></ul>
+<li><a href="Structure-of-distribution.html#Structure-of-distribution">2.8 Structure of distribution</a>
+</li></ul>
+<li><a name="toc_Tour" href="Tour.html#Tour">3 Tour</a>
+<ul>
+<ul>
+<li><a href="Command_002dline-tools.html#Command_002dline-tools">3.0.1 Command-line tools</a>
+<li><a href="User-interfaces.html#User-interfaces">3.0.2 User interfaces</a>
+<li><a href="Web-information.html#Web-information">3.0.3 Web information</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Available-tools" href="Available-tools.html#Available-tools">4 Available tools</a>
+<ul>
+<li><a href="Collections-and-input-files.html#Collections-and-input-files">4.1 Collections and input files</a>
+<ul>
+<li><a href="Creating-collections-manually.html#Creating-collections-manually">4.1.1 Creating collections manually</a>
+<li><a href="Creating-collections-manually.html#Creating-collections-manually">4.1.2 Labels</a>
+<li><a href="Creating-collections-manually.html#Creating-collections-manually">4.1.3 <code>MARSYAS_DATADIR</code></a>
+<li><a href="mkcollection.html#mkcollection">4.1.4 <code>mkcollection</code></a>
+<li><a href="Plain-filenames-in-collections.html#Plain-filenames-in-collections">4.1.5 Plain filenames in collections</a>
+</li></ul>
+<li><a href="Soundfile-Interaction.html#Soundfile-Interaction">4.2 Soundfile Interaction</a>
+<ul>
+<li><a href="sfplay.html#sfplay">4.2.1 <code>sfplay</code></a>
+<li><a href="sfinfo.html#sfinfo">4.2.2 <code>sfinfo</code></a>
+<li><a href="audioCompare.html#audioCompare">4.2.3 <code>audioCompare</code></a>
+<li><a href="record.html#record">4.2.4 <code>record</code></a>
+<li><a href="orcarecord.html#orcarecord">4.2.5 <code>orcarecord</code></a>
+<li><a href="sound2png.html#sound2png">4.2.6 <code>sound2png</code></a>
+<li><a href="sound2sound.html#sound2sound">4.2.7 <code>sound2sound</code></a>
+</li></ul>
+<li><a href="Feature-Extraction.html#Feature-Extraction">4.3 Feature Extraction</a>
+<ul>
+<li><a href="pitchextract.html#pitchextract">4.3.1 <code>pitchextract</code></a>
+<li><a href="bextract.html#bextract">4.3.2 <code>bextract</code></a>
+<li><a href="ibt.html#ibt">4.3.3 <code>ibt</code></a>
+</li></ul>
+<li><a href="Synthesis.html#Synthesis">4.4 Synthesis</a>
+<ul>
+<li><a href="phasevocoder.html#phasevocoder">4.4.1 <code>phasevocoder</code></a>
+</li></ul>
+<li><a href="Machine-Learning.html#Machine-Learning">4.5 Machine Learning</a>
+<ul>
+<li><a href="kea.html#kea">4.5.1 <code>kea</code></a>
+</li></ul>
+<li><a href="Auditory-Scene-Analysis.html#Auditory-Scene-Analysis">4.6 Auditory Scene Analysis</a>
+<ul>
+<li><a href="peakSynth.html#peakSynth">4.6.1 <code>peakSynth</code></a>
+<li><a href="peakClustering.html#peakClustering">4.6.2 <code>peakClustering</code></a>
+</li></ul>
+<li><a href="Marsystem-Interaction.html#Marsystem-Interaction">4.7 Marsystem Interaction</a>
+<ul>
+<li><a href="sfplugin.html#sfplugin">4.7.1 <code>sfplugin</code></a>
+<li><a href="msl.html#msl">4.7.2 <code>msl</code></a>
+</li></ul>
+<li><a href="All-of-the-above.html#All-of-the-above">4.8 All of the above</a>
+<ul>
+<li><a href="mudbox.html#mudbox">4.8.1 <code>mudbox</code></a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Graphical-User-Interfaces-using-Qt4" href="Graphical-User-Interfaces-using-Qt4.html#Graphical-User-Interfaces-using-Qt4">5 Graphical User Interfaces using Qt4</a>
+<ul>
+<li><a href="MarPlayer.html#MarPlayer">5.1 MarPlayer</a>
+<li><a href="MarPhaseVocoder.html#MarPhaseVocoder">5.2 MarPhaseVocoder</a>
+<li><a href="MarGrid.html#MarGrid">5.3 MarGrid</a>
+<li><a href="MarMonitors.html#MarMonitors">5.4 MarMonitors</a>
+<li><a href="MarLPC.html#MarLPC">5.5 MarLPC</a>
+</li></ul>
+<li><a name="toc_Architecture-concepts" href="Architecture-concepts.html#Architecture-concepts">6 Architecture concepts</a>
+<ul>
+<li><a href="Architecture-overview.html#Architecture-overview">6.1 Architecture overview</a>
+<ul>
+<li><a href="Building-MarSystems.html#Building-MarSystems">6.1.1 Building MarSystems</a>
+<li><a href="Dataflow-model.html#Dataflow-model">6.1.2 Dataflow model</a>
+</li></ul>
+<li><a href="Implicit-patching.html#Implicit-patching">6.2 Implicit patching</a>
+<ul>
+<li><a href="Implicit-patching-vs_002e-explicit-patching.html#Implicit-patching-vs_002e-explicit-patching">6.2.1 Implicit patching vs. explicit patching</a>
+<li><a href="Implicit-patching-advantages.html#Implicit-patching-advantages">6.2.2 Implicit patching advantages</a>
+<li><a href="Patching-example-of-Feature-extraction.html#Patching-example-of-Feature-extraction">6.2.3 Patching example of Feature extraction</a>
+</li></ul>
+<li><a href="MarSystem-composites.html#MarSystem-composites">6.3 MarSystem composites</a>
+<ul>
+<li><a href="Series.html#Series">6.3.1 Series</a>
+<li><a href="Parallel.html#Parallel">6.3.2 Parallel</a>
+<li><a href="Fanout.html#Fanout">6.3.3 Fanout</a>
+<li><a href="Accumulator.html#Accumulator">6.3.4 Accumulator</a>
+<li><a href="Shredder.html#Shredder">6.3.5 Shredder</a>
+</li></ul>
+<li><a href="Linking-of-controls.html#Linking-of-controls">6.4 Linking of controls</a>
+<li><a href="Scheduling.html#Scheduling">6.5 Scheduling</a>
+<ul>
+<li><a href="Scheduling-in-Marsyas.html#Scheduling-in-Marsyas">6.5.1 Scheduling in Marsyas</a>
+<ul>
+<li><a href="Scheduling-in-Marsyas.html#Scheduling-in-Marsyas">6.5.1.1 Time</a>
+<li><a href="Scheduling-in-Marsyas.html#Scheduling-in-Marsyas">6.5.1.2 Event</a>
+</li></ul>
+<li><a href="Components-of-the-Marsyas-Scheduler.html#Components-of-the-Marsyas-Scheduler">6.5.2 Components of the Marsyas Scheduler</a>
+<ul>
+<li><a href="Components-of-the-Marsyas-Scheduler.html#Components-of-the-Marsyas-Scheduler">6.5.2.1 MarSystem</a>
+<li><a href="Components-of-the-Marsyas-Scheduler.html#Components-of-the-Marsyas-Scheduler">6.5.2.2 Scheduler</a>
+<li><a href="Components-of-the-Marsyas-Scheduler.html#Components-of-the-Marsyas-Scheduler">6.5.2.3 Timers</a>
+<li><a href="Components-of-the-Marsyas-Scheduler.html#Components-of-the-Marsyas-Scheduler">6.5.2.4 Events</a>
+<li><a href="Components-of-the-Marsyas-Scheduler.html#Components-of-the-Marsyas-Scheduler">6.5.2.5 Repeat</a>
+<li><a href="Components-of-the-Marsyas-Scheduler.html#Components-of-the-Marsyas-Scheduler">6.5.2.6 TmTime</a>
+<li><a href="Components-of-the-Marsyas-Scheduler.html#Components-of-the-Marsyas-Scheduler">6.5.2.7 TmTimerManager</a>
+</li></ul>
+</li></ul>
+</li></ul>
+<li><a name="toc_System-details" href="System-details.html#System-details">7 System details</a>
+<ul>
+<li><a href="Library-reference.html#Library-reference">7.1 Library reference</a>
+<ul>
+<li><a href="Library-reference.html#Library-reference">7.1.1 Source documentation</a>
+<li><a href="Library-reference.html#Library-reference">7.1.2 MarSystem groups</a>
+<li><a href="Library-reference.html#Library-reference">7.1.3 Limited documentation</a>
+</li></ul>
+<li><a href="Predefined-types.html#Predefined-types">7.2 Predefined types</a>
+<ul>
+<li><a href="Predefined-types.html#Predefined-types">7.2.1 Variables types</a>
+<li><a href="Predefined-types.html#Predefined-types">7.2.2 Constants</a>
+</li></ul>
+<li><a href="Realvec.html#Realvec">7.3 Realvec</a>
+<ul>
+<li><a href="Reading-and-writing-to-a-realvec.html#Reading-and-writing-to-a-realvec">7.3.1 Reading and writing to a realvec</a>
+<li><a href="Resizing-a-realvec.html#Resizing-a-realvec">7.3.2 Resizing a realvec</a>
+<li><a href="Realvec-arithmetic.html#Realvec-arithmetic">7.3.3 Realvec arithmetic</a>
+<li><a href="Applying-a-function-to-a-realvec.html#Applying-a-function-to-a-realvec">7.3.4 Applying a function to a realvec</a>
+<li><a href="Realvec-input-and-output-to-a-file.html#Realvec-input-and-output-to-a-file">7.3.5 Realvec input and output to a file</a>
+<li><a href="Statistical-analysis.html#Statistical-analysis">7.3.6 Statistical analysis</a>
+<li><a href="Other-realvec-functions.html#Other-realvec-functions">7.3.7 Other realvec functions</a>
+</li></ul>
+<li><a href="Systems-limitations.html#Systems-limitations">7.4 System limitations</a>
+<ul>
+<li><a href="Systems-limitations.html#Systems-limitations">7.4.1 Stereo vs. mono in a spectrum</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Scripting" href="Scripting.html#Scripting">8 Scripting</a>
+<ul>
+<li><a href="Interactive-python.html#Interactive-python">8.1 Interactive python</a>
+<ul>
+<li><a href="Getting-started-with-python.html#Getting-started-with-python">8.1.1 Getting started with python</a>
+<li><a href="Swig-python-bindings-bextract-example.html#Swig-python-bindings-bextract-example">8.1.2 Swig python bindings bextract example</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Writing-applications" href="Writing-applications.html#Writing-applications">9 Writing applications</a>
+<ul>
+<li><a href="Including-libraries-and-linking.html#Including-libraries-and-linking">9.1 Including libraries and linking</a>
+<ul>
+<li><a href="Including-libraries-and-linking.html#Including-libraries-and-linking">9.1.1 ... using qmake</a>
+<li><a href="Including-libraries-and-linking.html#Including-libraries-and-linking">9.1.2 ... writing your own Makefile</a>
+<li><a href="Including-libraries-and-linking.html#Including-libraries-and-linking">9.1.3 ... on Windows Visual Studio</a>
+</li></ul>
+<li><a href="Example-programs.html#Example-programs">9.2 Example programs</a>
+<ul>
+<li><a href="Hello-World-_0028playing-an-audio-file_0029.html#Hello-World-_0028playing-an-audio-file_0029">9.2.1 Hello World (playing an audio file)</a>
+<li><a href="Reading-and-altering-controls.html#Reading-and-altering-controls">9.2.2 Reading and altering controls</a>
+<li><a href="Writing-data-to-text-files.html#Writing-data-to-text-files">9.2.3 Writing data to text files</a>
+<li><a href="Getting-data-from-the-network.html#Getting-data-from-the-network">9.2.4 Getting data from the network</a>
+<li><a href="Command_002dline-options.html#Command_002dline-options">9.2.5 Command-line options</a>
+</li></ul>
+<li><a href="Writing-Qt4-applications.html#Writing-Qt4-applications">9.3 Writing Qt4 applications</a>
+<ul>
+<li><a href="Including-and-linking-to-libmarsyasqt.html#Including-and-linking-to-libmarsyasqt">9.3.1 Including and linking to libmarsyasqt</a>
+<li><a href="MarSystemQtWrapper.html#MarSystemQtWrapper">9.3.2 MarSystemQtWrapper</a>
+<li><a href="Passing-controls-to-a-MarSystemQtWrapper.html#Passing-controls-to-a-MarSystemQtWrapper">9.3.3 Passing controls to a MarSystemQtWrapper</a>
+<li><a href="Other-classes-in-MarsyasQt.html#Other-classes-in-MarsyasQt">9.3.4 Other classes in MarsyasQt</a>
+<li><a href="Qt4-example.html#Qt4-example">9.3.5 Qt4 example</a>
+<li><a href="Other-Qt4-issues.html#Other-Qt4-issues">9.3.6 Other Qt4 issues</a>
+</li></ul>
+<li><a href="Other-programming-issues.html#Other-programming-issues">9.4 Other programming issues</a>
+<ul>
+<li><a href="Visualizing-data-with-gnuplot.html#Visualizing-data-with-gnuplot">9.4.1 Visualizing data with gnuplot</a>
+</li></ul>
+<li><a href="Interoperability.html#Interoperability">9.5 Interoperability</a>
+<ul>
+<li><a href="Open-Sound-Control-_0028OSC_0029.html#Open-Sound-Control-_0028OSC_0029">9.5.1 Open Sound Control (OSC)</a>
+<li><a href="WEKA.html#WEKA">9.5.2 WEKA</a>
+<li><a href="MATLAB.html#MATLAB">9.5.3 MATLAB</a>
+<li><a href="Python.html#Python">9.5.4 Python</a>
+<li><a href="OCaml.html#OCaml">9.5.5 OCaml</a>
+<li><a href="SonicVisualiser-Vamp-Plugins.html#SonicVisualiser-Vamp-Plugins">9.5.6 SonicVisualiser Vamp Plugins</a>
+<ul>
+<li><a href="SonicVisualiser-Vamp-Plugins.html#SonicVisualiser-Vamp-Plugins">9.5.6.1 Instalation</a>
+<li><a href="SonicVisualiser-Vamp-Plugins.html#SonicVisualiser-Vamp-Plugins">9.5.6.2 Writing Plugin</a>
+</li></ul>
+</li></ul>
+<li><a href="Using-and-Extending-the-Scheduler.html#Using-and-Extending-the-Scheduler">9.6 Using and Extending the Scheduler</a>
+<ul>
+<li><a href="Using-the-Scheduler.html#Using-the-Scheduler">9.6.1 Using the Scheduler</a>
+<ul>
+<li><a href="Using-the-Scheduler.html#Using-the-Scheduler">9.6.1.1 Repeating Events</a>
+</li></ul>
+<li><a href="Writing-a-new-Timer.html#Writing-a-new-Timer">9.6.2 Writing a new Timer</a>
+<ul>
+<li><a href="Writing-a-new-Timer.html#Writing-a-new-Timer">9.6.2.1 Updating timers at run-time</a>
+<li><a href="Writing-a-new-Timer.html#Writing-a-new-Timer">9.6.2.2 Timer Factory</a>
+</li></ul>
+<li><a href="Writing-a-new-Event.html#Writing-a-new-Event">9.6.3 Writing a new Event</a>
+<ul>
+<li><a href="Writing-a-new-Event.html#Writing-a-new-Event">9.6.3.1 Expression Events</a>
+</li></ul>
+<li><a href="Marsyas-Expression-Syntax.html#Marsyas-Expression-Syntax">9.6.4 Marsyas Expression Syntax</a>
+<ul>
+<li><a href="Type-System.html#Type-System">9.6.4.1 Type System</a>
+<li><a href="Operators.html#Operators">9.6.4.2 Operators</a>
+<li><a href="Variables.html#Variables">9.6.4.3 Variables</a>
+<li><a href="Assignment.html#Assignment">9.6.4.4 Assignment ( &lt;&lt; &gt;&gt; )</a>
+<li><a href="Links.html#Links">9.6.4.5 Links ( -&gt; &lt;- )</a>
+<li><a href="Conditional-Statements.html#Conditional-Statements">9.6.4.6 Conditional Statements ( {? cond_expr : exprs1 : exprs2 } )</a>
+<li><a href="Multiple-Expressions.html#Multiple-Expressions">9.6.4.7 Multiple Expressions ( exprs := expr1 , expr2 , expr3 )</a>
+<li><a href="Properties.html#Properties">9.6.4.8 Properties ( ie Real.pi or 'hello'.2 etc. )</a>
+<li><a href="Sequences.html#Sequences">9.6.4.9 Sequences (Lists)</a>
+<li><a href="Function-Libraries.html#Function-Libraries">9.6.4.10 Function Libraries</a>
+<li><a href="Using.html#Using">9.6.4.11 Using</a>
+<li><a href="Extending.html#Extending">9.6.4.12 Extending</a>
+<li><a href="Marsyas-Expression-Examples.html#Marsyas-Expression-Examples">9.6.4.13 Marsyas Expression Examples</a>
+</li></ul>
+</li></ul>
+</li></ul>
+<li><a name="toc_Programming-MarSystems" href="Programming-MarSystems.html#Programming-MarSystems">10 Programming MarSystems</a>
+<ul>
+<li><a href="Compiling-and-using-a-new-MarSystem.html#Compiling-and-using-a-new-MarSystem">10.1 Compiling and using a new MarSystem</a>
+<ul>
+<li><a href="Writing-your-own-MarSystems.html#Writing-your-own-MarSystems">10.1.1 Writing your own MarSystems</a>
+<li><a href="Using-your-MarSystem.html#Using-your-MarSystem">10.1.2 Using your MarSystem</a>
+</li></ul>
+<li><a href="Anatomy-of-a-MarSystem.html#Anatomy-of-a-MarSystem">10.2 Anatomy of a MarSystem</a>
+<ul>
+<li><a href="Methods-of-the-object.html#Methods-of-the-object">10.2.1 Methods of the object</a>
+<li><a href="Constructors-_002f-destructor.html#Constructors-_002f-destructor">10.2.2 Constructors / destructor</a>
+<ul>
+<li><a href="Constructors-_002f-destructor.html#Constructors-_002f-destructor">Copy constructor</a>
+</li></ul>
+<li><a href="Handling-controls.html#Handling-controls">10.2.3 Handling controls</a>
+<li><a href="myProcess_0028_0029.html#myProcess_0028_0029">10.2.4 <code>myProcess()</code></a>
+<li><a href="myUpdate_0028_0029-vs_002e-myProcess_0028_0029.html#myUpdate_0028_0029-vs_002e-myProcess_0028_0029">10.2.5 <code>myUpdate()</code> vs. <code>myProcess()</code></a>
+<li><a href="More-details-about-MarSystems.html#More-details-about-MarSystems">10.2.6 More details about MarSystems</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Missing-Docs" href="Missing-Docs.html#Missing-Docs">Missing Docs</a>
+<li><a name="toc_The-Index" href="The-Index.html#The-Index">The Index</a>
+</li></ul>
+</div>
+
+
+
+<!-- So the toc is printed in the right place. -->
+<div class="node">
+<a name="Top"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="General-information.html#General-information">General information</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="../index.html#dir">(dir)</a>
+<hr>
+</div>
+
+<h2 class="unnumbered">Marsyas User Manual</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="General-information.html#General-information">General information</a>:          Introduction, history, related work, and goals. 
+<li><a accesskey="2" href="Source-installation.html#Source-installation">Source installation</a>:          Installation instructions for different operating systems. 
+<li><a accesskey="3" href="Tour.html#Tour">Tour</a>: 			A tour of Marsyas functionality
+<li><a accesskey="4" href="Available-tools.html#Available-tools">Available tools</a>:              Various sample tools built using marsyas
+components. 
+<li><a accesskey="5" href="Graphical-User-Interfaces-using-Qt4.html#Graphical-User-Interfaces-using-Qt4">Graphical User Interfaces using Qt4</a>:    Various sample tools built using
+marsyas and Qt. 
+<li><a accesskey="6" href="Architecture-concepts.html#Architecture-concepts">Architecture concepts</a>:        Important concepts about Marsyas. 
+<li><a accesskey="7" href="System-details.html#System-details">System details</a>:               Details about Marsyas. 
+<li><a accesskey="8" href="Scripting.html#Scripting">Scripting</a>:                    Working with MarSystems without C++. 
+<li><a accesskey="9" href="Writing-applications.html#Writing-applications">Writing applications</a>:         Writing programs that use Marsyas. 
+<li><a href="Programming-MarSystems.html#Programming-MarSystems">Programming MarSystems</a>:       Writing new MarSystem blocks. 
+<li><a href="Missing-Docs.html#Missing-Docs">Missing Docs</a>:                 Your assistance requested! 
+<li><a href="The-Index.html#The-Index">The Index</a>:                    The Index. 
+</ul>
+
+<!-- *- coding: latin-1; mode: texinfo; -*- -->
+<!-- Different figure types -->
+   </body></html>
+

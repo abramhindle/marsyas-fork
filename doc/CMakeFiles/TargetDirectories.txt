@@ -1,0 +1,2 @@
+/home/hindle1/src/marsyas/doc/CMakeFiles/docs.dir
+/home/hindle1/src/marsyas/doc/CMakeFiles/doxy.dir

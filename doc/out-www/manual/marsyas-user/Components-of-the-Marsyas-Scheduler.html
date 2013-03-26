@@ -1,0 +1,290 @@
+<html lang="en">
+<head>
+<title>Components of the Marsyas Scheduler - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Scheduling.html#Scheduling" title="Scheduling">
+<link rel="prev" href="Scheduling-in-Marsyas.html#Scheduling-in-Marsyas" title="Scheduling in Marsyas">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Components-of-the-Marsyas-Scheduler"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Scheduling-in-Marsyas.html#Scheduling-in-Marsyas">Scheduling in Marsyas</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Scheduling.html#Scheduling">Scheduling</a>
+<hr>
+</div>
+
+<h4 class="subsection">6.5.2 Components of the Marsyas Scheduler</h4>
+
+<p>The scheduler is made up of a collection of files from those used by
+the scheduler to those that support it. The classes directly related to
+the scheduler along with their relationships is shown in
+See <a href="fig_003aasch1.html#fig_003aasch1">fig:asch1</a>.
+
+<!-- @float Figure,fig:asch1 -->
+<!-- @image{images/scheduler-class-diagram} -->
+<!-- @caption{Scheduler class diagram.} -->
+<!-- @end float -->
+<!-- @imgfigure{fig:asch1,Scheduler class diagram.,images/scheduler-class} -->
+   <div class="float">
+<a name="fig_003aasch1"></a><img src="images/scheduler-class.png" alt="images/scheduler-class.png">
+
+   <p><strong class="float-caption">Figure 6.1: Scheduler class diagram.</strong></p></div>
+
+<h5 class="subsubsection">6.5.2.1 MarSystem</h5>
+
+<p>Each MarSystem object has its own scheduler. This makes it possbile to
+post events on the MarSystem object directly. However, once a MarSystem
+is contained within another (within a Composite) it no longer responds
+to tick messages. This means that the schedulers in any of the contained
+objects will remain dormant. Therefore the only operational scheduler in
+a network is the one in the MarSystem being ticked.
+
+   <p>Posting events on the scheduler is done through a number of
+<code>updctrl</code> methods. Each one takes a <code>TmTime</code> class as its
+first parameter.
+
+<pre class="example">     void <b>updctrl</b>(EvEvent* me);
+     void <b>updctrl</b>(TmTime t, EvEvent* ev);
+     void <b>updctrl</b>(TmTime t, Repeat rep, EvEvent* ev);
+     void <b>updctrl</b>(TmTime t, std::string cname, MarControlPtr control);
+     void <b>updctrl</b>(TmTime t, Repeat rep, std::string cname, MarControlPtr control);
+</pre>
+   <p>Additional methods for adding and removing timers and discovering the
+current time on a timer are available. The <code>updtimer</code> method is
+provided to modify timer parameters at run-time.
+
+<pre class="example">     mrs_natural <b>getTime</b>(std::string timer_name);
+     void <b>updtimer</b>(std::string cname, TmControlValue value);
+     void <b>addTimer</b>(std::string class_name, std::string identifier);
+     void <b>addTimer</b>(TmTimer* t);
+     void <b>removeTimer</b>(std::string name);
+</pre>
+   <h5 class="subsubsection">6.5.2.2 Scheduler</h5>
+
+<p>It is the schedulers job to see that events are passed to the correct
+timer when they are posted. On each network tick the scheduler prompts
+each of the timers it manages to dispatch their pending events.
+
+<h5 class="subsubsection">6.5.2.3 Timers</h5>
+
+<p>Timers define a control rate on which events may be scheduled. It is
+also the job of the timer to manage a queue of events and dispatch them
+at their scheduled dispatch time.
+
+   <p>Creating a custom timer is simply a matter of defining its control rate,
+its units (ie seconds), and implementing a function to count the elapsed
+time between ticks. See the <samp><span class="file">TmSampleCount</span></samp> timer as an example of
+a custom timer.
+
+<h5 class="subsubsection">6.5.2.4 Events</h5>
+
+<p>Events are the actions that happen at specified points in time. In
+Marsyas events inherit from the <samp><span class="file">EvEvent</span></samp>. Custom events are
+constructed by inheriting from <samp><span class="file">EvEvent</span></samp> and overriding the
+<code>dispatch</code> and <code>clone</code> methods.
+
+   <p>The overridden <code>EvEvent::dispatch</code> method is where the custom
+event action is defined. Since Marsyas is not threaded the network will
+block during dispatch. This could result in breaks in audio for
+real-time audio if the action takes too much time.
+
+   <p>The <code>clone</code> method is intended to be used by the <samp><span class="file">TmTimer</span></samp> to
+copy the event when it's posted. This would force the user to take care
+of its deletion and avoid confusion about who must do this. At this time
+clone is not used for this task so that once an <samp><span class="file">EvEvent</span></samp> is posted
+it is under the control of the <samp><span class="file">TmTimer</span></samp> it was posted on. It
+should not be reposted or deleted by the user. The search is on for a
+better solution.
+
+   <p><samp><span class="file">EvEvent</span></samp> supports repetition without having to create new
+events. The <code>setRepeat(Repeat r)</code> method takes a <samp><span class="file">Repeat</span></samp>
+object that defines how to repeat the event. The default behaviour is
+no repetition. A true value from the <code>repeat()</code> method tells the
+scheduler to repeat the event. This method queries the supplied
+<samp><span class="file">Repeat</span></samp> object. The <code>getRepeatInterval()</code> returns the repeat
+rate. The <code>repeat_interval(string interval)</code> may be used to convert
+the supplied interval to a count. It is used in the
+<code>EvEvent::doRepeat()</code> method.
+
+<h5 class="subsubsection">6.5.2.5 Repeat</h5>
+
+<p>Repetition of events is defined using the <samp><span class="file">Repeat</span></samp> class. This
+class is simply a tuple of the repetition time interval and repetition
+count. There are three ways to define repetition. <code>Repeat()</code>
+defines no repetition. <code>Repeat(string interval)</code> defines an
+infinite repetition at a rate specified by the supplied interval. 
+<code>Repeat(string interval, mrs_natural count)</code> defines a finite
+repetition of count repeats to occur every interval.
+
+   <p>Time is specified as a single string without a timer name. It is assumed
+that the specified interval time will be meaningful on the timer that
+the event is posted in.
+
+<h5 class="subsubsection">6.5.2.6 TmTime</h5>
+
+<p>Time is specified using the <samp><span class="file">TmTime</span></samp> class as
+<code>TmTime(string timer, string time)</code>. The first parameter is the
+name of the timer on which the second parameter has meaning. As an
+example, <code>TmTime("TmSampleCount/Virtual","5s")</code> specifies 5 seconds
+from the point of time it is used on the TmSampleCount timer called
+Virtual.
+
+<h5 class="subsubsection">6.5.2.7 TmTimerManager</h5>
+
+<p>Rather than instantiating timers and adding them to the scheduler using
+the <code>MarSystem::addtimer(TmTimer* tmr)</code> method, timers may be
+specified and added by name using the
+<code>MarSystem::addtimer(string name, string ident)</code> method where name
+is the timer name, ie TmSampleCount, and ident is the unique identifier,
+ie Virtual. Of course, if the timer name is not known then this method
+will fail. New timers can be added to the factory using the method
+laid out in <samp><span class="file">TmTimerManager.cpp</span></samp>. See <a href="archtmrfac.html#archtmrfac">Timer Factory</a>. 
+<!-- @ref{Writing a new Timer,Timer Factory}. -->
+
+   </body></html>
+

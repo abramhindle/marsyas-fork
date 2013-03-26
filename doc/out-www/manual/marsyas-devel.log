@@ -1,0 +1,267 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdfetex 2012.12.14)  24 MAR 2013 13:57
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\nonstopmode \catcode126=12 \def\normaltilde{~}\catcode126=13 \let~\normaltil
+de  \input /home/hindle1/src/marsyas/doc/marsyas-devel.texi
+(/home/hindle1/src/marsyas/doc/marsyas-devel.texi
+(/home/hindle1/src/marsyas/doc/texinfo.tex
+Loading texinfo [version 2007-09-03.05]:
+\bindingoffset=\dimen16
+\normaloffset=\dimen17
+\pagewidth=\dimen18
+\pageheight=\dimen19
+\outerhsize=\dimen20
+\outervsize=\dimen21
+\cornerlong=\dimen22
+\cornerthick=\dimen23
+\topandbottommargin=\dimen24
+\headlinebox=\box16
+\footlinebox=\box17
+\margin=\insert252
+\EMsimple=\toks13
+\groupbox=\box18
+\groupinvalidhelp=\toks14
+\mil=\dimen25
+\exdentamount=\skip18
+\inmarginspacing=\skip19
+ pdf,
+\tempnum=\count27
+\lnkcount=\count28
+\filename=\toks15
+\filenamelength=\count29
+\pgn=\count30
+\toksA=\toks16
+\toksB=\toks17
+\toksC=\toks18
+\toksD=\toks19
+\boxA=\box19
+\countA=\count31
+\nopdfimagehelp=\toks20
+ fonts,
+\sffam=\fam8
+\textleading=\dimen26
+\fontdepth=\count32
+ page headings,
+\titlepagetopglue=\skip20
+\titlepagebottomglue=\skip21
+\evenheadline=\toks21
+\oddheadline=\toks22
+\evenfootline=\toks23
+\oddfootline=\toks24
+ tables,
+\tableindent=\dimen27
+\itemindent=\dimen28
+\itemmargin=\dimen29
+\itemmax=\dimen30
+\itemno=\count33
+\multitableparskip=\skip22
+\multitableparindent=\skip23
+\multitablecolspace=\dimen31
+\multitablelinespace=\skip24
+\colcount=\count34
+\everytab=\toks25
+
+conditionals,
+\doignorecount=\count35
+ indexing,
+\whatsitskip=\skip25
+\whatsitpenalty=\count36
+\secondaryindent=\skip26
+\partialpage=\box20
+\doublecolumnhsize=\dimen32
+ sectioning,
+\unnumberedno=\count37
+\chapno=\count38
+\secno=\count39
+\subsecno=\count40
+\subsubsecno=\count41
+\appendixno=\count42
+\absseclevel=\count43
+\secbase=\count44
+\chapheadingskip=\skip27
+\secheadingskip=\skip28
+\subsecheadingskip=\skip29
+ toc,
+\tocfile=\write0
+\contentsrightmargin=\skip30
+\savepageno=\count45
+\lastnegativepageno=\count46
+\tocindent=\dimen33
+ environments,
+\errorbox=\box21
+\lispnarrowing=\skip31
+\envskipamount=\skip32
+\circthick=\dimen34
+\cartouter=\dimen35
+\cartinner=\dimen36
+\normbskip=\skip33
+\normpskip=\skip34
+\normlskip=\skip35
+\lskip=\skip36
+\rskip=\skip37
+\tabw=\dimen37
+ defuns,
+\defbodyindent=\skip38
+\defargsindent=\skip39
+\deflastargmargin=\skip40
+\defunpenalty=\count47
+\parencount=\count48
+\brackcount=\count49
+ macros,
+\paramno=\count50
+\macname=\toks26
+
+cross references,
+\auxfile=\write1
+\savesfregister=\count51
+ insertions,
+\footnoteno=\count52
+\SAVEfootins=\box22
+\SAVEmargin=\box23
+
+(/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.tex
+This is `epsf.tex' v2.7.4 <14 February 2011>
+\epsffilein=\read1
+\epsfframemargin=\dimen38
+\epsfframethickness=\dimen39
+\epsfrsize=\dimen40
+\epsftmp=\dimen41
+\epsftsize=\dimen42
+\epsfxsize=\dimen43
+\epsfysize=\dimen44
+\pspoints=\dimen45
+)
+\noepsfhelp=\toks27
+ localization,
+\nolanghelp=\toks28
+\countUTFx=\count53
+\countUTFy=\count54
+\countUTFz=\count55
+ formatting,
+\defaultparindent=\dimen46
+ and turning on texinfo input format.)
+(./marsyas-devel.aux)
+\openout1 = `marsyas-devel.aux'.
+
+@cpindfile=@write2
+@fnindfile=@write3
+@vrindfile=@write4
+@tpindfile=@write5
+@kyindfile=@write6
+@pgindfile=@write7
+ [1
+\openout2 = `marsyas-devel.cp'.
+
+\openout3 = `marsyas-devel.fn'.
+
+\openout4 = `marsyas-devel.vr'.
+
+\openout5 = `marsyas-devel.tp'.
+
+\openout6 = `marsyas-devel.ky'.
+
+\openout7 = `marsyas-devel.pg'.
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[2] (./marsyas-devel.toc) [-1] (./marsyas-devel.toc) (./marsyas-devel.toc)
+(/home/hindle1/src/marsyas/doc/macros.itexi)
+(/home/hindle1/src/marsyas/doc/contributing.texi Chapter 1
+\openout0 = `marsyas-devel.toc'.
+
+
+Underfull \hbox (badness 3815) in paragraph at lines 40--44
+[]@textrm If you can add some-thing to the docs, please send an email to @textt
+t <marsyas-
+
+@hbox(7.60416+2.43333)x433.62, glue set 3.36731
+.@hbox(0.0+0.0)x15.0
+.@kern -15.0
+.@textrm I
+.@textrm f
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+[1] [2] [3] [4] [5]) (/home/hindle1/src/marsyas/doc/autotest.texi Chapter 2
+[6] [7]
+Overfull \hbox (10.59785pt too wide) in paragraph at lines 112--117
+[]@textrm The eas-i-est way to add a new test is to copy the file marsyas/src/t
+ests/unit[]tests/TestSample.h|
+
+@hbox(8.2125+2.73749)x433.62, glue set - 1.0
+.@hbox(0.0+0.0)x15.0
+.@kern -15.0
+.@textrm T
+.@textrm h
+.@textrm e
+.etc.
+
+[8]
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 228--228
+ []@texttt sound2png -m waveform marsyas/src/tests/black-box/input/right.wav wa
+veform.png[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt s
+.@texttt o
+.@texttt u
+.etc.
+
+
+Overfull \hbox (89.6747pt too wide) in paragraph at lines 245--245
+ []@texttt black-box_explicit(sound2png_waveform right.wav waveform.png sound2p
+ng "${ARGUMENTS}")[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt b
+.@texttt l
+.@texttt a
+.etc.
+
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 255--255
+ []@texttt macro(black-box_audio REG_NAME REG_INPUT REG_OUTPUT REG_COMMAND REG_
+ARGS)[] |
+
+@hbox(7.60416+1.04173)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt m
+.@texttt a
+.@texttt c
+.etc.
+
+[9] [10]) (The Index) [11] [12] ) 
+Here is how much of TeX's memory you used:
+ 1879 strings out of 497114
+ 24464 string characters out of 3206991
+ 63751 words of memory out of 3000000
+ 2930 multiletter control sequences out of 15000+200000
+ 32127 words of font info for 112 fonts, out of 3000000 for 9000
+ 51 hyphenation exceptions out of 8191
+ 15i,5n,18p,406b,375s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmb10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsltt10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/latxfont/lcircle1.pfb>
+Output written on marsyas-devel.pdf (15 pages, 178161 bytes).
+PDF statistics:
+ 336 PDF objects out of 1000 (max. 8388607)
+ 300 compressed objects within 3 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 325 words of extra memory for PDF output out of 10000 (max. 10000000)
+

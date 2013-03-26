@@ -1,0 +1,258 @@
+<html lang="en">
+<head>
+<title>Using the Scheduler - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Using-and-Extending-the-Scheduler.html#Using-and-Extending-the-Scheduler" title="Using and Extending the Scheduler">
+<link rel="next" href="Writing-a-new-Timer.html#Writing-a-new-Timer" title="Writing a new Timer">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Using-the-Scheduler"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Writing-a-new-Timer.html#Writing-a-new-Timer">Writing a new Timer</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Using-and-Extending-the-Scheduler.html#Using-and-Extending-the-Scheduler">Using and Extending the Scheduler</a>
+<hr>
+</div>
+
+<h4 class="subsection">9.6.1 Using the Scheduler</h4>
+
+<p>In the example below an event is created and posted to the network to set the
+gain control to 0 (silence) two seconds after the network starts processing. 
+This is accomplished by creating a new EvValUpd event which performs a
+<code>setctrl</code> call when dispatched.
+
+   <p>The EvValUpd event requires a MarSystem pointer to
+act on - we use the topmost <code>series</code> object because we have a pointer to
+it. The event also requires a control path referenced to the supplied MarSystem
+pointer. Finally, it requires a MarControlValue to set the control value to on
+dispatch. This value should have the same type as the one specified in the
+control path otherwise the Marsyas system will report an error at dispatch
+time.
+
+   <p>To post the event to a timer the MarSystem <code>updctrl</code> call is used. The
+first parameter to <code>updctrl</code> is the dispatch time. This indicates a
+scheduled event call to the MarSystem and it is passed on to the scheduler. 
+In this case the <code>TmTime</code> class is supplied the name of the timer that the
+event is to be posted on along with the time of event dispatch. The default
+timer for every MarSystem is a <code>TmSampleCount</code> timer, which counts the
+number of samples processed, with the name Virtual. The TmSampleCount timer
+understands the units <code>us, ms, s, m, h</code> corresponding to microseconds,
+milliseconds, seconds, minutes, hours, respectively. The supplied time is
+converted to samples by calling the static method
+<code>mrs_natural Marsyas::time2samples(string time, mrs_real srate)</code>
+in the <samp><span class="file">Conversions.cpp</span></samp>.
+
+   <div class="float">
+<a name="fig_003asch1"></a>
+<pre class="example">       MarSystemManager mng;
+     
+       MarSystem* series = mng.<b>create</b>(<tt>"Series"</tt>, <tt>"series"</tt>);
+       series-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"SineSource"</tt>, <tt>"src"</tt>));
+       series-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"Gain"</tt>, <tt>"g"</tt>));
+       series-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"AudioSink"</tt>, <tt>"snk"</tt>));
+     
+       series-&gt;<b>updctrl</b>(<tt>"AudioSink/snk/mrs_bool/initAudio"</tt>, <b>true</b>);
+       series-&gt;<b>updctrl</b>(<tt>"SineSource/src/mrs_real/frequency"</tt>,440.0);
+       series-&gt;<b>updctrl</b>(<tt>"Gain/g/mrs_real/gain"</tt>,1.0);
+     
+       EvValUpd* ev = <b>new</b> <b>EvValUpd</b>(series,<tt>"Gain/g/mrs_real/gain"</tt>,0.0);
+       series-&gt;<b>updctrl</b>(<b>TmTime</b>(<tt>"TmSampleCount/Virtual"</tt>,<tt>"2s"</tt>),ev);
+     
+       <b>while</b>(<b>true</b>) series-&gt;<b>tick</b>();
+</pre>
+   <p><strong class="float-caption">Figure 9.1: Program using the scheduler to set gain to 0 after two seconds.</strong></p></div>
+
+<h5 class="subsubsection">9.6.1.1 Repeating Events</h5>
+
+<p>We can repeat events using the event <code>set_repeat</code> method of the event. This
+method takes a <code>Repeat</code> value which is essentially a (rate,count) tuple. In
+the example below, two events are posted. One sets the volume to 0, the other to
+1. By staggering their dispatch we can achieve a gating effect. Here we repeat
+the events forever by specifying the repeat rate only as in <code>Repeat("1s")</code>. 
+To specify a finite repeat count we could set the repeat count to five as in
+<code>Repeat("1s",5)</code>. Gaze wonderously at the example.
+
+   <div class="float">
+<a name="fig_003asch2"></a>
+<pre class="example">       MarSystemManager mng;
+     
+       MarSystem* series = mng.<b>create</b>(<tt>"Series"</tt>, <tt>"series"</tt>);
+       series-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"SineSource"</tt>, <tt>"src"</tt>));
+       series-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"Gain"</tt>, <tt>"g"</tt>));
+       series-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"AudioSink"</tt>, <tt>"snk"</tt>));
+     
+       series-&gt;<b>updctrl</b>(<tt>"AudioSink/snk/mrs_bool/initAudio"</tt>, <b>true</b>);
+       series-&gt;<b>updctrl</b>(<tt>"SineSource/src/mrs_real/frequency"</tt>,440.0);
+       series-&gt;<b>updctrl</b>(<tt>"Gain/g/mrs_real/gain"</tt>,1.0);
+     
+       EvValUpd* ev_off = <b>new</b> <b>EvValUpd</b>(series,<tt>"Gain/g/mrs_real/gain"</tt>,0.0);
+       ev_off-&gt;<b>set_repeat</b>(<b>Repeat</b>(<tt>"1s"</tt>)); <i>// repeat forever</i>
+       <i>//ev_off-&gt;set_repeat(Repeat("1s",4)); // repeat four times</i>
+     
+       EvValUpd* ev_on = <b>new</b> <b>EvValUpd</b>(series,<tt>"Gain/g/mrs_real/gain"</tt>,1.0);
+       ev_on-&gt;<b>set_repeat</b>(<b>Repeat</b>(<tt>"1s"</tt>));
+     
+       <i>// stagger the dispatch of the events, off by 1 second</i>
+       series-&gt;<b>updctrl</b>(<b>TmTime</b>(<tt>"TmSampleCount/Virtual"</tt>,<tt>"1s"</tt>),ev_off);
+       series-&gt;<b>updctrl</b>(<b>TmTime</b>(<tt>"TmSampleCount/Virtual"</tt>,<tt>"2s"</tt>),ev_on);
+     
+       <b>while</b>(<b>true</b>) series-&gt;<b>tick</b>();
+</pre>
+   <p><strong class="float-caption">Figure 9.2: Program using two events that toggle the gain between 0 and 1 every second.</strong></p></div>
+
+   <p>But how does this work under the hood, uhh, so to speak, you ask. For a pending
+event (whose time is now), the scheduler will remove it from the queue, call its
+dispatch method, check whether it should be repeated by calling its <code>repeat</code>
+method. If it is to be repeated, the rate will be read by calling the
+<code>repeat_interval()</code> method which reads the rate from the <code>Repeat</code>
+value originally supplied through the <code>set_repeat</code> method. A calculation of
+the next dispatch time is made and the event is reposted to the queue. See the
+<code>void TmTimer::dispatch()</code> method of <samp><span class="file">TmTimer.cpp</span></samp> for the exact
+method.
+
+   </body></html>
+

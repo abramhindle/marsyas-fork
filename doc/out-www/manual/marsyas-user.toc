@@ -1,0 +1,197 @@
+@numchapentry{General information}{1}{General information}{1}
+@numsecentry{History}{1.1}{History}{1}
+@numsecentry{Context and Related Work}{1.2}{Context and Related Work}{2}
+@numsecentry{About the documentation}{1.3}{About the documentation}{3}
+@numsubsecentry{Latest version}{1.3.1}{}{3}
+@numsubsecentry{User manual and Developer's manual}{1.3.2}{}{4}
+@numsubsecentry{Help wanted!}{1.3.3}{}{4}
+@numsecentry{Beyond the manuals}{1.4}{Beyond the manuals}{4}
+@numsubsecentry{Examples}{1.4.1}{}{4}
+@numsubsecentry{MarSystem source documentation}{1.4.2}{}{4}
+@numsubsecentry{Source code}{1.4.3}{}{4}
+@numchapentry{Source installation}{2}{Source installation}{6}
+@numsecentry{Prerequisites}{2.1}{Prerequisites}{6}
+@numsubsecentry{CMake installation}{2.1.1}{CMake installation}{6}
+@numsubsecentry{Compiler configuration}{2.1.2}{Compiler configuration}{6}
+@unnsubsubsecentry{Linux compiler configuration}{10000.1.2.1}{}{6}
+@unnsubsubsecentry{MacOS X compiler configuration}{10000.1.2.2}{}{6}
+@unnsubsubsecentry{Windows compiler configuration}{10000.1.2.3}{}{6}
+@numsecentry{Download}{2.2}{Download}{7}
+@unnsubsecentry{Stable(-ish) Version}{10000.2.1}{}{7}
+@unnsubsecentry{Development Version}{10000.2.2}{}{7}
+@numsecentry{Configuring with CMake}{2.3}{Configuring with CMake}{7}
+@numsubsecentry{Windows}{2.3.1}{}{7}
+@numsubsecentry{Unix (including MacOS X)}{2.3.2}{}{8}
+@numsecentry{Marsyas options}{2.4}{Marsyas options}{8}
+@numsubsecentry{Input/Output}{2.4.1}{}{8}
+@numsubsecentry{Code messages and optional portions}{2.4.2}{}{9}
+@numsubsecentry{Logging options}{2.4.3}{}{9}
+@numsubsecentry{Optional software (WITH_*)}{2.4.4}{}{9}
+@numsecentry{Compiling}{2.5}{Compiling}{10}
+@numsubsecentry{Testing}{2.5.1}{}{10}
+@numsecentry{Specific installation examples}{2.6}{Specific installation examples}{10}
+@numsubsecentry{Compiling on MacOS X 10.6 Snow Leopard}{2.6.1}{Compiling on MacOS X 10.6 Snow Leopard}{10}
+@numsubsecentry{Compiling on Ubuntu 11.04 - Natty Narwhal (2011)}{2.6.2}{Compiling on Ubuntu 11.04 - Natty Narwhal (2011)}{15}
+@numsubsecentry{Compiling on Ubuntu}{2.6.3}{Compiling on Ubuntu}{16}
+@numsubsecentry{Compiling with Visual Studio Express 2008 on Windows XP}{2.6.4}{Compiling with Visual Studio Express 2008 on Windows XP}{17}
+@numsubsecentry{Compiling with MinGW on Windows XP}{2.6.5}{Compiling with MinGW on Windows XP}{18}
+@numsubsecentry{MacOS X additional notes}{2.6.6}{MacOS X additional notes}{19}
+@numsecentry{Post-install setup}{2.7}{Post-install setup}{20}
+@numsubsecentry{Vim editor support}{2.7.1}{Vim editor support}{20}
+@numsubsecentry{Datasets}{2.7.2}{Datasets}{20}
+@numsecentry{Structure of distribution}{2.8}{Structure of distribution}{20}
+@numchapentry{Tour}{3}{Tour}{22}
+@numsubsecentry{Command-line tools}{3.0.1}{Command-line tools}{22}
+@numsubsecentry{User interfaces}{3.0.2}{User interfaces}{23}
+@numsubsecentry{Web information}{3.0.3}{Web information}{25}
+@numchapentry{Available tools}{4}{Available tools}{26}
+@numsecentry{Collections and input files}{4.1}{Collections and input files}{26}
+@numsubsecentry{Creating collections manually}{4.1.1}{Creating collections manually}{26}
+@numsubsecentry{Labels}{4.1.2}{}{26}
+@numsubsecentry{@code {MARSYAS_DATADIR}}{4.1.3}{}{26}
+@numsubsecentry{@code {mkcollection}}{4.1.4}{mkcollection}{27}
+@numsubsecentry{Plain filenames in collections}{4.1.5}{Plain filenames in collections}{27}
+@numsecentry{Soundfile Interaction}{4.2}{Soundfile Interaction}{27}
+@numsubsecentry{@code {sfplay}}{4.2.1}{sfplay}{27}
+@numsubsecentry{@code {sfinfo}}{4.2.2}{sfinfo}{28}
+@numsubsecentry{@code {audioCompare}}{4.2.3}{audioCompare}{28}
+@numsubsecentry{@code {record}}{4.2.4}{record}{28}
+@numsubsecentry{@code {orcarecord}}{4.2.5}{orcarecord}{28}
+@numsubsecentry{@code {sound2png}}{4.2.6}{sound2png}{28}
+@numsubsecentry{@code {sound2sound}}{4.2.7}{sound2sound}{30}
+@numsecentry{Feature Extraction}{4.3}{Feature Extraction}{30}
+@numsubsecentry{@code {pitchextract}}{4.3.1}{pitchextract}{30}
+@numsubsecentry{@code {bextract}}{4.3.2}{bextract}{30}
+@numsubsecentry{@code {ibt}}{4.3.3}{ibt}{35}
+@numsecentry{Synthesis}{4.4}{Synthesis}{37}
+@numsubsecentry{@code {phasevocoder}}{4.4.1}{phasevocoder}{37}
+@numsecentry{Machine Learning}{4.5}{Machine Learning}{39}
+@numsubsecentry{@code {kea}}{4.5.1}{kea}{39}
+@numsecentry{Auditory Scene Analysis}{4.6}{Auditory Scene Analysis}{40}
+@numsubsecentry{@code {peakSynth}}{4.6.1}{peakSynth}{40}
+@numsubsecentry{@code {peakClustering}}{4.6.2}{peakClustering}{40}
+@numsecentry{Marsystem Interaction}{4.7}{Marsystem Interaction}{42}
+@numsubsecentry{@code {sfplugin}}{4.7.1}{sfplugin}{42}
+@numsubsecentry{@code {msl}}{4.7.2}{msl}{43}
+@numsecentry{All of the above}{4.8}{All of the above}{43}
+@numsubsecentry{@code {mudbox}}{4.8.1}{mudbox}{43}
+@numchapentry{Graphical User Interfaces using Qt4}{5}{Graphical User Interfaces using Qt4}{45}
+@numsecentry{MarPlayer}{5.1}{MarPlayer}{45}
+@numsecentry{MarPhaseVocoder}{5.2}{MarPhaseVocoder}{45}
+@numsecentry{MarGrid}{5.3}{MarGrid}{45}
+@numsecentry{MarMonitors}{5.4}{MarMonitors}{45}
+@numsecentry{MarLPC}{5.5}{MarLPC}{45}
+@numchapentry{Architecture concepts}{6}{Architecture concepts}{46}
+@numsecentry{Architecture overview}{6.1}{Architecture overview}{46}
+@numsubsecentry{Building MarSystems}{6.1.1}{Building MarSystems}{46}
+@numsubsecentry{Dataflow model}{6.1.2}{Dataflow model}{46}
+@numsecentry{Implicit patching}{6.2}{Implicit patching}{47}
+@numsubsecentry{Implicit patching vs. explicit patching}{6.2.1}{Implicit patching vs. explicit patching}{47}
+@numsubsecentry{Implicit patching advantages}{6.2.2}{Implicit patching advantages}{48}
+@numsubsecentry{Patching example of Feature extraction}{6.2.3}{Patching example of Feature extraction}{49}
+@numsecentry{MarSystem composites}{6.3}{MarSystem composites}{50}
+@numsubsecentry{Series}{6.3.1}{Series}{50}
+@numsubsecentry{Parallel}{6.3.2}{Parallel}{51}
+@numsubsecentry{Fanout}{6.3.3}{Fanout}{52}
+@numsubsecentry{Accumulator}{6.3.4}{Accumulator}{53}
+@numsubsecentry{Shredder}{6.3.5}{Shredder}{54}
+@numsecentry{Linking of controls}{6.4}{Linking of controls}{55}
+@numsecentry{Scheduling}{6.5}{Scheduling}{58}
+@numsubsecentry{Scheduling in Marsyas}{6.5.1}{Scheduling in Marsyas}{58}
+@numsubsubsecentry{Time}{6.5.1.1}{}{59}
+@numsubsubsecentry{Event}{6.5.1.2}{}{60}
+@numsubsecentry{Components of the Marsyas Scheduler}{6.5.2}{Components of the Marsyas Scheduler}{60}
+@numsubsubsecentry{MarSystem}{6.5.2.1}{}{61}
+@numsubsubsecentry{Scheduler}{6.5.2.2}{}{62}
+@numsubsubsecentry{Timers}{6.5.2.3}{}{62}
+@numsubsubsecentry{Events}{6.5.2.4}{}{62}
+@numsubsubsecentry{Repeat}{6.5.2.5}{}{62}
+@numsubsubsecentry{TmTime}{6.5.2.6}{}{63}
+@numsubsubsecentry{TmTimerManager}{6.5.2.7}{}{63}
+@numchapentry{System details}{7}{System details}{64}
+@numsecentry{Library reference}{7.1}{Library reference}{64}
+@numsubsecentry{Source documentation}{7.1.1}{}{64}
+@numsubsecentry{MarSystem groups}{7.1.2}{}{64}
+@numsubsecentry{Limited documentation}{7.1.3}{}{64}
+@numsecentry{Predefined types}{7.2}{Predefined types}{64}
+@numsubsecentry{Variables types}{7.2.1}{}{64}
+@numsubsecentry{Constants}{7.2.2}{}{65}
+@numsecentry{Realvec}{7.3}{Realvec}{65}
+@numsubsecentry{Reading and writing to a realvec}{7.3.1}{Reading and writing to a realvec}{65}
+@numsubsecentry{Resizing a realvec}{7.3.2}{Resizing a realvec}{66}
+@numsubsecentry{Realvec arithmetic}{7.3.3}{Realvec arithmetic}{66}
+@numsubsecentry{Applying a function to a realvec}{7.3.4}{Applying a function to a realvec}{66}
+@numsubsecentry{Realvec input and output to a file}{7.3.5}{Realvec input and output to a file}{67}
+@numsubsecentry{Statistical analysis}{7.3.6}{Statistical analysis}{67}
+@numsubsecentry{Other realvec functions}{7.3.7}{Other realvec functions}{68}
+@numsecentry{System limitations}{7.4}{Systems limitations}{68}
+@numsubsecentry{Stereo vs. mono in a spectrum}{7.4.1}{}{68}
+@numchapentry{Scripting}{8}{Scripting}{69}
+@numsecentry{Interactive python}{8.1}{Interactive python}{69}
+@numsubsecentry{Getting started with python}{8.1.1}{Getting started with python}{69}
+@numsubsecentry{Swig python bindings bextract example}{8.1.2}{Swig python bindings bextract example}{69}
+@numchapentry{Writing applications}{9}{Writing applications}{71}
+@numsecentry{Including libraries and linking}{9.1}{Including libraries and linking}{71}
+@numsubsecentry{... using qmake}{9.1.1}{}{71}
+@numsubsecentry{... writing your own Makefile}{9.1.2}{}{71}
+@numsubsecentry{... on Windows Visual Studio}{9.1.3}{}{72}
+@numsecentry{Example programs}{9.2}{Example programs}{73}
+@numsubsecentry{Hello World (playing an audio file)}{9.2.1}{Hello World (playing an audio file)}{73}
+@numsubsecentry{Reading and altering controls}{9.2.2}{Reading and altering controls}{74}
+@numsubsecentry{Writing data to text files}{9.2.3}{Writing data to text files}{76}
+@numsubsecentry{Getting data from the network}{9.2.4}{Getting data from the network}{77}
+@numsubsecentry{Command-line options}{9.2.5}{Command-line options}{78}
+@numsecentry{Writing Qt4 applications}{9.3}{Writing Qt4 applications}{81}
+@numsubsecentry{Including and linking to libmarsyasqt}{9.3.1}{Including and linking to libmarsyasqt}{81}
+@numsubsecentry{MarSystemQtWrapper}{9.3.2}{MarSystemQtWrapper}{81}
+@numsubsecentry{Passing controls to a MarSystemQtWrapper}{9.3.3}{Passing controls to a MarSystemQtWrapper}{82}
+@numsubsecentry{Other classes in MarsyasQt}{9.3.4}{Other classes in MarsyasQt}{82}
+@numsubsecentry{Qt4 example}{9.3.5}{Qt4 example}{82}
+@numsubsecentry{Other Qt4 issues}{9.3.6}{Other Qt4 issues}{90}
+@numsecentry{Other programming issues}{9.4}{Other programming issues}{90}
+@numsubsecentry{Visualizing data with gnuplot}{9.4.1}{Visualizing data with gnuplot}{90}
+@numsecentry{Interoperability}{9.5}{Interoperability}{91}
+@numsubsecentry{Open Sound Control (OSC)}{9.5.1}{Open Sound Control (OSC)}{91}
+@numsubsecentry{WEKA}{9.5.2}{WEKA}{91}
+@numsubsecentry{MATLAB}{9.5.3}{MATLAB}{91}
+@numsubsecentry{Python}{9.5.4}{Python}{93}
+@numsubsecentry{OCaml}{9.5.5}{OCaml}{94}
+@numsubsecentry{SonicVisualiser Vamp Plugins}{9.5.6}{SonicVisualiser Vamp Plugins}{94}
+@numsubsubsecentry{Instalation}{9.5.6.1}{}{94}
+@numsubsubsecentry{Writing Plugin}{9.5.6.2}{}{97}
+@numsecentry{Using and Extending the Scheduler}{9.6}{Using and Extending the Scheduler}{97}
+@numsubsecentry{Using the Scheduler}{9.6.1}{Using the Scheduler}{97}
+@numsubsubsecentry{Repeating Events}{9.6.1.1}{}{98}
+@numsubsecentry{Writing a new Timer}{9.6.2}{Writing a new Timer}{99}
+@numsubsubsecentry{Updating timers at run-time}{9.6.2.1}{}{103}
+@numsubsubsecentry{Timer Factory}{9.6.2.2}{}{103}
+@numsubsecentry{Writing a new Event}{9.6.3}{Writing a new Event}{103}
+@numsubsubsecentry{Expression Events}{9.6.3.1}{}{109}
+@numsubsecentry{Marsyas Expression Syntax}{9.6.4}{Marsyas Expression Syntax}{111}
+@numsubsubsecentry{Type System}{9.6.4.1}{Type System}{111}
+@numsubsubsecentry{Operators}{9.6.4.2}{Operators}{111}
+@numsubsubsecentry{Variables}{9.6.4.3}{Variables}{113}
+@numsubsubsecentry{Assignment ( << >> )}{9.6.4.4}{Assignment}{113}
+@numsubsubsecentry{Links ( -> <- )}{9.6.4.5}{Links}{114}
+@numsubsubsecentry{Conditional Statements ( @{? cond_expr : exprs1 : exprs2 @} )}{9.6.4.6}{Conditional Statements}{114}
+@numsubsubsecentry{Multiple Expressions ( exprs := expr1 , expr2 , expr3 )}{9.6.4.7}{Multiple Expressions}{114}
+@numsubsubsecentry{Properties ( ie Real.pi or 'hello'.2 etc. )}{9.6.4.8}{Properties}{114}
+@numsubsubsecentry{Sequences (Lists)}{9.6.4.9}{Sequences}{114}
+@numsubsubsecentry{Function Libraries}{9.6.4.10}{Function Libraries}{116}
+@numsubsubsecentry{Using}{9.6.4.11}{Using}{118}
+@numsubsubsecentry{Extending}{9.6.4.12}{Extending}{119}
+@numsubsubsecentry{Marsyas Expression Examples}{9.6.4.13}{Marsyas Expression Examples}{122}
+@numchapentry{Programming MarSystems}{10}{Programming MarSystems}{125}
+@numsecentry{Compiling and using a new MarSystem}{10.1}{Compiling and using a new MarSystem}{125}
+@numsubsecentry{Writing your own MarSystems}{10.1.1}{Writing your own MarSystems}{125}
+@numsubsecentry{Using your MarSystem}{10.1.2}{Using your MarSystem}{125}
+@numsecentry{Anatomy of a MarSystem}{10.2}{Anatomy of a MarSystem}{125}
+@numsubsecentry{Methods of the object}{10.2.1}{Methods of the object}{126}
+@numsubsecentry{Constructors / destructor}{10.2.2}{Constructors / destructor}{126}
+@unnsubsubsecentry{Copy constructor}{10000.2.2.1}{}{126}
+@numsubsecentry{Handling controls}{10.2.3}{Handling controls}{126}
+@numsubsecentry{@code {myProcess()}}{10.2.4}{myProcess()}{127}
+@numsubsecentry{@code {myUpdate()} vs. @code {myProcess()}}{10.2.5}{myUpdate() vs. myProcess()}{127}
+@numsubsecentry{More details about MarSystems}{10.2.6}{More details about MarSystems}{128}
+@unnchapentry{Missing Docs}{10001}{Missing Docs}{129}
+@unnchapentry{The Index}{10002}{The Index}{130}

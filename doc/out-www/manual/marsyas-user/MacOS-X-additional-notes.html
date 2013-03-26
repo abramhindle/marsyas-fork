@@ -1,0 +1,210 @@
+<html lang="en">
+<head>
+<title>MacOS X additional notes - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Specific-installation-examples.html#Specific-installation-examples" title="Specific installation examples">
+<link rel="prev" href="Compiling-with-MinGW-on-Windows-XP.html#Compiling-with-MinGW-on-Windows-XP" title="Compiling with MinGW on Windows XP">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="MacOS-X-additional-notes"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Compiling-with-MinGW-on-Windows-XP.html#Compiling-with-MinGW-on-Windows-XP">Compiling with MinGW on Windows XP</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Specific-installation-examples.html#Specific-installation-examples">Specific installation examples</a>
+<hr>
+</div>
+
+<h4 class="subsection">2.6.6 MacOS X additional notes</h4>
+
+<p>These random notes might be useful for OS X users.
+
+<h5 class="subsubheading">Qt</h5>
+
+<p>On MacOS X and when using Qt-4.3.0 or higher, you must add:
+
+<pre class="example">     export QMAKESPEC=/usr/local/Qt4.3/mkspecs/macx-g++/
+</pre>
+   <p class="noindent">to your <samp><span class="file">~/.profile</span></samp> or <samp><span class="file">~/.bash_profile</span></samp> and then close
+(and re-open) your terminal window before compiling Marsyas.
+
+<h5 class="subsubheading">Recording audio</h5>
+
+<p>When trying to record audio, the sample rate must be specified
+explicitly:
+
+<pre class="example">     pnet-&gt;addMarSystem(mng.create("AudioSource", "srcRec"));
+     pnet-&gt;updctrl("mrs_real/israte", 44100.0);
+     pnet-&gt;updctrl("AudioSource/srcRec/mrs_bool/initAudio", true);
+</pre>
+   <h5 class="subsubheading">MATLAB</h5>
+
+<p>These instructions have been tested on OS X 10.5.8 and MATLAB_R2009a.
+
+     <ol type=1 start=1>
+<li>MATLAB and X11 for OS X must be installed
+
+     <li>The naming conventions of MATLAB are a messy so the CMake configuration
+assumes that either the MATLAB environment variable is set or looks for
+MATLAB in /Applications/MATLAB_R2009a.app
+
+     <li>Compile Marsyas and enable the WITH_MATLAB option. If MATLAB can not
+be located you will get an error message. Try setting the MATLAB
+enviornment variable and if that does not work then attempt to
+set the paths to the MATLAB-related variables manually.
+
+     <li>You will need to edit your .bash_profile with the following lines:
+     <pre class="example">          export MATLAB="/Applications/MATLAB_R2009a.app"
+          export DYLD_LIBRARY_PATH=$MATLAB/bin/maci/:$MATLAB/sys/os/maci/:$DYLD_LIBRARY_PATH
+</pre>
+     <li>try out mudbox -t MATLABengine. MATLAB
+should open and various benchmarks and communication
+between Marsyas and MATLAB should happen. If not
+email the mailing lists for some help.
+        </ol>
+
+   </body></html>
+

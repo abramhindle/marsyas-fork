@@ -1,0 +1,6 @@
+\entry{Brief note explaining what is missing.}{4}{\code {\xeatspaces {Brief note explaining what is missing.}}}
+\entry{descriptions of all these programs}{26}{\code {\xeatspaces {descriptions of all these programs}}}
+\entry{descriptions of composites, add the other composites}{50}{\code {\xeatspaces { descriptions of composites, add the other composites }}}
+\entry{Once you have learned how to use an undocumented MarSystem, please help document it. The source documentation only requires adding a special comment in the source file, so it is very easy! Please see Contributing source documentation.}{64}{\code {\xeatspaces { Once you have learned how to use an undocumented MarSystem, please help document it. The source documentation only requires adding a special comment in the source file, so it is very easy! Please see \develref {Contributing source documentation}.}}}
+\entry{can be done; read the source code.}{91}{\code {\xeatspaces {\emph {can} be done; read the source code.}}}
+\entry{can be done; read the source code.}{91}{\code {\xeatspaces {\emph {can} be done; read the source code.}}}

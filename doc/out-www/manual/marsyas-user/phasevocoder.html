@@ -1,0 +1,222 @@
+<html lang="en">
+<head>
+<title>phasevocoder - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Synthesis.html#Synthesis" title="Synthesis">
+<link rel="prev" href="Synthesis.html#Synthesis" title="Synthesis">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="phasevocoder"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Synthesis.html#Synthesis">Synthesis</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Synthesis.html#Synthesis">Synthesis</a>
+<hr>
+</div>
+
+<h4 class="subsection">4.4.1 <code>phasevocoder</code></h4>
+
+<p><a name="index-phasevocoder-16"></a>
+phasevocoder is probably the most powerful and canonical example of
+sound synthesis provided currently by Marsyas. It is based on the
+phasevocoder implementation described by F.R.Moore in his book
+&ldquo;Elements of Computer Music&rdquo;. It is broken into individual
+MarSystems in a modular way and can be used for sound-file and real-time
+input pitch-shifting and/or time-scaling. Several variations of the
+algorithm proposed in the literature have been implemented and
+can be configured through several command-line options. Familiarity
+with phasevocoder terminology will help understanding their effect on
+the transformed sound file. Some representative examples are:
+
+<pre class="example">     phasevocoder foo.wav -f foo_identity.wav
+     phasevocoder foo.wav -f foo_stretched.wav -n 2048 -w 2048 -d 256 -i 512
+     phasevocoder foo.wav -ob -cm sorted -s 10 -p 1.5 -f foo_pitch_shifted.wav
+     phasevocoder foo.wav -f foo_stretched.wav -n 4096 -w 4096 -d 768 -i 1024
+     -cm full -ucm identity_phaselock
+     phasevocoder foo.wav -f foo_stretched.wav -n 4096 -w 4096 -d 768 -i 1024
+     -cm analysis_scaled_phaselock -ucm scaled_phaselock
+</pre>
+   <p>In the first example the input file foo.wav is passed through the classic
+phasevocoder (overlap-add, FFT-frontend and FFT-backend) without any
+time or pitch modifications. The second example show how time stretching
+can be achieved by making the analysis hop size (-d) and the synthesis
+hop size (-i) different. The -n option specified the FFT size
+and the -w option specifies the window size. In the third example
+a bank of sinusoidal oscillators (-ob) is used instead of the
+FFT-backend and the input is pitch shifted by 1.5. The fourth example
+uses identity phaselocking (-ucm) and the fifth example uses scaled
+phaselocking (-cm and -ucm) as described by Laroche and Dobson.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-n --fftsize</span></samp>&rsquo;<dd>      size of the fft
+<br><dt>&lsquo;<samp><span class="samp">-w --winsize</span></samp>&rsquo;<dd>      size of the window
+<br><dt>&lsquo;<samp><span class="samp">-v --voices</span></samp>&rsquo;<dd>      number of voices
+<br><dt>&lsquo;<samp><span class="samp">-g --gain</span></samp>&rsquo;<dd>      linear volume gain
+<br><dt>&lsquo;<samp><span class="samp">-b --bufferSize</span></samp>&rsquo;<dd>      audio buffer size
+<br><dt>&lsquo;<samp><span class="samp">-m --midi</span></samp>&rsquo;<dd>      midi input port number
+<br><dt>&lsquo;<samp><span class="samp">-e --epochHeterophonics</span></samp>&rsquo;<dd>      heterophonics epoch
+<br><dt>&lsquo;<samp><span class="samp">-d --decimation</span></samp>&rsquo;<dd>      analysis hop size (decimation)
+<br><dt>&lsquo;<samp><span class="samp">-i --interpolation</span></samp>&rsquo;<dd>      synthesis hop size (interpolation)
+<br><dt>&lsquo;<samp><span class="samp">-p --pitchshift</span></samp>&rsquo;<dd>      pitch shift factor (for example 2.0 is an octave)
+<br><dt>&lsquo;<samp><span class="samp">-ob --oscbank</span></samp>&rsquo;<dd>      use bank of oscillators back-end
+<br><dt>&lsquo;<samp><span class="samp">-s --sinusoids</span></samp>&rsquo;<dd>      number of sinusoids to use if convert mode is sorted
+<br><dt>&lsquo;<samp><span class="samp">-cm --convertmode</span></samp>&rsquo;<dd>      analysis front-end mode: full: use all FFT bins, sorted: sort FFT
+      bins by magnitude and only use s sinusoids,
+      analysis_scaled_phaselock: compute extra analysis info for scaled
+      phaselocking
+<br><dt>&lsquo;<samp><span class="samp">-ucm --unconvertmode</span></samp>&rsquo;<dd>      synthesis back-end mode: classic: propagate phases for all bins,
+      loose_phaselock: described by Puckette, identity_phaselock: pick
+      peaks, propagate phases for peaks and lock regions of influence
+      around them, scaled_phaselock: refinement that takes into account
+      information from the previous frame
+<br><dt>&lsquo;<samp><span class="samp">-on --onsets filename_with_onsets</span></samp>&rsquo;<dd>      takes as input a simple text file with locations of onsets that
+      are used to re-initialize phases and not time stretch transient
+      frames that contain the onsets. 
+</dl>
+
+   </body></html>
+

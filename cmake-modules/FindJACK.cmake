@@ -1,0 +1,48 @@
+# shamelessly copied from:
+# http://code.google.com/p/fqterm/source/browse/trunk/cmake/FindJACK.cmake?r=606
+#
+# Find JACK for linux platforms
+# by etnlegent@newsmth
+
+IF ( JACK_INCLUDE_DIR )
+  SET ( JACK_FIND_QUIETLY TRUE )
+ENDIF ( JACK_INCLUDE_DIR )
+
+SET ( JACK_HDR_NAME "jack/jack.h" )
+
+FIND_PATH ( JACK_INCLUDE_DIR "${JACK_HDR_NAME}"
+  "/usr/local/include" "/usr/include"
+)
+
+SET ( JACK_LIB_NAME "jack" )
+
+FIND_LIBRARY ( JACK_LIBRARY
+  NAMES "${JACK_LIB_NAME}"
+  PATHS "/usr/local/lib" "/usr/lib"
+)
+
+IF ( JACK_INCLUDE_DIR AND JACK_LIBRARY )
+  SET ( JACK_FOUND TRUE )
+  SET ( JACK_LIBRARIES "${JACK_LIBRARY}" )
+ELSE ( JACK_INCLUDE_DIR AND JACK_LIBRARY )
+  SET ( JACK_FOUND FALSE )
+  SET ( JACK_LIBRARIES )
+ENDIF ( JACK_INCLUDE_DIR AND JACK_LIBRARY )
+
+IF ( JACK_FOUND )
+  IF ( NOT JACK_FIND_QUIETLY )
+    MESSAGE ( STATUS "Found JACK: ${JACK_LIBRARY}
+${JACK_INCLUDE_DIR}/${JACK_HDR_NAME}" )
+  ENDIF ( NOT JACK_FIND_QUIETLY )
+ELSE ( JACK_FOUND )
+  IF ( JACK_FIND_REQUIRED )
+    MESSAGE ( FATAL_ERROR "FAILED to found JACK - REQUIRED" )
+  ELSE ( JACK_FIND_REQUIRED )
+    MESSAGE ( STATUS "Disabled JACK" )
+  ENDIF ( JACK_FIND_REQUIRED )
+ENDIF ( JACK_FOUND )
+
+MARK_AS_ADVANCED (
+  JACK_LIBRARY
+  JACK_INCLUDE_DIR
+)

@@ -1,0 +1,208 @@
+<html lang="en">
+<head>
+<title>History - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="General-information.html#General-information" title="General information">
+<link rel="next" href="Context-and-Related-Work.html#Context-and-Related-Work" title="Context and Related Work">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="History"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Context-and-Related-Work.html#Context-and-Related-Work">Context and Related Work</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="General-information.html#General-information">General information</a>
+<hr>
+</div>
+
+<h3 class="section">1.1 History</h3>
+
+<p>Work on Marsyas started in 1998 during my second year of graduate
+studies in Computer Science at Princeton University under the
+supervision of Dr. Perry Cook. 
+<a name="index-Perry-Cook-2"></a>The main motivation behind the design and development of the toolkit
+was and still is to personally code the majority of the tools I need
+for my research in order to have understanding and control of how they
+work. Marsyas has been used for every paper I have published since
+that time. I continued to add code to Marsyas until 2000 when it was
+clear that certain major design decisions needed to be revised.  That
+made me start a major rewrite/redesign of the framework and that was
+the start of the first &ldquo;real&rdquo; Marsyas version which was numbered
+0.1. Soon after Sourceforge was used to host Marsyas. Version 0.1 is
+still widely used by a variety of academic and industry groups around
+the world but it is slowly being phased out. .
+
+   <p>In 2002 while being a PostDoctoral Fellow at Carnegie Mellon
+University working with Roger Dannenberg I decided to start porting
+algorithms from the Synthesis Toolkit (STK) by Perry Cook and Gary
+Scavone into Marsyas.  This effort as well as many interesting
+conversations with Roger made me rethink the design used by Marsyas. 
+The result was to move to a dataflow model of audio computation with
+general matrices instead of 1-D arrays as data and an Open Sound
+Control (OSC) inspired hierarchical messaging system used to control
+the dataflow network. Marsyas 0.2 is now almost to the point of
+supporting the full functionality of Marsyas 0.1. Hopefully the
+writing of this manual will help users migrate from version 0.1. If
+you are a user that has done work in 0.1 it should be relatively
+straightforward to figure out how to recode your algorithms in version
+0.2. Also if you have code in 0.1 that you would like help porting in
+0.2 I would be more than happy to help - just drop me an email.
+
+   <p>The community of Marsyas developers has grown over the years with
+currently (Spring 2009) approximately 4-5 developers committing
+regularly code and close to 30 developers having committed code over the
+past few years.
+
+   <p>We are very proud that Marsyas is used for a variety of
+projects in both academia and industry and looking forward to continue
+growing and expanding the framework with your help.
+
+   <p>have fun,
+
+   <p>George Tzanetakis (gtzan at cs dot uvic dot ca)
+
+   </body></html>
+

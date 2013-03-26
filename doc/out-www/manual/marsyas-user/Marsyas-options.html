@@ -1,0 +1,232 @@
+<html lang="en">
+<head>
+<title>Marsyas options - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Source-installation.html#Source-installation" title="Source installation">
+<link rel="prev" href="Configuring-with-CMake.html#Configuring-with-CMake" title="Configuring with CMake">
+<link rel="next" href="Compiling.html#Compiling" title="Compiling">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Marsyas-options"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Compiling.html#Compiling">Compiling</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Configuring-with-CMake.html#Configuring-with-CMake">Configuring with CMake</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Source-installation.html#Source-installation">Source installation</a>
+<hr>
+</div>
+
+<h3 class="section">2.4 Marsyas options</h3>
+
+<h4 class="subsection">2.4.1 Input/Output</h4>
+
+     <dl>
+<dt><code>MARSYAS_AUDIOIO</code><dd>This enables audio input/output.  Requires DirectX on Windows and
+either ALSA or OSS on Linux.  MacOS X audio support is built-in
+with the basic developer tools.
+
+     <br><dt><code>MARSYAS_MIDIIO</code><dd>This enables midi input/output.  Requires DirectX on Windows and
+either ALSA or OSS on Linux.  MacOS X audio support is built-in
+with the basic developer tools.
+
+</dl>
+
+<h4 class="subsection">2.4.2 Code messages and optional portions</h4>
+
+     <dl>
+<dt><code>MARSYAS_ASSERT</code><dd>Turns on assertions.
+
+     <br><dt><code>MARSYAS_PROFILING</code><dd>Turns on profiling.
+
+     <br><dt><code>MARSYAS_DEBUG</code><dd>Turns on debugging info (large performance penalty).
+
+     <br><dt><code>DISTRIBUTED</code><dd>(<em>advanced</em> option) experimental code for distributed
+systems.
+
+</dl>
+
+<h4 class="subsection">2.4.3 Logging options</h4>
+
+<p>These are <em>advanced</em> options.
+
+     <dl>
+<dt><code>MARSYAS_LOG_WARNINGS</code>
+<br><dt><code>MARSYAS_LOG_DEBUGS</code>
+<br><dt><code>MARSYAS_LOG_DIAGNOSTICS</code>
+<br><dt><code>MARSYAS_LOG2FILE</code>
+<br><dt><code>MARSYAS_LOG2STDOUT</code>
+<br><dt><code>MARSYAS_LOG2GUI</code><dd>
+</dl>
+
+<h4 class="subsection">2.4.4 Optional software (WITH_*)</h4>
+
+<p>All of these options require additional software to be
+<strong>installed and properly configured</strong>.
+
+     <dl>
+<dt><code>WITH_MAD</code><dd>mp3 audio decoding with
+<a href="http://sourceforge.net/projects/mad/">LibMAD</a>
+
+     <br><dt><code>WITH_VORBIS</code><dd>ogg vorbis audio decoding with libvorbis - it requires
+
+     <br><dt><code>WITH_MATLAB</code><dd>Builds the MATLAB engine interface.
+
+     <br><dt><code>WITH_SWIG</code><dd>Builds SWIG bindings.  This option enables the following
+sub-options: WITH_SWIG_PYTHON, WITH_SWIG_JAVA, WITH_SWIG_LUA, and
+WITH_SWIG_RUBY.
+
+     <br><dt><code>WITH_QT</code><dd>Builds the marsyasqt library and Qt applications.  Requires Qt
+4.2.3 or higher.
+
+     <br><dt><code>WITH_VAMP</code><dd>Build plugins for Vamp (see <a href="SonicVisualiser-Vamp-Plugins.html#SonicVisualiser-Vamp-Plugins">SonicVisualiser Vamp Plugins</a> for more information).
+
+     <br><dt><code>WITH_GSTREAMER</code><dd>Use GStreamer as an audio source
+
+   </dl>
+
+   </body></html>
+

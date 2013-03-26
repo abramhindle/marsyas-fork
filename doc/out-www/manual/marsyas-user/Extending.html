@@ -1,0 +1,329 @@
+<html lang="en">
+<head>
+<title>Extending - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Marsyas-Expression-Syntax.html#Marsyas-Expression-Syntax" title="Marsyas Expression Syntax">
+<link rel="prev" href="Using.html#Using" title="Using">
+<link rel="next" href="Marsyas-Expression-Examples.html#Marsyas-Expression-Examples" title="Marsyas Expression Examples">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Extending"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Marsyas-Expression-Examples.html#Marsyas-Expression-Examples">Marsyas Expression Examples</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Using.html#Using">Using</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Marsyas-Expression-Syntax.html#Marsyas-Expression-Syntax">Marsyas Expression Syntax</a>
+<hr>
+</div>
+
+<h5 class="subsubsection">9.6.4.12 Extending</h5>
+
+<p>There are two ways to extend the libraries with your own functions. The
+hard way is to hand code the function as a class in C++ then modify a
+corresponding loadlib function in ExNode.cpp. The other way is to use
+the code generation script in tools/scheduler.
+
+   <p><strong>Useful conversion functions</strong>
+
+   <p>There are a few built in functions for converting to and from the
+std::string type. These functions can be used in your new functions.
+     <ul>
+<li>ltos(v) - converts v from a mrs_natural value to a std::string
+<li>dtos(v) - converts v from a mrs_real value to a std::string
+<li>btos(v) - converts v from a mrs_bool value to a std::string
+<li>stol(v) - converts v from a std::string value to a mrs_natural
+</ul>
+
+   <p><strong>Adding new libraries or library functions (C++ way)</strong>
+
+   <p>Library functions are added by creating a new ExFun class. The first
+step is creating a new ExFun class for the new function. The second step
+is adding it to the loadlib functions in ExNode.cpp.
+
+   <p><strong>Creating a new ExNode</strong>
+
+   <p>The ExFun class derives from the ExNode which is an expression tree
+node. The example here is a function for extracting a substring from a
+given string.
+
+   <p>Functions taken a set number of parameters. The function class is
+supplied information on the number of parameters and their types through
+the setSignature function when the function class is instantiated in the
+symbol table. For now we assume this set of parameters
+(mrs_string,mrs_natural,mrs_natural) for the original string, the start
+index, and the end index.
+
+   <p>Creating an Exfun class requires the definition of the constructor, a
+calc() method that returns the result of the function call, and a copy
+method that returns a copy of the function without its parameters. The
+example shows the
+
+   <div class="float">
+<a name="fig_003amesy1"></a>
+<pre class="example">     <b>class</b> ExFun_StrSub : <b>public</b> ExFun { <b>public</b>:
+         <b>ExFun_StrSub</b>() : <b>ExFun</b>(<tt>"mrs_string"</tt>,<tt>"String.sub(mrs_string,mrs_natural,mrs_natural"</tt>,<b>true</b>) { }
+         <b>virtual</b> ExVal <b>calc</b>() {
+             std::string str = params[0]-&gt;<b>eval</b>().<b>toString</b>();
+             int s = params[1]-&gt;<b>eval</b>().<b>toNatural</b>();
+             int e = params[2]-&gt;<b>eval</b>().<b>toNatural</b>();
+             int l = str.<b>length</b>();
+             <b>if</b> (s&lt;0) { s=0; } <b>else</b> <b>if</b> (s&gt;l) { s=l; }
+             <b>if</b> (e&lt;s) { e=s; } <b>else</b> <b>if</b> (e&gt;l-s) { e=l-s; }
+             <b>return</b> str.<b>substr</b>(s,e);
+         }
+         ExFun* <b>copy</b>() { <b>return</b> <b>new</b> <b>ExFun_StrSub</b>(); }
+     };
+</pre>
+   <p><strong class="float-caption">Figure 9.12: String Substring ExFun class.</strong></p></div>
+
+   <p>Note that the constructor takes two parameters where t is the type that
+the function evaluates to and n is the signature of the function. These
+parameters are simply passed on to the ExFun parent constructor along
+with a third boolean parameter for the pureness of the function. 
+Pureness is a flag that determines whether the function is free of
+side-effects or not. If the parameters to the function can be determined
+to be constant then a pure function can be evaluated at parse time to a
+constant value.
+
+   <p>The calc() method uses the three parameters from the params[] array. 
+These parameters are set at parse time and placed in the params[] array. 
+Each param[] is an expression so they are of type ExNode*. Therefore,
+you need to evaluate each expression prior to using it. To evaluate,
+call the eval() method of the ExNode not the calc() method. eval() will
+make sure that each expression in a list of expressions will be
+evaluated whereas calc() only calculates the current node.
+
+   <p><strong>Adding the function to the library</strong>
+
+   <p>The function can be added to the library by adding a line to the
+loadlib_String method in ExNode.cpp. The addReserved call made to the
+symbol table adds a reserved word. There is some flexibility in how the
+name appears in the symbol table which in turn defines how it may be
+used in an expression. The path to a function is separated by the '.' 
+symbol. Multiple names for a segment of the path can be defined by
+separating them with the '|' symbol where the first among several is the
+'true' name. For example String|Str|S.sub defines three different
+leading names where the true name is String.sub but S.sub will get the
+same thing. The same is possible for parameter tuples but not the
+individual parameters. For example Real|R.cos(mrs_real)|(mrs_natural)
+allows the call Real.cos(0.5) as well as Real.cos(1) as 1 is a natural
+and not a real. This type information is used to type check function
+calls in the parser.
+
+   <div class="float">
+<a name="fig_003amesy2"></a>
+<pre class="example">     st-&gt;<b>addReserved</b>(<tt>"String|S.sub(mrs_string,mrs_natural,mrs_natural)"</tt>,
+                     <b>new</b> <b>ExFun_StrSub</b>(<tt>"mrs_string"</tt>,
+                                      <tt>"String.sub(mrs_string,mrs_natural,mrs_natural)"</tt>));
+</pre>
+   <p><strong class="float-caption">Figure 9.13: Adding a function to the library.</strong></p></div>
+
+   <p>The second parameter to the addReserved call is a new instantiation of
+the function object. Here the return type is the first parameter to the
+constructor and the 'correct' or 'true' full function call is the second
+parameter. This information is used for type checking parameters. While
+type errors are not possible if the first parameter to the addReserved
+call is correct, the type information in the second parameter to the
+constructor is actually used for type coercion - promoting naturals to
+reals, etc.
+
+   <p><strong>Adding new libraries or library functions (Code Gen way)</strong>
+
+   <p>In the tools/scheduler directory is a python script for generating
+library functions from a simplified source code. The easiest way to
+explain the process is through an example:
+
+   <div class="float">
+<a name="fig_003amesy3"></a>
+<pre class="example">      1: <b>lib</b> Foo|F.Bar|B
+      2:
+      3: <b>pure</b> mrs_string <b>fun</b>|<b>alt</b>(mrs_real a, mrs_natural b)
+      4:     mrs_string s="hello";
+      5:     mrs_bool x;
+      6: {
+      7:     mrs_natural z=a+b;
+      8:     <b>if</b> (x) { s=s+" "+ltos(z); }
+      9:     x = z &lt; 0;
+     10:     <b>return</b> s;
+     11: }
+</pre>
+   <p><strong class="float-caption">Figure 9.14: Adding a function to the library.</strong></p></div>
+
+   <p>Though not a useful function it does demonstrate the full extent of the
+code generation syntax.
+
+   <p><b>Line 1</b>. library definition starts with keyword 'lib' the names following
+denote a path to the library. The true path is Foo.Bar, all functions
+defined after this statement until a new lib definition will be in this
+library. This means that the function fun is called by 'Foo.Bar.fun'. 
+Alternate names or aliases for portions of the path can be defined using
+the | symbol. In the above example F is an alias for Foo so the path to
+fun could also be written as 'Foo.B.fun' or 'F.B.fun' etc.
+
+   <p><b>Line 3</b>. the function definition may start with 'pure' where pure implies
+that if the parameters to the function are constants then the function
+can be evaluated at parse time to a constant, ie no side-effects. If
+pure isn't specified then the function is not pure. the return type must
+be a type supported by the ExVal class (names starting with 'mrs_'). The
+function name can also have aliases divided by the | symbol where the
+first name is the true name. Parameters must be defined using the 'mrs_'
+names.
+
+   <p><b>Line 4</b>. Normally functions do not have state but as a bonus variables
+whose values persist may defined after the parameters definition and
+prior to the opening function body brace. These types can be the 'mrs_'
+types or valid C++ types.
+
+   <p><b>Line 6</b>. The function body begins with a opening brace {.
+
+   <p><b>Line 7-10</b>. The function body contains valid C++ code and will likely use
+the parameter values defined on line 3.
+
+   <p><b>Line 11</b>. The function body ends with a closing brace }.
+
+   </body></html>
+

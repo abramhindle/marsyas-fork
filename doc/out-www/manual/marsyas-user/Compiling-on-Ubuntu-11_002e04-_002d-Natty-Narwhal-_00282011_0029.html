@@ -1,0 +1,231 @@
+<html lang="en">
+<head>
+<title>Compiling on Ubuntu 11.04 - Natty Narwhal (2011) - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Specific-installation-examples.html#Specific-installation-examples" title="Specific installation examples">
+<link rel="prev" href="Compiling-on-MacOS-X-10_002e6-Snow-Leopard.html#Compiling-on-MacOS-X-10_002e6-Snow-Leopard" title="Compiling on MacOS X 10.6 Snow Leopard">
+<link rel="next" href="Compiling-on-Ubuntu.html#Compiling-on-Ubuntu" title="Compiling on Ubuntu">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Compiling-on-Ubuntu-11.04---Natty-Narwhal-(2011)"></a>
+<a name="Compiling-on-Ubuntu-11_002e04-_002d-Natty-Narwhal-_00282011_0029"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Compiling-on-Ubuntu.html#Compiling-on-Ubuntu">Compiling on Ubuntu</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Compiling-on-MacOS-X-10_002e6-Snow-Leopard.html#Compiling-on-MacOS-X-10_002e6-Snow-Leopard">Compiling on MacOS X 10.6 Snow Leopard</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Specific-installation-examples.html#Specific-installation-examples">Specific installation examples</a>
+<hr>
+</div>
+
+<h4 class="subsection">2.6.2 Compiling on Ubuntu 11.04 - Natty Narwhal (2011)</h4>
+
+<p>These steps were used to install in a fresh install of Ubuntu (11.04 -
+Natty Narwhal - 32 bits) on September 2011. All the command were typed
+in a terminal but it should be straightforward to use the synaptic
+package manager instead of apt-get.  The text in parentheses after each
+command is a simple explanation and should not be typed in the
+terminal.
+
+     <ol type=1 start=1>
+<li>sudo apt-get install subversion  (install the subversion version control system)
+<li>svn co https://svn.code.sf.net/p/marsyas/code/trunk my-marsyas-dir
+<li>cd marsyas
+<li>mkdir build
+<li>cd build
+<li>sudo apt-get install cmake    (the regular cmake)
+<li>sudo apt-get install cmake-curses-gui  (the curses gui invoked by ccmake)
+<li>sudo apt-get install libasound2-dev (alsa development library and
+headers)
+<li>ccmake ../src
+<li>Press [c] to configure and [g] to generate the Makefile and exit
+<li>make (or make -j k where k is the number of cores of your computer
++ 1)
+<li>cd bin
+<li>./helloWorld (you should hear a sine wave played)
+        </ol>
+
+   <p>Additional instructions for creating the Marsyas python bindings through
+Swig as well as installing matplotlib.
+
+     <ol type=1 start=1>
+<li>sudo apt-get install swig  (the swig interface generator for the
+Python bindings)
+<li>sudo apt-get install python-dev (the header files for Python)
+<li>sudo apt-get install python-matplotlib (the matlab-like plotting
+capabilities for Python)
+<li>sudo apt-get install ipython
+<li>cd .. 
+<li>ccmake ../src
+<li>enable the WITH_SWIG option
+<li>make
+<li>sudo ldconfig /usr/local/lib (add /usr/local/lib to the location
+searched for libraries)
+<li>sudo make install (install the Marsyas python bindings)
+        </ol>
+
+   <p>Now you are ready to test that everything works:
+     <ol type=1 start=1>
+<li>python windowing.py
+<li>ipython &ndash;pylab windowing.py
+        </ol>
+
+   <p>You should see a plot that has been created by passing data through a
+Marsyas processing network. Congratulations - you now can work
+with Marsyas and matplotlib a powerful combo.
+
+   <p>If you decide to add PNG support you need the following additional
+steps:
+
+     <ol type=1 start=1>
+<li>sudo apt-get install libfreetype6-dev
+<li>enable the WITH_PNG option
+<li>make
+<li>sudo make install
+        </ol>
+
+   </body></html>
+

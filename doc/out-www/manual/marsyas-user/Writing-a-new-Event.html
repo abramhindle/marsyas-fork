@@ -1,0 +1,434 @@
+<html lang="en">
+<head>
+<title>Writing a new Event - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Using-and-Extending-the-Scheduler.html#Using-and-Extending-the-Scheduler" title="Using and Extending the Scheduler">
+<link rel="prev" href="Writing-a-new-Timer.html#Writing-a-new-Timer" title="Writing a new Timer">
+<link rel="next" href="Marsyas-Expression-Syntax.html#Marsyas-Expression-Syntax" title="Marsyas Expression Syntax">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Writing-a-new-Event"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Marsyas-Expression-Syntax.html#Marsyas-Expression-Syntax">Marsyas Expression Syntax</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Writing-a-new-Timer.html#Writing-a-new-Timer">Writing a new Timer</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Using-and-Extending-the-Scheduler.html#Using-and-Extending-the-Scheduler">Using and Extending the Scheduler</a>
+<hr>
+</div>
+
+<h4 class="subsection">9.6.3 Writing a new Event</h4>
+
+<p>Suppose we want to fade the volume down to silence using a Gain MarSystem. We
+could accomplish this using the scheduler and several EvValUpd events. Assuming
+the gain control is at 1.0 to begin we just issue 10 EvValUpd events each with
+a progressively lower volume amount: 0.9, 0.8, 0.7, ... and each at a time that
+is a little bit later than the previous. This is messy and repetitive. Why not
+make a new event, called EvRampCtrl, that encapsulates this behaviour.
+
+   <p>We start by defining a new EvRampCtrl class that inherits from the <samp><span class="file">EvEvent</span></samp>
+class. We define a constructor that takes a MarSystem to act upon, a control
+to modify, a starting value, an ending value, and a step amount. The implicit
+assumption is that this event will only work on values of type <code>mrs_real</code>
+so that values we supply must all be of the correct type. The header and cpp
+files are supplied below.
+
+   <p>We will need an additional variable to save the current adjustment value. Also,
+the event will need to repeat so we will maintain a repeat flag that is true
+until we pass the end value. We override the <code>repeat()</code> method of
+<samp><span class="file">EvEvent</span></samp> to return the current value of the repeat flag. The required
+variables are shown in the header file below.
+
+   <div class="float">
+<a name="fig_003asch7"></a>
+<pre class="example">     <b>#ifndef</b> MARSYAS_EV_RAMPCTRL_H
+     <b>#define</b> MARSYAS_EV_RAMPCTRL_H
+     
+     <b>#include</b> <tt>&lt;string&gt;</tt>
+     
+     <b>#include</b> <tt>"MarControl.h"</tt>
+     <b>#include</b> <tt>"EvEvent.h"</tt>
+     <b>#include</b> <tt>"TmControlValue.h"</tt>
+     
+     <b>namespace</b> Marsyas
+     {
+       <b>class</b> MarSystem; <i>// forward declaration</i>
+     
+       <b>class</b> EvRampCtrl : <b>public</b> EvEvent {
+       <b>protected</b>:
+         MarSystem* target_;
+         std::string cname_;
+         double start_, end_, value_, rate_;
+         bool repeat_flag_;
+     
+       <b>public</b>:
+         <i>// Constructors</i>
+         <b>EvRampCtrl</b>(MarSystem* m, std::string cname, double start, double end, double rate);
+         <b>EvRampCtrl</b>(EvRampCtrl&amp; e);
+         <b>virtual</b> ~<b>EvRampCtrl</b>();
+     
+         <b>virtual</b> EvRampCtrl* <b>clone</b>();
+     
+         <i>// Set/Get methods</i>
+         void <b>set</b>(MarSystem* ms, std::string cname, double s, double e, double r);
+     
+         bool <b>repeat</b>() { <b>return</b> repeat_flag_; };
+     
+         <i>// Event dispatch</i>
+         void <b>dispatch</b>();
+     
+       };
+     
+     }<i>//namespace Marsyas</i>
+     
+     <b>#endif</b>
+     
+</pre>
+   <p><strong class="float-caption">Figure 9.7: EvRampCtrl event header file example.</strong></p></div>
+
+   <div class="float">
+<a name="fig_003asch77"></a>
+<pre class="example">     <b>#ifndef</b> MARSYAS_EV_RAMPCTRL_H
+     <b>#define</b> MARSYAS_EV_RAMPCTRL_H
+     
+     <b>#include</b> <tt>&lt;string&gt;</tt>
+     
+     <b>#include</b> <tt>"MarControl.h"</tt>
+     <b>#include</b> <tt>"EvEvent.h"</tt>
+     <b>#include</b> <tt>"TmControlValue.h"</tt>
+     
+     <b>namespace</b> Marsyas
+     {
+       <b>class</b> MarSystem; <i>// forward declaration</i>
+     
+       <b>class</b> EvRampCtrl : <b>public</b> EvEvent {
+       <b>protected</b>:
+         MarSystem* target_;
+         std::string cname_;
+         double start_, end_, value_, rate_;
+         bool repeat_flag_;
+     
+       <b>public</b>:
+         <i>// Constructors</i>
+         <b>EvRampCtrl</b>(MarSystem* m, std::string cname, double start, double end, double rate);
+         <b>EvRampCtrl</b>(EvRampCtrl&amp; e);
+         <b>virtual</b> ~<b>EvRampCtrl</b>();
+     
+         <b>virtual</b> EvRampCtrl* <b>clone</b>();
+     
+         <i>// Set/Get methods</i>
+         void <b>set</b>(MarSystem* ms, std::string cname, double s, double e, double r);
+     
+         bool <b>repeat</b>() { <b>return</b> repeat_flag_; };
+     
+         <i>// Event dispatch</i>
+         void <b>dispatch</b>();
+     
+       };
+     
+     }<i>//namespace Marsyas</i>
+     
+     <b>#endif</b>
+</pre>
+   <p><strong class="float-caption">Figure 9.8: EvRampCtrl event header file example.</strong></p></div>
+
+<!-- @end example -->
+   <p>The main logic for our event is contained in the dispatch method. Basically, we
+check to see if we have passed the end value during ramping and if so set the
+repeat flag to false. The next time that the scheduler checks to see if the
+event repeats the scheduler will read the false value and delete the event. If
+we have not passed the end value then we set the specified control to the
+current ramp value and decrement the current value by the ramp amount. The
+scheduler will see that the event is to be repeated, it will read the repeat
+rate amount, and repost the event to the queue.
+
+   <div class="float">
+<a name="fig_003asch8"></a><!-- Generator: GNU source-highlight, by Lorenzo Bettini, http://www.gnu.org/software/src-highlite -->
+<pre class="example">     <b>#include</b> <tt>"EvRampCtrl.h"</tt>
+     <b>#include</b> <tt>"MarSystem.h"</tt>
+     
+     <b>using</b> <b>namespace</b> std;
+     <b>using</b> <b>namespace</b> Marsyas;
+     
+     EvRampCtrl::<b>EvRampCtrl</b>(MarSystem* m, std::string cname, double start, double end, double rate) : <b>EvEvent</b>(<tt>"EvRampCtrl"</tt>,<tt>"rc"</tt>)
+     {
+         <b>set</b>(m,cname,start,end,rate);
+     }
+     EvRampCtrl::<b>EvRampCtrl</b>(EvRampCtrl&amp; e) : <b>EvEvent</b>(<tt>"EvRampCtrl"</tt>,<tt>"rc"</tt>)
+     {
+         <b>set</b>(e.target_,e.cname_,e.start_,e.end_,e.rate_);
+     }
+     
+     EvRampCtrl::~<b>EvRampCtrl</b>() { }
+     
+     EvRampCtrl*
+     EvRampCtrl::<b>clone</b>() { <b>return</b> <b>new</b> <b>EvRampCtrl</b>(*<b>this</b>); }
+     
+     void
+     EvRampCtrl::<b>set</b>(MarSystem* ms, string cname, double start, double end, double rate)
+     {
+         target_=ms; cname_=cname;
+         start_=start; end_=end; rate_=rate;
+         value_=start_; repeat_flag_=<b>true</b>;
+     }
+     
+     void
+     EvRampCtrl::<b>dispatch</b>()
+     {
+         <b>if</b> (target_ !=NULL) {
+           cout &lt;&lt; <tt>"target_-&gt;updctrl("</tt> &lt;&lt; cname_ &lt;&lt; <tt>", "</tt> &lt;&lt; value_ &lt;&lt; <tt>")</tt><tt>\n</tt><tt>"</tt>;
+           <b>if</b>(value_&lt;end_) repeat_flag_=<b>false</b>;
+           <b>else</b> {
+             target_-&gt;<b>updctrl</b>(cname_,value_);
+             value_ = value_ - rate_;
+           }
+         }
+     }
+     
+     
+</pre>
+   <p><strong class="float-caption">Figure 9.9: EvRampCtrl event C++ source file example.</strong></p></div>
+
+   <p>The <code>fade1</code> method shows our EvRampCtrl event in action. We set the repeat
+rate of the event to 0.2 seconds.
+
+<!-- @float Figure,fig:sch9 -->
+<!-- @verbatim -->
+   <div class="float">
+<a name="fig_003asch9"></a><!-- Generator: GNU source-highlight, by Lorenzo Bettini, http://www.gnu.org/software/src-highlite -->
+<pre class="example">     void <b>fade1</b>() {
+       MarSystemManager mng;
+     
+       MarSystem* series = mng.<b>create</b>(<tt>"Series"</tt>, <tt>"series"</tt>);
+       series-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"SineSource"</tt>, <tt>"src"</tt>));
+       MarSystem* gain = mng.<b>create</b>(<tt>"Gain"</tt>, <tt>"g"</tt>);
+       series-&gt;<b>addMarSystem</b>(gain);
+       series-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"AudioSink"</tt>, <tt>"snk"</tt>));
+       series-&gt;<b>updctrl</b>(<tt>"AudioSink/snk/mrs_bool/initAudio"</tt>, <b>true</b>);
+       series-&gt;<b>updctrl</b>(<tt>"SineSource/src/mrs_real/frequency"</tt>,440.0);
+       series-&gt;<b>updctrl</b>(<tt>"Gain/g/mrs_real/gain"</tt>,1.0);
+     
+       EvRampCtrl* ev = <b>new</b> <b>EvRampCtrl</b>(gain,<tt>"mrs_real/gain"</tt>,1.0,0.0,0.05);
+       ev-&gt;<b>set_repeat</b>(<b>Repeat</b>(<tt>"0.2s"</tt>));
+     
+       series-&gt;<b>updctrl</b>(<b>TmTime</b>(<tt>"TmSampleCount/Virtual"</tt>,<tt>"2s"</tt>),ev);
+     
+       <b>while</b>(<b>true</b>) {
+         series-&gt;<b>tick</b>();
+       }
+     }
+</pre>
+   <p><strong class="float-caption">Figure 9.10: Program using the EvRampCtrl example event.</strong></p></div>
+<!-- @caption{Program using the EvRampCtrl example event.} -->
+<!-- @end float -->
+
+<h5 class="subsubsection">9.6.3.1 Expression Events</h5>
+
+<p>For a large number of events there is commonality. The Expression syntax
+was developed to allow the creation of events without having to code
+new custom event classes. In order to accomplish this there is a built
+in compiler for the syntax that is invoked when supplying the expression
+as a string to the <samp><span class="file">Ex</span></samp> class.
+
+   <div class="float">
+<a name="figsch10"></a><!-- Generator: GNU source-highlight, by Lorenzo Bettini, http://www.gnu.org/software/src-highlite -->
+<pre class="example">     <b>#include</b> <tt>&lt;stdio.h&gt;</tt>
+     <b>#include</b> <tt>"MarSystemManager.h"</tt>
+     <b>#include</b> <tt>"EvExpr.h"</tt>
+     
+     <b>using</b> <b>namespace</b> std;
+     <b>using</b> <b>namespace</b> Marsyas;
+     
+     void <b>sched1</b>() {
+       MarSystemManager mng;
+     
+       MarSystem* fanin = mng.<b>create</b>(<tt>"Fanin"</tt>, <tt>"fanin"</tt>);
+       fanin-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"SineSource"</tt>, <tt>"src1"</tt>));
+       fanin-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"SineSource"</tt>, <tt>"src2"</tt>));
+       fanin-&gt;<b>updctrl</b>(<tt>"SineSource/src1/mrs_real/frequency"</tt>,3000.0);
+       fanin-&gt;<b>updctrl</b>(<tt>"SineSource/src2/mrs_real/frequency"</tt>,1000.0);
+     
+       MarSystem* series = mng.<b>create</b>(<tt>"Series"</tt>, <tt>"series"</tt>);
+       series-&gt;<b>addMarSystem</b>(fanin);
+     
+       series-&gt;<b>addMarSystem</b>(mng.<b>create</b>(<tt>"AudioSink"</tt>, <tt>"dest"</tt>));
+       series-&gt;<b>updctrl</b>(<tt>"AudioSink/dest/mrs_bool/initAudio"</tt>, <b>true</b>);
+     
+     <b>#if</b> 0
+       <i>// using aliases makes this a little more readable, see the next bit</i>
+       EvExpr* e = <b>new</b> <b>EvExpr</b>(series,
+         <b>Ex</b>(<tt>"Fanin/fanin/SineSource/src1/mrs_real/frequency &lt;&lt; 120. + 3000. * R.rand(), \</tt>
+     <tt>        Fanin/fanin/SineSource/src2/mrs_real/frequency &lt;&lt; 120. + 800. * R.rand(),"</tt>
+            <tt>"'src1='+Fanin/fanin/SineSource/src1/mrs_real/frequency+ \</tt>
+     <tt>        ' src2='+Fanin/fanin/SineSource/src2/mrs_real/frequency+'</tt><tt>\n</tt><tt>'&gt;&gt;Stream.op"</tt>),
+         <b>Rp</b>(<tt>"true"</tt>));
+     
+     <b>#else</b>
+       EvExpr* e = <b>new</b> <b>EvExpr</b>(series,
+             <i>// First line to Ex will be the init expression, run once, when event is posted</i>
+         <b>Ex</b>(<tt>"Fanin/fanin/SineSource/src1/mrs_real/frequency &gt;&gt; @freq1, \</tt>
+     <tt>        Fanin/fanin/SineSource/src2/mrs_real/frequency &gt;&gt; @freq2 "</tt>,
+            <i>// Second line to Ex is the expression, repeated each time the event is posted</i>
+            <tt>"freq1 &lt;&lt; 120. + 3000. * R.rand(),\</tt>
+     <tt>        freq2 &lt;&lt; 120. + 800. * R.rand(),\</tt>
+     <tt>        'src1=' + freq1 + ' src2=' + freq2 + '</tt><tt>\n</tt><tt>' &gt;&gt; Stream.op"</tt>),
+         <b>Rp</b>(<tt>"true"</tt>));
+     <b>#endif</b>
+     
+       <i>// set event to repeat every 1/4 second</i>
+       e-&gt;<b>set_repeat</b>(<b>Repeat</b>(<tt>"0.25s"</tt>));
+       <i>// post the event</i>
+       series-&gt;<b>updctrl</b>(<b>TmTime</b>(<tt>"TmSampleCount/Virtual"</tt>,<tt>"0s"</tt>), e);
+     
+       <b>while</b>(<b>true</b>) series-&gt;<b>tick</b>();
+     
+       <b>delete</b> series;
+     }
+</pre>
+   <p><strong class="float-caption">Figure 9.11: Random sine waves using the Expression syntax.</strong></p></div>
+
+   </body></html>
+

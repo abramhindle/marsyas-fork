@@ -1,0 +1,324 @@
+<html lang="en">
+<head>
+<title>SonicVisualiser Vamp Plugins - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Interoperability.html#Interoperability" title="Interoperability">
+<link rel="prev" href="OCaml.html#OCaml" title="OCaml">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="SonicVisualiser-Vamp-Plugins"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="OCaml.html#OCaml">OCaml</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Interoperability.html#Interoperability">Interoperability</a>
+<hr>
+</div>
+
+<h4 class="subsection">9.5.6 SonicVisualiser Vamp Plugins</h4>
+
+<h5 class="subsubsection">9.5.6.1 Instalation</h5>
+
+<p><b>Requirements:</b>
+     <ul>
+<li><b>CMake</b> (<a href="http://www.cmake.org/">http://www.cmake.org/</a>). 
+<li><b>SonicVisualiser</b> (<a href="http://www.sonicvisualiser.org/">http://www.sonicvisualiser.org/</a>). 
+<li><b>Vamp Plugin SDK:</b>
+          <ul>
+<li>Latest revision: <code>$ svn co https://vamp.svn.sourceforge.net/svnroot/vamp/vamp-plugin-sdk/trunk vamp-plugin-sdk</code>. 
+<li>Distribution: <a href="http://sourceforge.net/projects/vamp/files/vamp-plugin-sdk/">http://sourceforge.net/projects/vamp/files/vamp-plugin-sdk/</a>. 
+<li>Build and install the plugin sdk using the supplied instructions.<br>
+(vamp-simple-host, a command-line host for Vamp plugins, is installed along)
+</ul>
+     <li><b>Vamp Tester [</b><strong>optional</strong><b>]</b><br>
+A command line application for testing plugins, giving you a very detailed report about the compliance of the plugin:
+          <ul>
+<li>Latest revision: <code>$ svn co https://vamp.svn.sourceforge.net/svnroot/vamp/vamp-plugin-tester/trunk vamp-plugin-tester</code>. 
+<li>Distribution (source + binaries): <a href="http://sourceforge.net/projects/vamp/files/vamp-plugin-tester/">http://sourceforge.net/projects/vamp/files/vamp-plugin-tester/</a>. 
+<li>Add vamp-plugin-tester path to environment <code>PATH</code>. 
+</ul>
+     </ul>
+
+   <p><strong>MacOSX:</strong><br>
+(Tested in 10.6 with gcc 4.2 for i386 and x86_64, linking to both the static and dynamic build of Marsyas.<br>
+Note that x86_64 is not supported by Sonic Visualiser yet, but fat binaries with both architectures work fine.)
+
+     <ol type=1 start=1>
+<li><b>Building Marsyas Vamp Plugin:</b><br>
+
+          <ul>
+<li><code>$ cmake-gui</code><br>
+<code>WITH_VAMP ON</code>;<br>
+<code>MARSYAS_STATIC OFF</code> (static linking not supported)<br>
+<code>VAMP_LIBRARY</code>: dynamic/static version of libvamp-sdk, from the install path -&gt; <code>/usr/local/lib/libvamp-sdk.dylib</code> or <code>/usr/local/lib/libvamp-sdk.a</code><br>
+<code>VAMP_INCLUDE_DIR</code>: vamp sdk src main path -&gt; <code>/usr/local/include/</code><br>
+(choose your own paths if different)
+<li><code>$ make</code><br>
+(If you generate an XCode project, the mvamp target won't be included so you'll need to build using plain "make")<br>
+(vamp plugin compiled as shared dynamic library at <code>marsyas_path/build_dir/lib/libmvamp.dylib)</code>
+</ul>
+
+     <li><b>Marsyas Vamp Plugin Integration in SonicVisualiser Transforms:</b>
+          <ul>
+<li>Copy <code>libmvamp.dylib</code> to one of the following paths:
+          <pre class="example">               ~/Library/Audio/Plug-Ins/Vamp (user use)
+               /Library/Audio/Plug-Ins/Vamp (system use)
+</pre>
+          </ul>
+     (<code>mvamp-plugins.cat</code>, in pre-compiled version or in <code>path/to/marsyas/src/mvamp/</code>, is a txt file for organizing the plugin functions within SonicVisualiser Transforms - for such you may also copy it to the chosen path above, yet it seems to be unnecessary)
+
+     <li><b>(Optional) Testing Plugin with vamp-plugin-tester:</b>
+          <ul>
+<li><code>$ VAMP_PATH=Path/To/Vamp_Plugins_Directory</code>
+<li><code>$ vamp-plugin-tester -a</code>
+</ul>
+
+     <li><b>(Optional) Testing Plugin with vamp-simple-host:</b>
+          <ul>
+<li><code>$ VAMP_PATH=Path/To/Vamp_Plugins_Directory</code>
+<li>List the plugin libraries and Vamp plugins in the library search path: <code>$ vamp-simple-host -l</code>
+<li>Run the plugin: <code>$ vamp-simple-host [-s] pluginlibrary[.dylib]:plugin file.wav [outputno] [-o out.txt]</code><br>
+(check pluginlibrary and plugin name with <code>-l</code> above)
+</ul>
+     </ol>
+
+   <p><strong>Linux OS:</strong><br>
+(Tested in Linux Ubuntu 9.04-32bits with gcc 4.3 -&gt; may work on others)
+
+     <ol type=1 start=1>
+<li><b>Building Marsyas Vamp Plugin:</b><br>
+(Alternatively simply download pre-compiled plugin for Linux i686 at <a href="http://marsyas.info/download/vamp_plugins">http://marsyas.info/download/vamp_plugins</a>)
+
+          <ul>
+<li><code>$ cmake-gui</code><br>
+<code>WITH_VAMP ON</code>;<br>
+<code>MARSYAS_STATIC OFF</code> (static linking not supported)<br>
+<code>VAMP_LIBRARY</code>: dynamic/static version of libvamp-sdk, from the install path -&gt; <code>/usr/local/lib/libvamp-sdk.so</code> or <code>/usr/local/lib/libvamp-sdk.a</code><br>
+<code>VAMP_INCLUDE_DIR</code>: vamp sdk src main path -&gt; <code>/usr/local/include/</code><br>
+(choose your own paths if different)
+<li><code>$ make</code><br>
+(vamp plugin compiled as shared dynamic library at <code>marsyas_path/build/lib/libmvamp.so)</code>
+</ul>
+
+     <li><b>Marsyas Vamp Plugin Integration in SonicVisualiser Transforms:</b>
+          <ul>
+<li>Copy <code>libmvamp.so</code> (or pre-compiled <code>mvamp.so</code>) to one of the following paths:
+          <pre class="example">               /home/(user)/vamp (user use)
+               /usr/local/lib/vamp (system use)
+</pre>
+          </ul>
+     (<code>mvamp-plugins.cat</code>, in pre-compiled version or in <code>path/to/marsyas/src/mvamp/</code>, is a txt file for organizing the plugin functions within SonicVisualiser Transforms - for such you may also copy it to the chosen path above, yet it seems to be unnecessary)
+
+     <li><b>(Optional) Testing Plugin with vamp-plugin-tester:</b>
+          <ul>
+<li><code>$ VAMP_PATH=Path/To/Vamp_Plugins_Directory</code>
+<li><code>$ vamp-plugin-tester -a</code>
+</ul>
+
+     <li><b>(Optional) Testing Plugin with vamp-simple-host:</b>
+          <ul>
+<li><code>$ VAMP_PATH=Path/To/Vamp_Plugins_Directory</code>
+<li>List the plugin libraries and Vamp plugins in the library search path: <code>$ vamp-simple-host -l</code>
+<li>Run the plugin: <code>$ vamp-simple-host [-s] pluginlibrary[.so]:plugin file.wav [outputno] [-o out.txt]</code><br>
+(check pluginlibrary and plugin name with <code>-l</code> above)
+</ul>
+
+        </ol>
+
+   <p><strong>Windows OS:</strong><br>
+(Tested in Windows Vista-32bists with VS2008 and Windows 7 with VS2010 -&gt; may work on others)
+
+     <ol type=1 start=1>
+<li><b>Building Marsyas Vamp Plugin:</b><br>
+
+          <ul>
+<li>Run CMake-GUI:<br>
+<code>WITH_VAMP ON</code>;<br>
+<code>MARSYAS_STATIC OFF</code> (static linking not supported)<br>
+<code>VAMP_LIBRARY</code>: static version of libvamp-sdk -&gt; <code>path\to\vamp-plugin-sdk-x.x\build_dir\Release\VampPluginSDK.lib</code><br>
+<code>VAMP_INCLUDE_DIR</code>: vamp sdk src main path -&gt; <code>path\to\vamp-plugin-sdk-x.x</code><br>
+(choose your own paths if different)
+<li>Load <code>marsyas_path\build\Marsyas.sln</code> in Visual Studio<br>
+<li>Open mvamp project proprieties:<br>
+               <ul>
+<li>Go to <code>Configuration Properties -&gt; Linker -&gt; Command Line -&gt; Additional options</code>
+<li>Add <code>/EXPORT:vampGetPluginDescriptor</code>
+</ul>
+          <li>Build marsyas + mvamp in Release mode and <strong>in Win32</strong> architecture.<br>
+(x64 not currently supported by SonicVisualiser)
+</ul>
+
+     <li><b>Marsyas Vamp Plugin Integration in SonicVisualiser Transforms:</b>
+          <ul>
+<li>Copy <code>mvamp.dll</code> from <code>marsyas_path\build\bin\Release\</code> to <code>C:\Program Files\Vamp Plugins\</code> (default <code>VAMP_PATH</code>)<br>
+(if used different path for Vamp Plugins define it in environment <code>VAMP_PATH</code>)
+<li>Run-time linking to Marsyas (one of the two options below):
+               <ul>
+<li>Set <code>marsyas_path\build\bin\Release\</code> to environment variable <code>PATH</code>
+<li>Copy <code>marsyas.dll from marsyas_path\build\bin\Release\</code> to SonicVisualiser main directory. 
+</ul>
+          </ul>
+
+     <li><b>(Optional) Testing Plugin with vamp-plugin-tester:</b>
+          <ul>
+<li><code>$ vamp-plugin-tester.exe -a</code>
+</ul>
+
+     <li><b>(Optional) Testing Plugin with vamp-simple-host:</b>
+          <ul>
+<li>List the plugin libraries and Vamp plugins in the library search path: <code>$ vamp-simple-host.exe -l</code>
+<li>Run the plugin: <code>$ vamp-simple-host.exe [-s] pluginlibrary[.dylib]:plugin file.wav [outputno] [-o out.txt]</code><br>
+(check pluginlibrary and plugin name with <code>-l</code> above)
+</ul>
+
+        </ol>
+
+<h5 class="subsubsection">9.5.6.2 Writing Plugin</h5>
+
+<p>Check tutorial on <a href="http://www.vamp-plugins.org/develop.html">http://www.vamp-plugins.org/develop.html</a>
+
+   </body></html>
+

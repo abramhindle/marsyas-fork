@@ -1,0 +1,5 @@
+@numchapentry{Playing a sound file}{1}{Playing a sound file}{1}
+@numchapentry{Read in and write out a soundfile}{2}{Read in and write out a soundfile}{2}
+@numchapentry{Playing multiple sound files at once}{3}{Playing multiple sound files at once}{3}
+@numchapentry{Look at your network}{4}{Look at your network}{5}
+@unnchapentry{The Index}{10001}{The Index}{6}

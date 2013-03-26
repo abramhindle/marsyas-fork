@@ -1,0 +1,213 @@
+<html lang="en">
+<head>
+<title>Parallel - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="MarSystem-composites.html#MarSystem-composites" title="MarSystem composites">
+<link rel="prev" href="Series.html#Series" title="Series">
+<link rel="next" href="Fanout.html#Fanout" title="Fanout">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Parallel"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Fanout.html#Fanout">Fanout</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Series.html#Series">Series</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="MarSystem-composites.html#MarSystem-composites">MarSystem composites</a>
+<hr>
+</div>
+
+<h4 class="subsection">6.3.2 Parallel</h4>
+
+<p>A Parallel composite is used when you have an input with multiple
+observations (i.e. channels) and you want to run calculations in
+parallel on each of the observations.  This is shown in graphical form
+below:
+
+   <div class="block-image"><img src="images/composite-parallel.png" alt="images/composite-parallel.png"></div>
+
+   <p>In the above diagram, the Parallel MarSystem is fed a realvec with 3
+observations (and a large number of samples).  The MarSystem F1
+receives the first observation, coloured in green.  The second
+MarSystem in the Parallel, F2, gets the second observation, coloured
+in blue, and the third MarSystem, F3, receives the third observation,
+coloured in yellow.
+
+   <p>To build this system you would write code that would look something
+like:
+
+<pre class="example">     MarSystem* parallel = mng.create("Parallel", "parallel");
+     parallel-&gt;addMarSystem(mng.create("Gain", "F1"));
+     parallel-&gt;addMarSystem(mng.create("Gain", "F2"));
+     parallel-&gt;addMarSystem(mng.create("Gain", "F3"));
+</pre>
+   <p>One real-life use of Parallels is if you have a stereo sound source
+and you want to run an analysis on the left and right channels
+seperately.  An example of generating a spectrum for the right and
+left channels of a sound source would look something like:
+
+<pre class="example">     	MarSystem* net = mng.create("Series", "net");
+     	net-&gt;addMarSystem(mng.create("SoundFileSource", "src"));
+     
+     	MarSystem* stereobranches = mng.create("Parallel", "stereobranches");
+     	MarSystem* left = mng.create("Series", "left");
+     	MarSystem* right = mng.create("Series", "right");
+     
+     	left-&gt;addMarSystem(mng.create("Windowing", "hamleft"));
+     	left-&gt;addMarSystem(mng.create("Spectrum", "spkleft"));
+     	left-&gt;addMarSystem(mng.create("PowerSpectrum", "leftpspk"));
+     
+     	right-&gt;addMarSystem(mng.create("Windowing", "hamright"));
+     	right-&gt;addMarSystem(mng.create("Spectrum", "spkright"));
+     	right-&gt;addMarSystem(mng.create("PowerSpectrum", "rightpspk"));
+     
+     	stereobranches-&gt;addMarSystem(left);
+     	stereobranches-&gt;addMarSystem(right);
+     
+     	net-&gt;addMarSystem(stereobranches);
+</pre>
+   </body></html>
+

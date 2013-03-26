@@ -1,0 +1,414 @@
+<html lang="en">
+<head>
+<title>bextract - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Feature-Extraction.html#Feature-Extraction" title="Feature Extraction">
+<link rel="prev" href="pitchextract.html#pitchextract" title="pitchextract">
+<link rel="next" href="ibt.html#ibt" title="ibt">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="bextract"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="ibt.html#ibt">ibt</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="pitchextract.html#pitchextract">pitchextract</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Feature-Extraction.html#Feature-Extraction">Feature Extraction</a>
+<hr>
+</div>
+
+<h4 class="subsection">4.3.2 <code>bextract</code></h4>
+
+<p><a name="index-bextract-12"></a>
+<code>bextract</code> <a name="index-bextract-13"></a>is one of the most powerful
+executables provided by Marsyas. It can be used for complete feature
+extraction and classification experiments with multiple files. It serves
+as a canonical example of how audio analysis algorithms can be expressed
+in the framework. This documentation refers to the latest refactored
+version of bextract. The old-style <code>bextract</code> using the -e
+command-line option to specify the feature extractor is still supported
+but use of it discouraged.
+
+   <p>Suppose that you want to build a real-time music/speech descriminator
+based on a collection of music files named music.mf and a collection
+of speech files named speech.mf.  These collections can either be
+created manually or using the mkcollection utility. The following
+commandline will extract means and variances of timbral features
+(time-domain Zero-Crossings, Spectral Centroid, Rolloff, Flux and
+Mel-Frequency Cepstral Coefficients (MFCC) over a texture window of 1 sec.
+
+<pre class="example">     bextract music.mf speech.mf -w ms.arff -p ms.mpl -cl GS
+     bextract ms.mf -w ms.arff -p ms.mpl
+     bextract -mfcc classical.mf jazz.mf rock.mf -w genre.arff
+</pre>
+   <p>The first two commands are equivalent assuming that
+ms.mf is a labeled collection with the same files
+as music.mf and speech.mf. The third-command specifies
+that only the MFCC features should be extracted and is
+an example of classifying three classes.
+
+   <p>The results are stored in a ms.arff which is a text file storing the
+feature values that can be used in the Weka machine learning environment
+for experimentation with different classifiers.  After a header
+describing the features (attribute in Weka terminology) it consists of
+lines of comma separated feature values. Each line corresponds to a
+feature vector. The attributes in the generated .arff file have long
+descriptive names that show the process used to calculate the attribute. 
+In order to associate filenames and the subsequences of feature vectors
+corresponding to them each subsequence corresponding to a file is
+prefixed by the filename as a comment in the .arff file. It is a text
+file that is straighforward to parse. Viewing it in a text editor will
+make this clearer.
+
+   <p>In addition to Weka, the native Marsyas kea tool <a href="kea.html#kea">kea</a> can be used
+to perform evaluations (cross-validation, accuracies, confusion
+matrices) similar to Weka although with more limited functionality.
+
+   <p>At the same time that the features are extracted, a classifier (in the
+example above a simple Naive Bayes classifier (or Gaussian)) is trained
+and when feature extraction is completed the whole network of feature
+extraction and classification is stored and can be used for real-time
+audio classification directly as a Marsyas plugin stored in ms.mpl.
+
+   <p>The resulting plugin makes a classification decision every 20ms but
+aggregates the results by majority voting (using the Confidence
+MarSystem) to display time-stamped output approximately every 1
+second. The whole network is stored in ms.mpl which is loaded into
+sfplugin and file_to_be_classified is played and classified at the same
+time. The screen output shows the classification results and
+confidence. The second command shows that the live run-time
+classification can be integrated with <code>bextract</code>. In both cases
+collections can be used instead of single files.
+
+<pre class="example">     sfplugin -p ms.mpl music_file_to_be_classifed.wav
+     sfplugin -p ms.mpl speech_file_to_be_classifed.wav
+     bextract -e ms.mf -tc file_to_classified.wav
+     bextract -e ms.mf -tc collection_to_classified.wav
+</pre>
+   <p>Using the command-line option -sv turns on single vector
+feature extraction where one feature vector is extracted per file. 
+The single-vector feature representation is useful for
+many Music Information Retrieval tasks (MIR) such
+as genre classification, similarity retrieval, and visualization
+of music collections. The following command can
+be used to generate a weka file for genre classification with one
+vector per file.
+
+<pre class="example">     ./bextract -sv cl.mf ja.mf ro.mf -w genres.arff -p genres.mpl
+</pre>
+   <p>The resulting genres.arff file has only one feature vector line
+for each soundfile in the collections. In this case where
+no -cl command-line argument is specified a linear
+Support Vector Machine (SVM) classifier is used instead.
+
+   <p>Feature sets refer to collections of features that can
+be included in the feature extraction. It includes
+several individual feature sets proposed in the MIR
+and audio analysis literature as well as some common combinations
+of them. (for details and the most updated list of supported
+sets experienced users can consult the selectFeatureSet() function
+in bextract.cpp). The feature sets can be separated into three
+lagre groups depending what front-end is used: time-domain,
+spectral-domain, lpc-based.
+
+   <p>The following feature sets are supported (for definitions consult
+the MIR literature, check the corresponding code implementations
+and send us email with question for details you don't understand) :
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-timbral --TimbralFeatures</span></samp>&rsquo;<dd>      Time ZeroCrossings, Spectral  Centroid, Flux and Rolloff,
+and Mel-Frequency Cepstral Coefficients (MFCC). Equivalent to
+-mfcc -zcrs -ctd -rlf -flx. This also the default extracted feature set.
+
+     <br><dt>&lsquo;<samp><span class="samp">-spfe --SpectralFeatures</span></samp>&rsquo;<dd>      Spectral Centroid, Flux and Rolloff. Equivalent to
+-zcrs -ctd -rlf -flx.
+
+     <br><dt>&lsquo;<samp><span class="samp">-mfcc --MelFrequencyCepstralCoefficients</span></samp>&rsquo;<dd>      Mel-Frequency Cepstral Coefficients.
+
+     <br><dt>&lsquo;<samp><span class="samp">-chroma --Chroma</span></samp>&rsquo;<br><dt>&lsquo;<samp><span class="samp">-ctd --SpectralCentroid</span></samp>&rsquo;<br><dt>&lsquo;<samp><span class="samp">-rlf -- SpectralCentroid</span></samp>&rsquo;<br><dt>&lsquo;<samp><span class="samp">-flx --SpectralFlux</span></samp>&rsquo;<br><dt>&lsquo;<samp><span class="samp">-zcrs --ZeroCrossings</span></samp>&rsquo;<br><dt>&lsquo;<samp><span class="samp">-sfm --SpectralFlatnessMeasure</span></samp>&rsquo;<br><dt>&lsquo;<samp><span class="samp">-scf --SpectralCrestFactor</span></samp>&rsquo;<br><dt>&lsquo;<samp><span class="samp">-lsp --LineSpectralPair</span></samp>&rsquo;<br><dt>&lsquo;<samp><span class="samp">-lpcc --LinearPredictionCepstralCoefficients</span></samp>&rsquo;<dd></dl>
+
+   <p>By default stereo files are donwmixed to mono by summing the two
+channels before extracting features.  However, bextract also supports
+the extraction of feature based on stereo information. There are
+feature sets that can only be extracted from stereo files. In addition
+it is possible to use any of the feature sets described above
+and extract features for both left and right channels that are
+concatenated to form a feature vector.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-spsf --StereoPanningSpectrumFeatures</span></samp>&rsquo;<br><dt>&lsquo;<samp><span class="samp">-st --stereo</span></samp>&rsquo;<dd>      Calculate whatever feature sets are activated for both left
+and right channels. 
+</dl>
+
+   <p>For example the first command below calculates MFCC for both
+left and right channels.  The second command calculates
+the Stereo Panning Spectrum Features which require both
+channels and also the Spectral Centroid for both left
+and right.
+
+<pre class="example">     bextract -st -mfcc mymusic.mf -w mymusic.arff
+     bextract -spsf -st --SpectralCentroid -w mymusic.arff
+</pre>
+   <p>The feature extraction can be configured in many ways
+(only some of which are possible through command-line
+options). The following options can be used to control
+various aspects of the feature extraction process
+(most of the default values assume 22050 Hz sampling rate):
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-c --collection</span></samp>&rsquo;<dd>      the collection of files to be used
+<br><dt>&lsquo;<samp><span class="samp">-s --start</span></samp>&rsquo;<dd>      starting offset (in seconds) into each soundifle from which features will be extracted
+<br><dt>&lsquo;<samp><span class="samp">-l --length</span></samp>&rsquo;<dd>      length (in seconds) of each soundfile from which features will be extracted. A length of -1.0 indicates that the entire duration of the file should be used (the default behavior)
+<br><dt>&lsquo;<samp><span class="samp">-n --normalization</span></samp>&rsquo;<dd>      apply normalization to audio signal
+<br><dt>&lsquo;<samp><span class="samp">-fe --featExtract</span></samp>&rsquo;<dd>      only extract features without training the classifier
+<br><dt>&lsquo;<samp><span class="samp">-st --stereo</span></samp>&rsquo;<dd>      use stereo feature extraction
+<br><dt>&lsquo;<samp><span class="samp">-ds --downsample</span></samp>&rsquo;<dd>      downsample factor (default 1)
+<br><dt>&lsquo;<samp><span class="samp">-ws --winsamples</span></samp>&rsquo;<dd>      size in samples of the analysis window (default 512)
+<br><dt>&lsquo;<samp><span class="samp">-hp --hopsamples</span></samp>&rsquo;<dd>      size in samples of the hop analysis size (default 512 - no overlap)
+<br><dt>&lsquo;<samp><span class="samp">-as --accSize</span></samp>&rsquo;<dd>      size in analysis frames of how many feature vectors are summarized
+when single vectors per file are calculated (default 1298 - approximately 30 seconds)
+<br><dt>&lsquo;<samp><span class="samp">-m --memory</span></samp>&rsquo;<dd>      size in analysis frames of how many features vectors are summarized
+for each texture window (default 40 - approximately 1 second)
+<br><dt>&lsquo;<samp><span class="samp">-cl --classifier</span></samp>&rsquo;<dd>      classifier used for training and prediction (default GS - a simple Naive Bayes Classifier)
+<br><dt>&lsquo;<samp><span class="samp">-e --extractor</span></samp>&rsquo;<dd>      old-style specification of feature extraction maintained for backward compatibility (usage discouraged)
+<br><dt>&lsquo;<samp><span class="samp">-p --plugin</span></samp>&rsquo;<dd>      filename of generated Marsyas plugin (.mpl file)
+<br><dt>&lsquo;<samp><span class="samp">-w --wekafile</span></samp>&rsquo;<dd>      filename of generated .arff file (for Weka or kea)
+<br><dt>&lsquo;<samp><span class="samp">-tc --test</span></samp>&rsquo;<dd>      filename of collection or soundfile used for prediction
+after a model is trained (can be used to conduct MIREX style
+experimetns)
+<br><dt>&lsquo;<samp><span class="samp">-pr --predict</span></samp>&rsquo;<dd>      filename of a collection or soundfile used for prediction
+after a model is trained
+<br><dt>&lsquo;<samp><span class="samp">-wd --workdir</span></samp>&rsquo;<dd>      Directory where all generated files will be written by
+defautl the current directory is used
+
+   </dl>
+
+<h5 class="subsubheading">TimeLines</h5>
+
+<p>bextract also supports a mode, called the Timeline mode that allows
+labeling of different sections of an audio recording with different
+labels. For example, you might have a number of audio files of Orca
+recordings with sections of voiceover, background noise, and orca calls. 
+You could train a classifier to recognize each of these types of signal. 
+Instead of a label associated with each file in the collection
+there is an associate Marsyas timeline file (the format is described
+below). To run bextract in Timeline mode, there are two steps:
+training and classifier:
+
+<pre class="example">     bextract -t songs.mf -p out.mpl -pm
+     
+     Where:
+     
+     -t songs.mf - A collection file with a song name and its
+     corresponding .mtl (Marsyas Timeline) file on each line
+     
+     -p out.mpl  - The Marsyas Plugin to be generated
+     
+     -pm         - Mute the output plugin
+</pre>
+   <p>and predicting labels for a new audio recording
+
+<pre class="example">        sfplugin -p out.mpl songmono.wav
+     
+     Where:
+     
+     -p out.mpl   - The plugin output by bextract in step #1
+</pre>
+   <p>The songs.mf file is Marsyas collection file with the path to song
+(usually .wav) files and their corresponding Marsyas Timeline
+(.mtl) files on each lines.  Here is an example song.mf file:
+
+<pre class="example">       /path/to/song1.wav \t /path/to/song1.mtl
+       /path/to/song2.wav \t /path/to/song2.mtl
+       /path/to/song3.wav \t /path/to/song3.mtl
+</pre>
+   <p>Please note that the separator character \t must be an actual tab, it
+cannot be any other kind of whitespace.
+
+   <p>The .mtl format has three header lines, followed by blocks of 4
+lines for each annotated section.  The format is:
+
+<pre class="example">       HEADER:
+       -------
+     
+       number of regions
+       line size (=1)
+       total size (samples)
+     
+       FOR EACH SAMPLE:
+       ----------------
+       start (samples)
+       classId (mrs_natural)
+       end (samples)
+       name (mrs_string)
+</pre>
+   <p>For example:
+<pre class="verbatim">  3
+  1
+  2758127
+  0
+  0
+  800000
+  voiceover
+  800001
+  1
+  1277761
+  orca
+  1277762
+  2
+  2758127
+  background
+</pre>
+
+   <p>Because the .mtl file is kind of obtuse, we have written a small
+Ruby program to convert Audacity label files to .mtl format.  This
+script can be found at marsyas/scripts/generate-mtl.rb.  The
+script is currently hardcoded to recognize the chord changes from
+songs from the annotated Beatles archive, but you can easily
+change this by modifying the "chords_array" variable.
+
+   </body></html>
+

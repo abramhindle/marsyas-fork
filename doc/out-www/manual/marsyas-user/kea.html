@@ -1,0 +1,224 @@
+<html lang="en">
+<head>
+<title>kea - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Machine-Learning.html#Machine-Learning" title="Machine Learning">
+<link rel="prev" href="Machine-Learning.html#Machine-Learning" title="Machine Learning">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="kea"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Machine-Learning.html#Machine-Learning">Machine Learning</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Machine-Learning.html#Machine-Learning">Machine Learning</a>
+<hr>
+</div>
+
+<h4 class="subsection">4.5.1 <code>kea</code></h4>
+
+<p><a name="index-kea-17"></a>
+The previous version of Marsyas 0.1 contained machine learning
+functionality but until 2007 the new version 0.2 mostly relied on
+Weka for machine learning experiments. Although this
+situation was satisfactory for writing papers it was not possible
+to create real-time networks integrating machine learning. 
+Therefore an effort was made to establish programming
+conventions for how machine learning MarSystems should be
+implemented. Last but not least we have always wanted to
+have as much functionality related to audio processing
+systems implemented natively in Marsyas.
+
+   <p><code>kea</code> is one of the outcomes of this effort. Kea (a rare bird
+from New Zealand) is the Marsyas counterpart of Weka
+and provides similar capabilities with the command-line
+interface to Weka although much more limited (at least
+for now).
+
+   <p>Any weka .arff file can be used as input to kea
+although ususally the input is the extracted .arff
+files from <code>bextract</code>. The following command-line options
+are supported.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">-m --mode</span></samp>&rsquo;<dd>      specifies the mode of operation (train, distance_matrix, pca). The
+default mode is train. 
+<br><dt>&lsquo;<samp><span class="samp">-cl --classifier</span></samp>&rsquo;<dd>      the type of classifier to use if mode is train
+ Available classifiers are GS, ZEROR, SVM
+<br><dt>&lsquo;<samp><span class="samp">-w --wekefile</span></samp>&rsquo;<dd>      the name of the weka file
+<br><dt>&lsquo;<samp><span class="samp">-id --inputdir</span></samp>&rsquo;<dd>      input directory
+<br><dt>&lsquo;<samp><span class="samp">-od --outputdir</span></samp>&rsquo;<dd>      output directory
+<br><dt>&lsquo;<samp><span class="samp">-dm --distance_matrix</span></samp>&rsquo;<dd>      filename for the distance matrix output if mode is distance_matrix
+</dl>
+
+   <p>The main mode (train) basically performs 10-fold non-stratified
+cross-validation to evaluate the classification performance
+of the specified classifier on the provided .arff file. In addition
+to classification accuracy It outputs several other summary
+measures of the classifier's performance as well as the confusion
+matrix. The format of the output is similar to Weka.
+
+   <p>The mode distance_matrix is used to compute a NxN similarity matrix
+based on the input .arff file containing N feature vector instances. The
+output format is the one used for MIREX 2007 music similarity task. This
+functionality relies on specific naming conventions related to the
+Marsyas MIREX2007 submission. By default the output goes to dm.txt but
+can be specified by the -dm command-line option. The following
+examples show different ways <code>kea</code> can be used.
+
+   <p>The pca mode reduces the input feature vectors by projecting
+them to the first 3 principal components using Principal
+Component Analysis (PCA). Each component is normalized
+to lie in the range [0-512]. The resulting transformed
+features are simply written to stdout.
+
+<pre class="example">     kea -w iris.arff
+     kea -m train -w iris.arff -cl SVM
+     kea -m distance_matrix -dm dmatrix.txt -w iris.arff
+     kea -m pca -w iris.arff
+</pre>
+   </body></html>
+

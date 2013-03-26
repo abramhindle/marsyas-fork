@@ -1,0 +1,235 @@
+<html lang="en">
+<head>
+<title>Scheduling in Marsyas - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Scheduling.html#Scheduling" title="Scheduling">
+<link rel="next" href="Components-of-the-Marsyas-Scheduler.html#Components-of-the-Marsyas-Scheduler" title="Components of the Marsyas Scheduler">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Scheduling-in-Marsyas"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Components-of-the-Marsyas-Scheduler.html#Components-of-the-Marsyas-Scheduler">Components of the Marsyas Scheduler</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Scheduling.html#Scheduling">Scheduling</a>
+<hr>
+</div>
+
+<h4 class="subsection">6.5.1 Scheduling in Marsyas</h4>
+
+<p>Scheduling is the art of delaying actions (events) until later periods in time. 
+In Marsyas time and event are are more general than many other systems. This
+allows for a wide range of user specified control rates and actions.
+
+<h5 class="subsubsection">6.5.1.1 Time</h5>
+
+<p>Time is simply a counter. What it counts is up to the writer of a new timer
+class. The two supplied timers, TmSampleCount and TmRealTime, count audio samples
+and system micro-seconds respectively.
+
+   <p>There are a number of issues surrounding control rates in Marsyas and most other
+time-aware processing systems. Marsyas' primary task is to process audio data. 
+This data passes through the network in buffers of size N. Usually the network
+is prompted to process the buffer of N samples by an outer loop. During
+processing control of the network is lost as the buffer of data passes through
+each MarSystem object. The scheduler checks for and dispatches events when the
+network is ticked and before the buffer of data passes through the network. 
+Events are therefore dispatched at the start of each buffer processed.
+
+   <p>Event dispatch is therefore governed by the audio sample rate. Ultimately every
+custom timer bears some relation to the audio sample rate. Since events are
+dispatched at the start of each tick, events are actually dispatched at a rate
+of every N samples. This implies that there is a granularity on event dispatch
+based on the sample rate and buffer size. If an event is to be dispatched at a
+point in time that falls inside a buffer, ie at 256 for a buffer size of 512
+samples, then that event will not be dispatched until the next buffer boundary
+at which point its dispatch time will be &lt;= current counter time.
+
+   <p>We might wish to have sample accurate event timing. After all, there are other
+audio processing systems that can claim the accuracy we might desire. The major
+obstacle to achieving this accuracy is due to Marsyas' dataflow architecture. 
+When a buffer of N samples passes through the network it is processed multiple
+times (normally once by each object in the network). This means that each sample
+recurs a number of times equal to the number of Marsystems that process it. 
+More specifically, if the time is T when the network is ticked, then after the
+first MarSystem processes the buffer of N samples time will be at T+N. The next
+MarSystem will start processing the buffer at time T. In this way, time bounces
+between T and T+N as the buffer passes through the network. This situation makes
+it exceedingly difficult to make the network consistent for events that occur
+between T and T+N. If a control value C is to be changed at time T+K where 0&lt;K&lt;N
+then for C to remain consistent for all MarSystem objects that might be
+interested then it must be changed to the previous state at the start of buffer
+processing then to the new value at the event time - each time the buffer is
+processed. This would be somewhat difficult and computationally expensive to
+accomplish within the dataflow model. For this reason the scheduler only
+dispatches events on buffer boundaries - when the network is ticked - as this is
+the only point when all MarSystems are at the same point in time.
+
+   <p>In many systems multiple control rates are desireable. Consider two timers based
+on separate sample rates such as 44.1kHz and 12.34kHz. Since both of these rates
+are regular, that is they repeat at a constant rate, then a simple conversion
+function can be used to convert between the two rates. By converting one of the
+rates to the other a single timer can be used in the scheduler. However for
+other timers an errorless conversion function may not be possible. Consider a
+control rate based on detecting someone tapping a drum stick. The rate of
+tapping could be described as irregular because it is not known exactly when the
+next tap will happen. Combining this timer with the audio sample rate creates
+the problem that no perfect conversion function is possible that can compute
+what the sample time will be for N taps in the future. In Marsyas this problem
+is bypassed through the support of multiple timers. Events are therefore posted
+on the timers they are specified on and no timer conversion takes place.
+
+<h5 class="subsubsection">6.5.1.2 Event</h5>
+
+<p>An event is simply something that happens at some point in time. In Marsyas
+an event is a class that contains a user-defined function. What this function
+contains is up to the writer and can act on the Marsyas network or outside of
+it. Marsyas is not threaded and neither is the scheduler so the scheduler will
+wait for the event to complete its action before resuming. Be careful not to
+do excessive processing during the dispatch of an event.
+
+   </body></html>
+

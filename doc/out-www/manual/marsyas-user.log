@@ -1,0 +1,2480 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdfetex 2012.12.14)  24 MAR 2013 13:57
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\nonstopmode \catcode126=12 \def\normaltilde{~}\catcode126=13 \let~\normaltil
+de  \input /home/hindle1/src/marsyas/doc/marsyas-user.texi
+(/home/hindle1/src/marsyas/doc/marsyas-user.texi
+(/home/hindle1/src/marsyas/doc/texinfo.tex
+Loading texinfo [version 2007-09-03.05]:
+\bindingoffset=\dimen16
+\normaloffset=\dimen17
+\pagewidth=\dimen18
+\pageheight=\dimen19
+\outerhsize=\dimen20
+\outervsize=\dimen21
+\cornerlong=\dimen22
+\cornerthick=\dimen23
+\topandbottommargin=\dimen24
+\headlinebox=\box16
+\footlinebox=\box17
+\margin=\insert252
+\EMsimple=\toks13
+\groupbox=\box18
+\groupinvalidhelp=\toks14
+\mil=\dimen25
+\exdentamount=\skip18
+\inmarginspacing=\skip19
+ pdf,
+\tempnum=\count27
+\lnkcount=\count28
+\filename=\toks15
+\filenamelength=\count29
+\pgn=\count30
+\toksA=\toks16
+\toksB=\toks17
+\toksC=\toks18
+\toksD=\toks19
+\boxA=\box19
+\countA=\count31
+\nopdfimagehelp=\toks20
+ fonts,
+\sffam=\fam8
+\textleading=\dimen26
+\fontdepth=\count32
+ page headings,
+\titlepagetopglue=\skip20
+\titlepagebottomglue=\skip21
+\evenheadline=\toks21
+\oddheadline=\toks22
+\evenfootline=\toks23
+\oddfootline=\toks24
+ tables,
+\tableindent=\dimen27
+\itemindent=\dimen28
+\itemmargin=\dimen29
+\itemmax=\dimen30
+\itemno=\count33
+\multitableparskip=\skip22
+\multitableparindent=\skip23
+\multitablecolspace=\dimen31
+\multitablelinespace=\skip24
+\colcount=\count34
+\everytab=\toks25
+
+conditionals,
+\doignorecount=\count35
+ indexing,
+\whatsitskip=\skip25
+\whatsitpenalty=\count36
+\secondaryindent=\skip26
+\partialpage=\box20
+\doublecolumnhsize=\dimen32
+ sectioning,
+\unnumberedno=\count37
+\chapno=\count38
+\secno=\count39
+\subsecno=\count40
+\subsubsecno=\count41
+\appendixno=\count42
+\absseclevel=\count43
+\secbase=\count44
+\chapheadingskip=\skip27
+\secheadingskip=\skip28
+\subsecheadingskip=\skip29
+ toc,
+\tocfile=\write0
+\contentsrightmargin=\skip30
+\savepageno=\count45
+\lastnegativepageno=\count46
+\tocindent=\dimen33
+ environments,
+\errorbox=\box21
+\lispnarrowing=\skip31
+\envskipamount=\skip32
+\circthick=\dimen34
+\cartouter=\dimen35
+\cartinner=\dimen36
+\normbskip=\skip33
+\normpskip=\skip34
+\normlskip=\skip35
+\lskip=\skip36
+\rskip=\skip37
+\tabw=\dimen37
+ defuns,
+\defbodyindent=\skip38
+\defargsindent=\skip39
+\deflastargmargin=\skip40
+\defunpenalty=\count47
+\parencount=\count48
+\brackcount=\count49
+ macros,
+\paramno=\count50
+\macname=\toks26
+
+cross references,
+\auxfile=\write1
+\savesfregister=\count51
+ insertions,
+\footnoteno=\count52
+\SAVEfootins=\box22
+\SAVEmargin=\box23
+
+(/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.tex
+This is `epsf.tex' v2.7.4 <14 February 2011>
+\epsffilein=\read1
+\epsfframemargin=\dimen38
+\epsfframethickness=\dimen39
+\epsfrsize=\dimen40
+\epsftmp=\dimen41
+\epsftsize=\dimen42
+\epsfxsize=\dimen43
+\epsfysize=\dimen44
+\pspoints=\dimen45
+)
+\noepsfhelp=\toks27
+ localization,
+\nolanghelp=\toks28
+\countUTFx=\count53
+\countUTFy=\count54
+\countUTFz=\count55
+ formatting,
+\defaultparindent=\dimen46
+ and turning on texinfo input format.)
+(./marsyas-user.aux)
+\openout1 = `marsyas-user.aux'.
+
+@cpindfile=@write2
+@fnindfile=@write3
+@vrindfile=@write4
+@tpindfile=@write5
+@kyindfile=@write6
+@pgindfile=@write7
+ [1
+\openout2 = `marsyas-user.cp'.
+
+\openout3 = `marsyas-user.fn'.
+
+\openout4 = `marsyas-user.vr'.
+
+\openout5 = `marsyas-user.tp'.
+
+\openout6 = `marsyas-user.ky'.
+
+\openout7 = `marsyas-user.pg'.
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[2] (./marsyas-user.toc [-1] [-2] [-3] [-4]) [-5] (./marsyas-user.toc)
+(./marsyas-user.toc) (/home/hindle1/src/marsyas/doc/macros.itexi)
+(/home/hindle1/src/marsyas/doc/intro.texi Chapter 1
+\openout0 = `marsyas-user.toc'.
+
+ [1] [2]
+Overfull \hbox (3.58696pt too wide) in paragraph at lines 207--209
+[]@textrm The doc-u-men-ta-tion is up-loaded reg-u-larly to [][]@texttt http://
+marsyas.sness.net/docs/index.html[][][] |
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@hbox(0.0+0.0)x15.0
+.@kern -15.0
+.@textrm T
+.@textrm h
+.@textrm e
+.etc.
+
+[3]) (/home/hindle1/src/marsyas/doc/install.texi Chapter 2 [4] [5] [6] </home/h
+indle1/src/marsyas/doc/images/ccmake-unix.png>
+Underfull \hbox (badness 10000) detected at line 188
+[]
+
+@hbox(284.52756+0.0)x433.62
+.@pdfrefximage(284.52756+0.0)x416.42775
+
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 295--298
+ @textrm WITH[]SWIG[]PYTHON, WITH[]SWIG[]JAVA, WITH[]SWIG[]LUA, and
+
+@hbox(7.60416+2.12917)x433.62, glue set 4.73471
+.@glue(@leftskip) 57.81621
+.@textrm W
+.@textrm I
+.@textrm T
+.@textrm H
+.etc.
+
+[9] [10]
+Overfull \hbox (13.5277pt too wide) in paragraph at lines 402--408
+ []@textrm Apple Mac OSX 10.6.2 Snow Leop-ard al-ready in-cludes SVN (http://su
+bversion.tigris.org/)|
+
+@hbox(8.2125+2.73749)x433.62, glue set - 1.0
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@textrm A
+.@textrm p
+.@textrm p
+.etc.
+
+[11]
+Overfull \hbox (31.15535pt too wide) in paragraph at lines 508--510
+ []@textrm There is a nice GUI front end for Mac-Ports named Por-ti-cus (http:/
+/porticus.alittledrop.com/),|
+
+@hbox(8.2125+2.73749)x433.62, glue set - 1.0
+.@glue(@leftskip) 21.68121
+.@hbox(7.05666+0.0)x0.0, glue set - 15.74411fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@textrm 5
+..@textrm .
+..@kern 7.22743
+.@textrm T
+.@textrm h
+.@textrm e
+.etc.
+
+
+Overfull \hbox (24.57022pt too wide) in paragraph at lines 519--520
+ []@textrm Marsyas makes use of the ex-ter-nal MAD li-brary (http://www.underbi
+t.com/products/mad/)|
+
+@hbox(8.2125+2.73749)x433.62, glue set - 1.0
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@textrm M
+.@textrm a
+.@textrm r
+.etc.
+
+[12] [13] [14]
+Overfull \hbox (209.0836pt too wide) in paragraph at lines 666--666
+ []@texttt PATH   String  /opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbi
+n:/sbin:/usr/local/bin:/usr/X11/bin[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 50.58876
+.@hbox(0.0+0.0)x0.0
+.@texttt P
+.@texttt A
+.@texttt T
+.etc.
+
+[15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 835--838
+ []@textrm Download and in-stall Mi-crosoft Vi-sual C@texttt ++ @textrm Stu-dio
+ Ex-press 2008 from
+
+@hbox(7.60416+2.12917)x433.62, glue set 4.72627
+.@glue(@leftskip) 21.68121
+.@hbox(7.05666+0.0)x0.0, glue set - 15.74411fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@textrm 1
+..@textrm .
+..@kern 7.22743
+.@textrm D
+.@textrm o
+.@kern-0.30418
+.etc.
+
+
+Overfull \hbox (137.95876pt too wide) in paragraph at lines 839--843
+ []@textrm Download and in-stall Mi-crosoft Di-rect X SDK from [][]@texttt http
+://msdn.microsoft.com/en-us/directx/aa937788.aspx[][][]@textrm .|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 21.68121
+.@hbox(7.05666+0.0)x0.0, glue set - 15.74411fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@textrm 2
+..@textrm .
+..@kern 7.22743
+.@textrm D
+.@textrm o
+.@kern-0.30418
+.etc.
+
+
+Overfull \hbox (25.55536pt too wide) in paragraph at lines 847--849
+ []@textrm Downlaod and in-stall the Tor-toise SVN GUI client from [][]@texttt 
+http://tortoisesvn.tigris.org/[][][]@textrm . |
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 21.68121
+.@hbox(7.05666+0.0)x0.0, glue set - 15.74411fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@textrm 4
+..@textrm .
+..@kern 7.22743
+.@textrm D
+.@textrm o
+.@kern-0.30418
+.etc.
+
+
+Overfull \hbox (28.15675pt too wide) in paragraph at lines 871--873
+ []@textrm Download the lib-MAD li-brary source code from [][]@texttt http://ww
+w.underbit.com/products/mad/[][][]@textrm . |
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 21.68121
+.@hbox(7.05666+0.0)x0.0, glue set - 15.74411fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@textrm 1
+..@textrm .
+..@kern 7.22743
+.@textrm D
+.@textrm o
+.@kern-0.30418
+.etc.
+
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 898--900
+ @textrm web-page of numpy [][]@texttt http://sourceforge.net/project/showfiles
+.php?group_
+
+@hbox(7.60416+2.43333)x433.62, glue set 4.7461
+.@glue(@leftskip) 21.68121
+.@textrm w
+.@kern-0.30418
+.@textrm e
+.@textrm b
+.etc.
+
+
+Overfull \hbox (137.95876pt too wide) in paragraph at lines 957--961
+ []@textrm Download and in-stall Mi-crosoft Di-rect X SDK from [][]@texttt http
+://msdn.microsoft.com/en-us/directx/aa937788.aspx[][][]@textrm .|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 21.68121
+.@hbox(7.05666+0.0)x0.0, glue set - 15.74411fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@textrm 2
+..@textrm .
+..@kern 7.22743
+.@textrm D
+.@textrm o
+.@kern-0.30418
+.etc.
+
+
+Overfull \hbox (25.55536pt too wide) in paragraph at lines 965--967
+ []@textrm Downlaod and in-stall the Tor-toise SVN GUI client from [][]@texttt 
+http://tortoisesvn.tigris.org/[][][]@textrm . |
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 21.68121
+.@hbox(7.05666+0.0)x0.0, glue set - 15.74411fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@textrm 4
+..@textrm .
+..@kern 7.22743
+.@textrm D
+.@textrm o
+.@kern-0.30418
+.etc.
+
+[18]
+Overfull \hbox (88.36116pt too wide) in paragraph at lines 1047--1047
+ []@texttt export DYLD_LIBRARY_PATH=$MATLAB/bin/maci/:$MATLAB/sys/os/maci/:$DYL
+D_LIBRARY_PATH[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 50.58876
+.@hbox(0.0+0.0)x0.0
+.@texttt e
+.@texttt x
+.@texttt p
+.etc.
+
+[19] [20]) (/home/hindle1/src/marsyas/doc/tour.texi Chapter 3 [21]
+Overfull \hbox (9.36362pt too wide) in paragraph at lines 30--34
+@textrm `@texttt /Users/gtzan/src/cxx/marsyas-0.2.20/audio/music_speech/music_w
+av/nearhou.wav[]@textrm '[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@textrm `
+.@texttt /
+.@texttt U
+.@texttt s
+.@texttt e
+.etc.
+
+[22]
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 106--106
+ []@texttt cat cl.mf co.mf di.mf hi.mf ja.mf ro.mf bl.mf re.mf po.mf me.mf > ge
+nres10.mf[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt c
+.@texttt a
+.@texttt t
+.etc.
+
+[23] [24]
+Overfull \hbox (20.71361pt too wide) in paragraph at lines 233--237
+[][][]@texttt http://marsyas.sness.net/about/projects[][][] [][]http://marsyas.
+sness.net/about/videos[][][]|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@hbox(0.0+0.0)x15.0
+.@pdfliteral{0.28 1 1 0.35 k}
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action user{/Subtype /Link /A << /S
+ /URI /URI (http://marsyas.sness.net/about/pro@ETC.}
+.@texttt h
+.@texttt t
+.etc.
+
+
+Overfull \hbox (40.20573pt too wide) in paragraph at lines 233--237
+[][]@texttt http://marsyas.sness.net/about/publications[][][] [][]http://marsya
+s.sness.net/about/webdemos[][][] |
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@pdfliteral{0.28 1 1 0.35 k}
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action user{/Subtype /Link /A << /S
+ /URI /URI (http://marsyas.sness.net/about/pub@ETC.}
+.@texttt h
+.@texttt t
+.@texttt t
+.etc.
+
+) (/home/hindle1/src/marsyas/doc/tools.texi Chapter 4 [25] [26] [27] [28]
+Overfull \hbox (20.69044pt too wide) in paragraph at lines 298--298
+ []@texttt sound2png -m spectrogram A30.wav -ws 1024 -hs 1024 -mf 8000 -g 1.5 o
+ut.png[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt s
+.@texttt o
+.@texttt u
+.etc.
+
+ </home/hindle1/src/marsyas/doc/images/sound2png_spectrogram.png>
+Underfull \hbox (badness 10000) detected at line 301
+[]
+
+@hbox(142.26378+0.0)x433.62
+.@pdfrefximage(142.26378+0.0)x348.01085
+
+ </home/hindle1/src/marsyas/doc/images/sound2png_waveform.png>
+Overfull \hbox (56.52318pt too wide) detected at line 311
+[]|
+
+@hbox(142.26378+0.0)x433.62
+.@pdfrefximage(142.26378+0.0)x490.14317
+.@rule(*+*)x5.0
+
+ </home/hindle1/src/marsyas/doc/images/sound2png_waveform2.png>
+Overfull \hbox (56.52318pt too wide) detected at line 323
+[]|
+
+@hbox(142.26378+0.0)x433.62
+.@pdfrefximage(142.26378+0.0)x490.14317
+.@rule(*+*)x5.0
+
+[29]
+Overfull \hbox (32.18782pt too wide) in paragraph at lines 346--346
+ []@texttt sound2sound input.wav -m bandpass -f 500 -q 10 -s 15 -l 30 -g 0.8 ou
+tput.wav[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt s
+.@texttt o
+.@texttt u
+.etc.
+
+
+Overfull \hbox (244.88927pt too wide) in paragraph at lines 351--351
+ []@texttt sound2sound input.wav --method bandpass --frequency 500 --qfactor 10
+ --start 15 --length 30 --gain 0.8 output.wav[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt s
+.@texttt o
+.@texttt u
+.etc.
+
+[30] [31] [32] [33] [34]
+Underfull \hbox (badness 10000) in paragraph at lines 694--707
+[]@textrm More tech-ni-cal in-for-ma-tion can be found in the pa-per ``IBT: A R
+eal-
+
+@hbox(7.60416+2.12917)x433.62, glue set 5.14137
+.@hbox(0.0+0.0)x0.0
+.@textrm M
+.@textrm o
+.@textrm r
+.@textrm e
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 694--707
+@textrm Time Tempo and Beat Track-ing Sys-tem'' pub-lished in the In-ter-na-tio
+nal
+
+@hbox(7.60416+2.12917)x433.62, glue set 5.43517
+.@textrm T
+.@textrm i
+.@textrm m
+.@textrm e
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 694--707
+@textrm Con-fer-ence on Mu-sic In-for-ma-tion Re-trieval (IS-MIR) 2010. On-line
+ at:
+
+@hbox(8.2125+2.73749)x433.62, glue set 5.53554
+.@textrm C
+.@textrm o
+.@textrm n
+.@discretionary
+..@textrm -
+.@textrm f
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 694--707
+[][]@texttt http://www.inescporto.pt/~fgouyon/docs/OliveiraGouyonMartinsReis_
+
+@hbox(7.60416+2.43333)x433.62
+.@pdfliteral{0.28 1 1 0.35 k}
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action user{/Subtype /Link /A << /S
+ /URI /URI (http://www.inescporto.pt/~fgouyon/@ETC.}
+.@texttt h
+.@texttt t
+.@texttt t
+.etc.
+
+[35]
+Underfull \hbox (badness 4013) in paragraph at lines 718--734
+[]@textrm The pro-cessed beat times and tempo are saved, re-spec-tively, in mic
+.txt and
+
+@hbox(7.60416+2.12917)x433.62, glue set 3.42464
+.@hbox(0.0+0.0)x0.0
+.@textrm T
+.@textrm h
+.@textrm e
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 743--745
+ []@texttt "@textrm beats@texttt "@textrm , @texttt "@textrm me-di-anTempo@text
+tt "@textrm , @texttt "@textrm mean-Tempo@texttt "@textrm , @texttt "@textrm be
+ats@texttt +@textrm medianTempo@texttt "@textrm ,
+
+@hbox(7.60416+2.12917)x433.62, glue set 8.31207
+.@glue(@leftskip) 57.81621
+.@hbox(0.0+0.0)x0.0
+.@texttt "
+.@textrm b
+.@kern0.30417
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 752--753
+ []@textrm output the orig-i-nal au-dio mixed with the syn-the-sized beats (as
+
+@hbox(8.2125+2.73749)x433.62, glue set 4.52997
+.@glue(@leftskip) 57.81621
+.@hbox(0.0+0.0)x0.0
+.@textrm o
+.@textrm u
+.@textrm t
+.etc.
+
+[36]
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 806--806
+ []@texttt phasevocoder foo.wav -ob -cm sorted -s 10 -p 1.5 -f foo_pitch_shifte
+d.wav[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt p
+.@texttt h
+.@texttt a
+.etc.
+
+[37] [38]
+Underfull \hbox (badness 5893) in paragraph at lines 855--860
+ []@textrm synthesis back-end mode: clas-sic: prop-a-gate phases for all bins,
+
+@hbox(7.60416+2.12917)x433.62, glue set 3.89531
+.@glue(@leftskip) 57.81621
+.@hbox(0.0+0.0)x0.0
+.@textrm s
+.@textrm y
+.@textrm n
+.etc.
+
+[39] [40]
+Overfull \hbox (6.18156pt too wide) in paragraph at lines 1033--1034
+ []@textrm provide clus-ter-ing pa-ram-e-ters in the out-put name (s20t10i250[]
+2500c2k1uTabfbho|
+
+@hbox(8.2125+2.73749)x433.62, glue set - 1.0
+.@glue(@leftskip) 57.81621
+.@hbox(0.0+0.0)x0.0
+.@textrm p
+.@textrm r
+.@textrm o
+.etc.
+
+[41] [42]
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 1110--1110
+ []@texttt sys->linkctrl( "mrs_string/filename", "SoundFileSource/src/mrs_strin
+g/filename" );[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt s
+.@texttt y
+.@texttt s
+.etc.
+
+
+Overfull \hbox (32.18782pt too wide) in paragraph at lines 1111--1111
+ []@texttt sys->linkctrl( "mrs_bool/initAudio" , "AudioSink/dest/mrs_bool/initA
+udio" );[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt s
+.@texttt y
+.@texttt s
+.etc.
+
+
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 1112--1112
+ []@texttt sys->linkctrl( "mrs_natural/pos"    , "SoundFileSource/src/mrs_natur
+al/pos" );[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt s
+.@texttt y
+.@texttt s
+.etc.
+
+
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 1113--1113
+ []@texttt sys->linkctrl( "mrs_bool/hasData"  , "SoundFileSource/src/mrs_bool/h
+asData" );[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt s
+.@texttt y
+.@texttt s
+.etc.
+
+
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 1116--1116
+ []@texttt // follows: sfplugin -p some_plugin.mpl ../../SamsSavorySuperiorColl
+iculus.au[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt /
+.@texttt /
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 1150--1150
+ []@texttt [ msl ] updctrl playbacknet SoundFileSource/src/string/filename tech
+nomusic.au[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt [
+.@penalty 10000
+.@glue 5.74869
+.etc.
+
+[43]) (/home/hindle1/src/marsyas/doc/qttools.texi Chapter 5 [44])
+(/home/hindle1/src/marsyas/doc/architecture.texi Chapter 6 [45] </home/hindle1/
+src/marsyas/doc/images/dataflow.png (PNG copy)>
+Underfull \hbox (badness 10000) detected at line 68
+[]
+
+@hbox(142.26378+0.0)x433.62
+.@pdfrefximage(142.26378+0.0)x316.65164
+
+ </home/hindle1/src/marsyas/doc/images/slices.png (PNG copy)>
+Underfull \hbox (badness 10000) detected at line 73
+[]
+
+@hbox(142.26378+0.0)x433.62
+.@pdfrefximage(142.26378+0.0)x301.00934
+
+[46] </home/hindle1/src/marsyas/doc/images/explicit-patching.png (PNG copy)>
+Underfull \hbox (badness 10000) detected at line 105
+[]
+
+@hbox(113.81102+0.0)x433.62
+.@pdfrefximage(113.81102+0.0)x238.29182
+
+ </home/hindle1/src/marsyas/doc/images/implicit-patching.png (PNG copy)>
+Underfull \hbox (badness 10000) detected at line 117
+[]
+
+@hbox(142.26378+0.0)x433.62
+.@pdfrefximage(142.26378+0.0)x247.50995
+
+[47] </home/hindle1/src/marsyas/doc/images/neural-explicit.png (PNG copy)>
+Underfull \hbox (badness 10000) detected at line 126
+[]
+
+@hbox(142.26378+0.0)x433.62
+.@pdfrefximage(142.26378+0.0)x199.1693
+
+ </home/hindle1/src/marsyas/doc/images/neural-implicit.png (PNG copy)>
+Underfull \hbox (badness 10000) detected at line 138
+[]
+
+@hbox(142.26378+0.0)x433.62
+.@pdfrefximage(142.26378+0.0)x138.09319
+
+ </home/hindle1/src/marsyas/doc/images/implicit-filter-bank.png (PNG copy)>
+Overfull \hbox (29.16577pt too wide) detected at line 145
+[]|
+
+@hbox(113.81102+0.0)x433.62
+.@pdfrefximage(113.81102+0.0)x462.78577
+.@rule(*+*)x5.0
+
+[48] </home/hindle1/src/marsyas/doc/images/feature-extraction.png (PNG copy)>
+Underfull \hbox (badness 10000) detected at line 154
+[]
+
+@hbox(142.26378+0.0)x433.62
+.@pdfrefximage(142.26378+0.0)x392.26707
+
+[49] </home/hindle1/src/marsyas/doc/images/composite-series.png (PNG copy)>
+Underfull \hbox (badness 10000) detected at line 199
+[]
+
+@hbox(95.35625+0.0)x433.62
+.@pdfrefximage(95.35625+0.0)x401.5
+
+ </home/hindle1/src/marsyas/doc/images/composite-parallel.png (PNG copy)>
+Underfull \hbox (badness 10000) detected at line 230
+[]
+
+@hbox(134.5025+0.0)x433.62
+.@pdfrefximage(134.5025+0.0)x281.05
+
+[50] [51] </home/hindle1/src/marsyas/doc/images/composite-fanout.png (PNG copy)
+>
+Underfull \hbox (badness 10000) detected at line 288
+[]
+
+@hbox(129.48375+0.0)x433.62
+.@pdfrefximage(129.48375+0.0)x295.1025
+
+[52] </home/hindle1/src/marsyas/doc/images/composite-accumulator.png (PNG copy)
+>
+Underfull \hbox (badness 10000) detected at line 342
+[]
+
+@hbox(156.585+0.0)x433.62
+.@pdfrefximage(156.585+0.0)x337.26
+
+[53]
+Overfull \hbox (55.18257pt too wide) in paragraph at lines 408--408
+ []@texttt net->updctrl("Accumulator/acc/SoundFileSource/src/mrs_string/filenam
+e", sfName);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt n
+.@texttt e
+.@texttt t
+.etc.
+
+[54] [55]
+Overfull \hbox (72.42863pt too wide) in paragraph at lines 472--472
+ []@texttt ctrl_processedData = msys->getctrl("xxx/lastChildMsys1/mrs_realvec/p
+rocessedData");[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt c
+.@texttt t
+.@texttt r
+.etc.
+
+
+Overfull \hbox (239.14058pt too wide) in paragraph at lines 489--489
+ []@texttt ctrl_Z->linkTo(ctrl_W); //this control will be indirectly connected 
+to ctrl_X, altough its link target is ctrl_W[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt c
+.@texttt t
+.@texttt r
+.etc.
+
+
+Overfull \hbox (72.42863pt too wide) in paragraph at lines 505--505
+ []@texttt ctrl_processedData = msys->getctrl("xxx/lastChildMsys2/mrs_realvec/p
+rocessedData");[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt c
+.@texttt t
+.@texttt r
+.etc.
+
+[56]
+Overfull \hbox (72.42863pt too wide) in paragraph at lines 527--527
+ []@texttt ctrl_processedData = msys->getctrl("xxx/lastChildMsys2/mrs_realvec/p
+rocessedData");[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt c
+.@texttt t
+.@texttt r
+.etc.
+
+
+Overfull \hbox (233.39189pt too wide) in paragraph at lines 535--535
+ []@texttt ctrl_Z->linkTo(ctrl_W); //we must remind that this one was originall
+y connected to W and not directly to X! :-\[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt c
+.@texttt t
+.@texttt r
+.etc.
+
+
+Overfull \hbox (72.42863pt too wide) in paragraph at lines 544--544
+ []@texttt ctrl_processedData = msys->getctrl("xxx/lastChildMsys2/mrs_realvec/p
+rocessedData");[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt c
+.@texttt t
+.@texttt r
+.etc.
+
+[57] [58] [59]
+@Figurefloatno=@count56
+ </home/hindle1/src/marsyas/doc/images/scheduler-class.png>
+Overfull \hbox (157.29353pt too wide) detected at line 669
+[]|
+
+@hbox(381.18883+0.0)x433.62
+.@pdfrefximage(381.18883+0.0)x590.91353
+.@rule(*+*)x5.0
+
+[60]
+Overfull \hbox (33.11597pt too wide) in paragraph at lines 690--690
+ []@texttt void @textbf up-d-c-trl@texttt (TmTime t, Repeat rep, std::string cn
+ame, MarControlPtr control);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt v
+.@texttt o
+.@texttt i
+.etc.
+
+[61]
+Underfull \hbox (badness 4805) in paragraph at lines 739--748
+[]@textrm `@texttt EvEvent[]@textrm '[] sup-ports rep-e-ti-tion with-out hav-in
+g to cre-ate new events. The
+
+@hbox(7.60416+2.12917)x433.62, glue set 3.63766
+.@hbox(0.0+0.0)x15.0
+.@textrm `
+.@texttt E
+.@texttt v
+.@texttt E
+.etc.
+
+[62]
+Underfull \hbox (badness 3302) in paragraph at lines 771--780
+[]@textrm Rather than in-stan-ti-at-ing timers and adding them to the sched-ule
+r us-ing the
+
+@hbox(7.60416+2.12917)x433.62, glue set 3.21211
+.@hbox(0.0+0.0)x15.0
+.@kern -15.0
+.@textrm R
+.@textrm a
+.@textrm t
+.etc.
+
+) (/home/hindle1/src/marsyas/doc/system.texi Chapter 7 [63]
+Underfull \hbox (badness 10000) in paragraph at lines 18--28
+[]@textrm MarSystems are doc-u-mented in the source doc-u-men-ta-tion avail-abl
+e at
+
+@hbox(7.60416+2.12917)x433.62, glue set 6.63957
+.@hbox(0.0+0.0)x15.0
+.@kern -15.0
+.@textrm M
+.@textrm a
+.@textrm r
+.etc.
+
+
+Underfull \hbox (badness 5592) in paragraph at lines 18--28
+[][]@texttt http://marsyas.sness.net/docs/index.html[][][][]@textrm . Most MarS
+ys-tems are or-ga-nized
+
+@hbox(7.60416+2.43333)x433.62, glue set 3.82521
+.@pdfliteral{0.28 1 1 0.35 k}
+.@pdfstartlink(*+*)x* attr{/Border [0 0 0]} action user{/Subtype /Link /A << /S
+ /URI /URI (http://marsyas.sness.net/docs/inde@ETC.}
+.@texttt h
+.@texttt t
+.@texttt t
+.etc.
+
+[64] [65] [66] [67]) (/home/hindle1/src/marsyas/doc/scripting.texi Chapter 8
+[68]
+Overfull \hbox (141.24878pt too wide) in paragraph at lines 85--85
+[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(7.60416+2.43333)x574.86877
+..@texttt l
+..@texttt i
+..@texttt n
+..@texttt k
+..@texttt (
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+
+Overfull \hbox (101.00797pt too wide) in paragraph at lines 85--85
+[][] |
+
+@hbox(7.60416+1.52081)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(7.60416+1.52081)x534.62796
+..@texttt l
+..@texttt i
+..@texttt n
+..@texttt k
+..@texttt (
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+
+Overfull \hbox (55.01846pt too wide) in paragraph at lines 85--85
+[][] |
+
+@hbox(7.60416+1.52081)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(7.60416+1.52081)x488.63846
+..@texttt l
+..@texttt i
+..@texttt n
+..@texttt k
+..@texttt (
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+
+Overfull \hbox (158.49484pt too wide) in paragraph at lines 85--85
+[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(7.60416+2.43333)x592.11484
+..@texttt u
+..@texttt p
+..@texttt d
+..@texttt (
+..@texttt "
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+
+Overfull \hbox (164.24353pt too wide) in paragraph at lines 85--85
+[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(7.60416+2.43333)x597.86353
+..@texttt u
+..@texttt p
+..@texttt d
+..@texttt (
+..@texttt "
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+[69]
+Overfull \hbox (158.49484pt too wide) in paragraph at lines 85--85
+[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(7.60416+2.43333)x592.11484
+..@texttt u
+..@texttt p
+..@texttt d
+..@texttt (
+..@texttt "
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+
+Overfull \hbox (187.23828pt too wide) in paragraph at lines 85--85
+[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(7.60416+2.43333)x620.85828
+..@texttt u
+..@texttt p
+..@texttt d
+..@texttt (
+..@texttt "
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+
+Overfull \hbox (43.52109pt too wide) in paragraph at lines 85--85
+[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(7.60416+2.43333)x477.14108
+..@texttt u
+..@texttt p
+..@texttt d
+..@texttt (
+..@texttt "
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+
+Overfull \hbox (141.24878pt too wide) in paragraph at lines 85--85
+[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(7.60416+2.43333)x574.86877
+..@texttt u
+..@texttt p
+..@texttt d
+..@texttt (
+..@texttt "
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+
+Overfull \hbox (101.00797pt too wide) in paragraph at lines 85--85
+[][][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(0.0+0.0)x45.9895
+.@hbox(7.60416+2.43333)x488.63846
+..@texttt c
+..@texttt u
+..@texttt r
+..@texttt r
+..@texttt e
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.etc.
+
+
+Overfull \hbox (175.7409pt too wide) in paragraph at lines 85--85
+[][][][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(0.0+0.0)x45.9895
+.@hbox(0.0+0.0)x45.9895
+.@hbox(7.60416+2.43333)x517.3819
+..@texttt p
+..@texttt r
+..@texttt i
+..@texttt n
+..@texttt t
+..etc.
+.@penalty 10000
+.etc.
+
+) (/home/hindle1/src/marsyas/doc/writing.texi Chapter 9 [70]
+Overfull \hbox (20.52634pt too wide) in paragraph at lines 58--58
+[][] |
+
+@hbox(6.69167+0.0)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(6.69167+0.0)x454.14633
+..@texttt m
+..@texttt a
+..@texttt c
+..@texttt x
+..@texttt :
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+(/home/hindle1/src/marsyas/doc/source-doc/Makefile.linux.texinfo [71])
+(/home/hindle1/src/marsyas/doc/source-doc/Makefile.osx.texinfo
+Overfull \hbox (55.18257pt too wide) in paragraph at lines 13--13
+ []              @texttt -framework CoreAudio -framework CoreMidi -framework Co
+reFoundation[] |
+
+@hbox(6.69167+0.0)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+)
+Underfull \hbox (badness 3792) in paragraph at lines 101--103
+ @textrm %marsyas-root%@texttt \@textrm src@texttt \@textrm marsyas, %marsyas-r
+oot%@texttt \@textrm src@texttt \@textrm marsyasqt@texttt \@textrm , %marsyas-r
+oot%
+
+@hbox(8.2125+2.12917)x433.62, glue set 3.36128
+.@glue(@leftskip) 21.68121
+.@textrm %
+.@textrm m
+.@textrm a
+.@textrm r
+.etc.
+
+
+Underfull \hbox (badness 6608) in paragraph at lines 106--121
+ []@textrm In project properties-@texttt >@textrm linker: General-@texttt > @te
+xtrm Ig-nore im-port libary: No Link
+
+@hbox(7.60416+2.12917)x433.62, glue set 4.04614
+.@glue(@leftskip) 21.68121
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm I
+.@textrm n
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--121
+ @textrm Li-brary De-pen-den-cies: Yes Input-@texttt > @textrm Ad-di-tional De-
+pen-den-cies: add
+
+@hbox(7.60416+2.12917)x433.62, glue set 6.54414
+.@glue(@leftskip) 21.68121
+.@textrm L
+.@textrm i
+.@discretionary
+..@textrm -
+.@textrm b
+.etc.
+
+
+Overfull \hbox (63.1036pt too wide) in paragraph at lines 106--121
+ @texttt c:\marsyas\build\lib\Release\marsyas.lib c:\marsyas\build\lib\Release\
+marsyasqt.lib|
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 21.68121
+.@texttt c
+.@texttt :
+.@texttt \
+.@texttt m
+.etc.
+
+
+Overfull \hbox (8.71933pt too wide) in paragraph at lines 106--121
+ @texttt "C:\Program Files\Microsoft DirectX SDK (November 2008)\Lib\x86\dsound
+.lib"|
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 21.68121
+.@texttt "
+.@texttt C
+.@texttt :
+.@texttt \
+.etc.
+
+[72] (/home/hindle1/src/marsyas/doc/source-doc/helloworld.cpp.texinfo
+Overfull \hbox (44.61334pt too wide) in paragraph at lines 17--17
+ []       @texttt playbacknet->@textbf updctrl@texttt ("SoundFileSource/src/mrs
+_string/filename"[], sfName);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (123.5896pt too wide) in paragraph at lines 21--21
+ []       @textbf while @texttt ( playbacknet->@textbf getctrl@texttt ("SoundFi
+leSource/src/mrs_bool/notEmpty"[])->to<mrs_bool>() )[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[73]) (/home/hindle1/src/marsyas/doc/source-doc/controls.cpp.texinfo [74]
+Overfull \hbox (253.61914pt too wide) in paragraph at lines 18--18
+ []       @texttt mrs_natural nChannels = playbacknet->@textbf getctrl@texttt (
+"SoundFileSource/src/mrs_natural/nChannels"[])->to<mrs_natural>();[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (161.64014pt too wide) in paragraph at lines 19--19
+ []       @texttt mrs_real srate = playbacknet->@textbf getctrl@texttt ("SoundF
+ileSource/src/mrs_real/israte"[])->to<mrs_real>();[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 20--20
+ []       @texttt mrs_natural startPosition = (mrs_natural) (start * srate * nC
+hannels);[] |
+
+@hbox(7.60416+1.52081)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (44.61334pt too wide) in paragraph at lines 22--22
+ []       @texttt playbacknet->@textbf updctrl@texttt ("SoundFileSource/src/mrs
+_string/filename"[], sfName);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (61.8594pt too wide) in paragraph at lines 27--27
+ []       @texttt playbacknet->@textbf updctrl@texttt ("SoundFileSource/src/mrs
+_natural/pos"[], startPosition);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (123.5896pt too wide) in paragraph at lines 29--29
+ []       @textbf while @texttt ( playbacknet->@textbf getctrl@texttt ("SoundFi
+leSource/src/mrs_bool/notEmpty"[])->to<mrs_bool>() )[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[75]) (/home/hindle1/src/marsyas/doc/source-doc/writefile.cpp.texinfo
+Overfull \hbox (83.34879pt too wide) in paragraph at lines 20--20
+ []       @textbf while @texttt ( pnet->@textbf getctrl@texttt ("SoundFileSourc
+e/src/mrs_bool/notEmpty"[])->to<mrs_bool>() )[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[76]) (/home/hindle1/src/marsyas/doc/source-doc/gettingdata.cpp.texinfo
+Overfull \hbox (83.34879pt too wide) in paragraph at lines 17--17
+ []       @textbf while @texttt ( pnet->@textbf getctrl@texttt ("SoundFileSourc
+e/src/mrs_bool/notEmpty"[])->to<mrs_bool>() )[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (121.39932pt too wide) in paragraph at lines 22--22
+ []                  @texttt pnet->@textbf getctrl@texttt ("Spectrum/spk/mrs_re
+alvec/processedData"[])->to<mrs_realvec>();[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (44.95258pt too wide) in paragraph at lines 25--25
+ []              @textttsl // if we need to get the Spec-trum and mod-ify it, h
+ere is the way[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (33.4552pt too wide) in paragraph at lines 26--26
+ []              @textttsl // to do it.  No-tice that we must open a new scope 
+us-ing curly[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 27--27
+ []              @textttsl // brack-ets so that Mar-Con-tro-lAc-ces-sor is au-t
+o-mat-i-cally de-|
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[77]
+Overfull \hbox (55.97395pt too wide) in paragraph at lines 31--31
+ []                     @textbf acc@texttt (pnet->@textbf getctrl@texttt ("Spec
+trum/spk/mrs_realvec/processedData"[]));[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (33.4552pt too wide) in paragraph at lines 35--35
+ []                     @textttsl // we can now write to pro-cessed-Data with-o
+ut wor-ries of[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 38--38
+ []                     @texttt cout << "Modified Spectrum = "[] << processedDa
+ta2 << endl;[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+) (/home/hindle1/src/marsyas/doc/source-doc/commandOptions.cpp.texinfo [78]
+Overfull \hbox (141.41289pt too wide) in paragraph at lines 22--22
+ []       @texttt cerr << "where file1, ..., fileN are sound files in a MARSYAS
+ supported format"[] << endl;[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (141.41289pt too wide) in paragraph at lines 35--35
+ []       @texttt cerr << "where file1, ..., fileN are sound files in a Marsyas
+ supported format"[] << endl;[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 37--37
+ []       @texttt cerr << "-u --usage               : display short usage info"
+[] << endl;[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 38--38
+ []       @texttt cerr << "-h --help               : display this information "
+[] << endl;[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (60.93126pt too wide) in paragraph at lines 39--39
+ []       @texttt cerr << "-n --natural               : sets a `natural' variab
+le "[] << endl;[] |
+
+@hbox(6.69167+1.52081)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (26.43913pt too wide) in paragraph at lines 40--40
+ []       @texttt cerr << "-r --real               : sets a `real' variable "[]
+ << endl;[] |
+
+@hbox(6.69167+1.52081)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (49.43388pt too wide) in paragraph at lines 41--41
+ []       @texttt cerr << "-s --string               : sets a `string' variable
+ "[] << endl;[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[79]) [80]
+Overfull \hbox (20.52634pt too wide) in paragraph at lines 251--251
+[][] |
+
+@hbox(6.69167+0.0)x433.62
+.@hbox(0.0+0.0)x0.0
+.@hbox(6.69167+0.0)x454.14633
+..@texttt m
+..@texttt a
+..@texttt c
+..@texttt x
+..@texttt :
+..etc.
+.@penalty 10000
+.@glue(@parfillskip) 0.0 plus 1.0fil
+.@glue(@rightskip) 0.0
+.etc.
+
+[81]
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 306--306
+ []@texttt filenamePtr = mrsWrapper->getctrl("SoundFileSource/src/mrs_string/fi
+lename");[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt f
+.@texttt i
+.@texttt l
+.etc.
+
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 307--307
+ []@texttt positionPtr = mrsWrapper->getctrl("SoundFileSource/src/mrs_natural/p
+os");[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt p
+.@texttt o
+.@texttt s
+.etc.
+
+(/home/hindle1/src/marsyas/doc/source-doc/tutorial.pro.texinfo [82]
+Overfull \hbox (49.43388pt too wide) in paragraph at lines 29--29
+ []@texttt macx:LIBS += -framework CoreAudio -framework CoreMidi -framework Cor
+eFoundation[] |
+
+@hbox(6.69167+0.0)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt m
+.@texttt a
+.@texttt c
+.etc.
+
+) (/home/hindle1/src/marsyas/doc/source-doc/main.cpp.texinfo
+Overfull \hbox (39.20389pt too wide) in paragraph at lines 18--18
+ []@textttsl ** Foun-da-tion, Inc., 59 Tem-ple Place - Suite 330, Boston, MA 02
+111-1307, USA.[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@textttsl *
+.@textttsl *
+.@penalty 10000
+.etc.
+
+[83]) (/home/hindle1/src/marsyas/doc/source-doc/mainwindow.h.texinfo
+Overfull \hbox (39.20389pt too wide) in paragraph at lines 18--18
+ []@textttsl ** Foun-da-tion, Inc., 59 Tem-ple Place - Suite 330, Boston, MA 02
+111-1307, USA.[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@textttsl *
+.@textttsl *
+.@penalty 10000
+.etc.
+
+[84]) (/home/hindle1/src/marsyas/doc/source-doc/mainwindow.cpp.texinfo
+Overfull \hbox (39.20389pt too wide) in paragraph at lines 18--18
+ []@textttsl ** Foun-da-tion, Inc., 59 Tem-ple Place - Suite 330, Boston, MA 02
+111-1307, USA.[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@textttsl *
+.@textttsl *
+.@penalty 10000
+.etc.
+
+[85]
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 59--59
+ []@textttsl //              Qt -@texttt > @textttsl Marsyas (get-Back-end-Po-s
+i-tion) -@texttt > @textttsl Qt (changed-Back-end-|
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@textttsl /
+.@textttsl /
+.@penalty 10000
+.etc.
+
+) (/home/hindle1/src/marsyas/doc/source-doc/backend.h.texinfo [86]
+Overfull \hbox (39.20389pt too wide) in paragraph at lines 18--18
+ []@textttsl ** Foun-da-tion, Inc., 59 Tem-ple Place - Suite 330, Boston, MA 02
+111-1307, USA.[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@textttsl *
+.@textttsl *
+.@penalty 10000
+.etc.
+
+[87]) (/home/hindle1/src/marsyas/doc/source-doc/backend.cpp.texinfo
+Overfull \hbox (39.20389pt too wide) in paragraph at lines 18--18
+ []@textttsl ** Foun-da-tion, Inc., 59 Tem-ple Place - Suite 330, Boston, MA 02
+111-1307, USA.[] |
+
+@hbox(6.69167+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@textttsl *
+.@textttsl *
+.@penalty 10000
+.etc.
+
+[88]
+Overfull \hbox (37.93651pt too wide) in paragraph at lines 38--38
+ []@textttsl // make these pomrs_naturalers so that we can mrs_naturalerface wi
+th the net-|
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@textttsl /
+.@textttsl /
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (69.66113pt too wide) in paragraph at lines 40--40
+ []       @texttt filenamePtr = mrsWrapper->@textbf getctrl@texttt ("SoundFileS
+ource/src/mrs_string/filename"[]);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (46.66638pt too wide) in paragraph at lines 42--42
+ []       @texttt positionPtr = mrsWrapper->@textbf getctrl@texttt ("SoundFileS
+ource/src/mrs_natural/pos"[]);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (18.95988pt too wide) in paragraph at lines 46--46
+ []       @textbf con-nect@texttt (timer, @textbf SIG-NAL@texttt (@textbf timeo
+ut@texttt ()), @textbf this@texttt , @textbf SLOT@texttt (@textbf getBackendPos
+ition@texttt ()));[] |
+
+@hbox(7.60416+2.12917)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (14.94176pt too wide) in paragraph at lines 70--70
+ []       @texttt mrs_natural newPos = (mrs_natural) positionPtr->to<mrs_natura
+l>();[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+) [89] [90]
+Underfull \hbox (badness 3547) in paragraph at lines 470--472
+[]@textrm To ex-port data from Marsyas into MAT-LAB, sim-ply use the macro @tex
+ttt MATLAB_
+
+@hbox(7.60416+2.12917)x433.62, glue set 3.2894
+.@hbox(0.0+0.0)x15.0
+.@kern -15.0
+.@textrm T
+.@kern-0.91252
+.@textrm o
+.etc.
+
+[91]
+Underfull \hbox (badness 3312) in paragraph at lines 534--536
+[]@textrm To im-port data into Marsyas from MAT-LAB, sim-ply use the macro @tex
+ttt MATLAB_
+
+@hbox(7.60416+2.12917)x433.62, glue set 3.21365
+.@hbox(0.0+0.0)x15.0
+.@kern -15.0
+.@textrm T
+.@kern-0.91252
+.@textrm o
+.etc.
+
+
+Underfull \hbox (badness 4832) in paragraph at lines 537--541
+@textrm float, dou-ble, mrs[]real, mrs[]natural, mrs[]complex, std::vector, Mar
+syas::realvec,
+
+@hbox(7.60416+2.12917)x433.62, glue set 3.64618
+.@textrm ^^M (ligature fl)
+.@textrm o
+.@textrm a
+.@textrm t
+.@textrm ,
+.etc.
+
+[92]
+Overfull \hbox (43.6852pt too wide) in paragraph at lines 561--561
+ []@texttt // This is just an example of what can be done with the Marsyas MATL
+AB engine.[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt /
+.@texttt /
+.@penalty 10000
+.etc.
+
+[93]
+Underfull \hbox (badness 7522) in paragraph at lines 614--616
+[]@textrm To com-bine Marsyas and OCaml, see the MarsyasO-Caml doc-u-men-ta-tio
+n at
+
+@hbox(7.60416+2.12917)x433.62, glue set 4.2234
+.@hbox(0.0+0.0)x15.0
+.@kern -15.0
+.@textrm T
+.@kern-0.91252
+.@textrm o
+.etc.
+
+
+Overfull \hbox (25.01773pt too wide) in paragraph at lines 628--629
+ []@textrm Latest re-vi-sion: @texttt $ svn co https://vamp.svn.sourceforge.net
+/svnroot/vamp/vamp-|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 43.36243
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm L
+.@textrm a
+.@textrm t
+.etc.
+
+
+Overfull \hbox (17.59595pt too wide) in paragraph at lines 629--630
+ []@textrm Distribution: [][]@texttt http://sourceforge.net/projects/vamp/files
+/vamp-plugin-sdk/[][][]@textrm . |
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 43.36243
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm D
+.@textrm i
+.@textrm s
+.etc.
+
+
+Overfull \hbox (25.01773pt too wide) in paragraph at lines 636--637
+ []@textrm Latest re-vi-sion: @texttt $ svn co https://vamp.svn.sourceforge.net
+/svnroot/vamp/vamp-|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 43.36243
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm L
+.@textrm a
+.@textrm t
+.etc.
+
+
+Overfull \hbox (123.50664pt too wide) in paragraph at lines 637--638
+ []@textrm Distribution (source @texttt + @textrm bi-na-ries): [][]@texttt http
+://sourceforge.net/projects/vamp/files/vamp-plugin-tester/[][][]@textrm . |
+
+@hbox(8.2125+2.73749)x433.62, glue set - 1.0
+.@glue(@leftskip) 43.36243
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm D
+.@textrm i
+.@textrm s
+.etc.
+
+[94]
+Underfull \hbox (badness 10000) in paragraph at lines 692--694
+ []@textrm (Alternatively sim-ply down-load pre-compiled plu-gin for Linux i686
+ at
+
+@hbox(8.2125+2.73749)x433.62, glue set 5.33997
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@textrm (
+.@textrm A
+.@textrm l
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 702--704
+ []@textrm (vamp plu-gin com-piled as shared dy-namic li-brary at @texttt marsy
+as_
+
+@hbox(8.2125+2.73749)x433.62, glue set 6.12791
+.@glue(@leftskip) 43.36243
+.@hbox(0.0+0.0)x0.0
+.@textrm (
+.@textrm v
+.@kern-0.60834
+.etc.
+
+[95]
+Underfull \hbox (badness 10000) in paragraph at lines 726--728
+ []@textrm Run the plu-gin: @texttt $ vamp-simple-host [-s] pluginlibrary[.so]:
+plugin
+
+@hbox(7.60416+2.43333)x433.62, glue set 4.7145
+.@glue(@leftskip) 43.36243
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm R
+.@textrm u
+.@textrm n
+.etc.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 749--750
+ []@textrm Go to @texttt Configuration Properties -> Linker -> Command Line ->
+
+@hbox(7.48248+2.43333)x433.62, glue set 13.0098
+.@glue(@leftskip) 65.04364
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm G
+.@textrm o
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+
+Underfull \hbox (badness 2781) in paragraph at lines 758--760
+ []@textrm Copy @texttt mvamp.dll[] @textrm from @texttt marsyas_path\build\bin
+\Release\[] @textrm to @texttt C:\Program
+
+@hbox(7.60416+2.43333)x433.62, glue set 3.03163
+.@glue(@leftskip) 43.36243
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm C
+.@textrm o
+.@textrm p
+.etc.
+
+
+Overfull \hbox (2.78339pt too wide) in paragraph at lines 775--777
+ []@textrm Run the plu-gin: @texttt $ vamp-simple-host.exe [-s] pluginlibrary[.
+dylib]:plugin|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 43.36243
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm R
+.@textrm u
+.@textrm n
+.etc.
+
+[96] [97] [98] [99]
+Overfull \hbox (27.70651pt too wide) in paragraph at lines 943--943
+ []  @textttsl // for-ward dec-la-ra-tion of MarSys-tem al-lows Sched-uler.getc
+trl(@texttt "@textttsl insamples@texttt "@textttsl )[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (67.51797pt too wide) in paragraph at lines 983--983
+ []@texttt TmSampleCount::@textbf TmSampleCount@texttt (MarSystem* ms) : @textb
+f TmTimer@texttt ("TmSampleCount"[],"Virtual"[])[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt T
+.@texttt m
+.@texttt S
+.etc.
+
+
+Overfull \hbox (41.55652pt too wide) in paragraph at lines 1000--1000
+ []    @textbf if @texttt (read_src_!=NULL) read_ctrl_=read_src_->@textbf getct
+rl@texttt ("mrs_natural/onSamples"[]);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (222.41315pt too wide) in paragraph at lines 1014--1014
+ []    @textbf re-turn @texttt (read_src_==NULL) ? 0 : @textbf time2samples@tex
+ttt (interval,read_src_->@textbf getctrl@texttt ("mrs_real/israte"[])->to<mrs_r
+eal>());[] |
+
+@hbox(7.60416+2.12917)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (57.58752pt too wide) in paragraph at lines 1021--1021
+ []        @textbf if @texttt (value.@textbf getType@texttt ()==tmcv_marsystem)
+ { @textbf se-tRead-C-trl@texttt (value.@textbf toMarSystem@texttt ()); }[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (115.2556pt too wide) in paragraph at lines 1025--1025
+ []        @textbf MR-SWARN@texttt ("TmSampleCount::updtimer(string,TmControlVa
+lue)  unsupported control"[]);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (121.00429pt too wide) in paragraph at lines 1027--1027
+ []        @textbf MR-SWARN@texttt ("TmSampleCount::updtimer(string,TmControlVa
+lue)  wrong type to "[]+cname);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[100] [101]
+Overfull \vbox (108.63316pt too high) has occurred while \output is active
+\vbox(643.2+4.0)x433.62
+.\glue(\topskip) 36.0
+.\vbox(0.0+719.83316)x433.62
+..\pdfdest name{fig:sch4} xyz
+..\write1{@xrdef{fig:sch4-pg}{\folio }}
+..\glue 3.0 plus 2.0 minus 1.0
+..\glue(\parskip) 0.0
+..\hbox(7.60416+2.43333)x433.62, glue set 257.80101fil
+...\glue(\leftskip) 28.90755
+...\hbox(0.0+0.0)x0.0
+...\textbf #
+...\textbf i
+...\textbf n
+...etc.
+..etc.
+.\mark{\gdef \thischaptername {Writing applications}\gdef \thischapternum {9\ET
+C.}
+
+
+[102]
+Underfull \hbox (badness 6625) in paragraph at lines 1072--1079
+[]@textrm The in-struc-tions for adding new timers to the fac-tory are con-tain
+ed in
+
+@hbox(7.60416+2.12917)x433.62, glue set 4.04825
+.@hbox(0.0+0.0)x15.0
+.@textrm T
+.@textrm h
+.@textrm e
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+[103]
+Overfull \hbox (99.65205pt too wide) in paragraph at lines 1133--1133
+ []    @textbf EvRam-pC-trl@texttt (MarSystem* m, std::string cname, double sta
+rt, double end, double rate);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (34.39316pt too wide) in paragraph at lines 1140--1140
+ []    @texttt void @textbf set@texttt (MarSystem* ms, std::string cname, doubl
+e s, double e, double r);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (99.65205pt too wide) in paragraph at lines 1181--1181
+ []    @textbf EvRam-pC-trl@texttt (MarSystem* m, std::string cname, double sta
+rt, double end, double rate);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (34.39316pt too wide) in paragraph at lines 1188--1188
+ []    @texttt void @textbf set@texttt (MarSystem* ms, std::string cname, doubl
+e s, double e, double r);[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[104] [105] [106]
+Overfull \hbox (307.13762pt too wide) in paragraph at lines 1226--1226
+ []@texttt EvRampCtrl::@textbf EvRampCtrl@texttt (MarSystem* m, std::string cna
+me, double start, double end, double rate) : @textbf EvEvent@texttt ("EvRampCtr
+l"[],"rc"[])[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt E
+.@texttt v
+.@texttt R
+.etc.
+
+
+Overfull \hbox (68.88528pt too wide) in paragraph at lines 1241--1241
+ []@texttt EvRampCtrl::@textbf set@texttt (MarSystem* ms, string cname, double 
+start, double end, double rate)[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@texttt E
+.@texttt v
+.@texttt R
+.etc.
+
+[107] [108]
+Overfull \hbox (79.6375pt too wide) in paragraph at lines 1336--1336
+ []    @textbf Ex@texttt ("Fanin/fanin/SineSource/src1/mrs_real/frequency << 12
+0. + 3000. * R.rand(), \[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 1337--1337
+ []        @texttt Fanin/fanin/SineSource/src2/mrs_real/frequency << 120. + 800
+. * R.rand(),"[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 1339--1339
+ []        @texttt ' src2='+Fanin/fanin/SineSource/src2/mrs_real/frequency+'[]\
+n[]'>>Stream.op"[]),[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (96.69077pt too wide) in paragraph at lines 1344--1344
+ []        @textttsl // First line to Ex will be the init ex-pres-sion, run onc
+e, when event is posted[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (85.19339pt too wide) in paragraph at lines 1347--1347
+ []       @textttsl // Sec-ond line to Ex is the ex-pres-sion, re-peated each t
+ime the event is posted[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[109]
+Overfull \vbox (95.43317pt too high) has occurred while \output is active
+\vbox(643.2+4.0)x433.62
+.\glue(\topskip) 36.0
+.\vbox(0.0+706.63316)x433.62
+..\pdfdest name{figsch10} xyz
+..\write1{@xrdef{figsch10-pg}{\folio }}
+..\glue 3.0 plus 2.0 minus 1.0
+..\glue(\parskip) 0.0
+..\hbox(7.60416+2.12914)x433.62, glue set 303.79051fil
+...\glue(\leftskip) 28.90755
+...\hbox(0.0+0.0)x0.0
+...\textbf #
+...\textbf i
+...\textbf n
+...etc.
+..etc.
+.\mark{\gdef \thischaptername {Writing applications}\gdef \thischapternum {9\ET
+C.}
+
+
+[110]
+Underfull \hbox (badness 2213) in paragraph at lines 1491--1492
+ []@textrm Type co-er-cion also af-fects func-tion pa-ram-e-ters. For in-stance
+, the func-tion
+
+@hbox(7.60416+2.12917)x433.62, glue set 2.80916
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@textrm T
+.@kern-0.30418
+.@textrm y
+.etc.
+
+[111] [112] [113] [114] [115] [116] [117] [118]
+Overfull \hbox (152.62003pt too wide) in paragraph at lines 1928--1928
+ []    @textbf Ex-Fun[]StrSub@texttt () : @textbf ExFun@texttt ("mrs_string"[],
+"String.sub(mrs_string,mrs_natural,mrs_natural"[],@textbf true@texttt ) { }[] |
+
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[119]
+Overfull \hbox (78.17732pt too wide) in paragraph at lines 1982--1982
+ []                                 @texttt "String.sub(mrs_string,mrs_natural,
+mrs_natural)"[]));[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[120]
+Overfull \hbox (79.6375pt too wide) in paragraph at lines 2084--2084
+ []    @textbf Ex@texttt ("Fanin/fanin/SineSource/src1/mrs_real/frequency << 12
+0. + 3000. * R.rand(), \[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 2085--2085
+ []        @texttt Fanin/fanin/SineSource/src2/mrs_real/frequency << 120. + 800
+. * R.rand(),"[][] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (66.67995pt too wide) in paragraph at lines 2087--2087
+ []        @texttt ' src2='+Fanin/fanin/SineSource/src2/mrs_real/frequency+'[]\
+n[]'>>Stream.op"[]),[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (96.69077pt too wide) in paragraph at lines 2092--2092
+ []        @textttsl // First line to Ex will be the init ex-pres-sion, run onc
+e, when event is posted[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (85.19339pt too wide) in paragraph at lines 2095--2095
+ []       @textttsl // Sec-ond line to Ex is the ex-pres-sion, re-peated each t
+ime the event is posted[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+
+Overfull \hbox (39.39668pt too wide) in paragraph at lines 2137--2137
+ []      @textbf Ex@texttt ("tmr<<Timer.cur"[],"tmr.prefix + ' ' + tmr.time + '
+[]\n[]' >> Stream.op"[]),[] |
+
+@hbox(7.60416+2.43333)x433.62
+.@glue(@leftskip) 28.90755
+.@hbox(0.0+0.0)x0.0
+.@penalty 10000
+.@glue 5.74869
+.@penalty 10000
+.etc.
+
+[121] [122]
+Overfull \vbox (137.53316pt too high) has occurred while \output is active
+\vbox(643.2+4.0)x433.62, glue set - 1.0
+.\glue(\topskip) 26.87502
+.\vbox(9.12498+2.55498)x433.62
+..\hbox(9.12498+2.55498)x433.62, glue set 181.83966fil
+...\hbox(0.0+0.0)x0.0
+...\ssecrm 9
+...\ssecrm .
+...\ssecrm 6
+...\ssecrm .
+...etc.
+.\kern 4.5
+.\penalty 10000
+.\glue -3.0 plus -2.0 minus -1.0
+.etc.
+
+
+[123]) (/home/hindle1/src/marsyas/doc/programming.texi Chapter 10 [124]
+[125] [126] [127]) (Missing Docs) [128] (./marsyas-user.vrs) (The Index)
+[129] (./marsyas-user.cps) [130] ) 
+Here is how much of TeX's memory you used:
+ 2817 strings out of 497114
+ 41269 string characters out of 3206991
+ 78473 words of memory out of 3000000
+ 3514 multiletter control sequences out of 15000+200000
+ 32127 words of font info for 112 fonts, out of 3000000 for 9000
+ 51 hyphenation exceptions out of 8191
+ 19i,5n,19p,1211b,786s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmb10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl9.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsltt10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/la
+txfont/lcircle1.pfb>
+Output written on marsyas-user.pdf (137 pages, 737441 bytes).
+PDF statistics:
+ 1840 PDF objects out of 2073 (max. 8388607)
+ 1647 compressed objects within 17 object streams
+ 306 named destinations out of 1000 (max. 500000)
+ 1674 words of extra memory for PDF output out of 10000 (max. 10000000)
+

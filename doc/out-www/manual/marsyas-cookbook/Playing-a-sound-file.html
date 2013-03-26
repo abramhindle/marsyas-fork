@@ -1,0 +1,216 @@
+<html lang="en">
+<head>
+<title>Playing a sound file - Marsyas Cookbook</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas Cookbook">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="index.html#Top" title="Top">
+<link rel="next" href="Read-in-and-write-out-a-soundfile.html#Read-in-and-write-out-a-soundfile" title="Read in and write out a soundfile">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Playing-a-sound-file"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Read-in-and-write-out-a-soundfile.html#Read-in-and-write-out-a-soundfile">Read in and write out a soundfile</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="index.html#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">1 Playing a sound file</h2>
+
+<h4 class="subheading">Problem:</h4>
+
+<p>You want to play an audio file using Marsyas
+
+<h4 class="subheading">Solution</h4>
+
+<p>Put a SoundFileSoure and a AudioSink inside of a Series object.
+
+<h4 class="subheading">Discussion</h4>
+
+<p>To do this, you just need to put a SoundFileSoure and a AudioSink
+inside of a Series object.
+
+   <p>You then will set the filename of the SoundFileSource with:
+
+<pre class="example">        playbacknet-&gt;updctrl("SoundFileSource/src/mrs_string/filename",inAudioFileName);
+</pre>
+   <p>And initialize the audio:
+
+<pre class="example">        playbacknet-&gt;updctrl("AudioSink/dest/mrs_bool/initAudio", true);
+</pre>
+   <p>You then just tick the network until all the frames have finished
+playing:
+
+<pre class="example">     while (playbacknet-&gt;getctrl("SoundFileSource/src/mrs_bool/hasData")-&gt;isTrue())	{
+       playbacknet-&gt;tick();
+     }
+</pre>
+   <p>The network will look like:
+
+<pre class="example">     - Series
+        - SoundFileSource
+        - AudioSink
+</pre>
+   <p>The code will look like:
+
+<pre class="example">     MarSystem* playbacknet = mng.create("Series", "playbacknet");
+     playbacknet-&gt;addMarSystem(mng.create("SoundFileSource", "src"));
+     playbacknet-&gt;addMarSystem(mng.create("Gain", "gt"));
+     playbacknet-&gt;addMarSystem(mng.create("AudioSink", "dest"));
+     
+     // Set the SoundFileName
+     playbacknet-&gt;updctrl("SoundFileSource/src/mrs_string/filename",inAudioFileName);
+     
+     // Turn on the audio output
+     playbacknet-&gt;updctrl("AudioSink/dest/mrs_bool/initAudio", true);
+     
+     while (playbacknet-&gt;getctrl("SoundFileSource/src/mrs_bool/hasData")-&gt;isTrue())	{
+        playbacknet-&gt;tick();
+     }
+</pre>
+   </body></html>
+

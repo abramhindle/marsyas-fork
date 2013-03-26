@@ -1,0 +1,346 @@
+<html lang="en">
+<head>
+<title>Writing a new Timer - Marsyas User Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas User Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Using-and-Extending-the-Scheduler.html#Using-and-Extending-the-Scheduler" title="Using and Extending the Scheduler">
+<link rel="prev" href="Using-the-Scheduler.html#Using-the-Scheduler" title="Using the Scheduler">
+<link rel="next" href="Writing-a-new-Event.html#Writing-a-new-Event" title="Writing a new Event">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Writing-a-new-Timer"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Writing-a-new-Event.html#Writing-a-new-Event">Writing a new Event</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Using-the-Scheduler.html#Using-the-Scheduler">Using the Scheduler</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Using-and-Extending-the-Scheduler.html#Using-and-Extending-the-Scheduler">Using and Extending the Scheduler</a>
+<hr>
+</div>
+
+<h4 class="subsection">9.6.2 Writing a new Timer</h4>
+
+<p>Timers control the scheduling of events with respect to some control rate. When
+writing new timers we don't want to have to worry about this scheduling
+activity. Instead we wish to define new control rates. No problem. All we have
+to do is inherit from the TmTimer class. For lack of a more creative idea this
+section will explain a slightly modified TmSampleCount timer.
+
+   <p>When creating new timers we first create a class that inherits from TmTimer. 
+This class is placed in the src/marsyas directory and added to the build
+system. Our example, requires a constructor that takes a MarSystem to read the
+time from. Our timer will read the "mrs_natural/onSamples" control to find out
+how long the interval of time is, in samples, between successive ticks. This
+will be used to advance our timer. On construction we call setReadCtrl which
+gets the control as a MarControlPtr for faster access than calling getctrl on
+each tick.
+
+   <p>Whenever the scheduler is ticked, it will tick each of the timers it controls. 
+These timers will call their <code>readTimerSrc()</code> method to advance their
+clocks. Our <code>readTimerSrc</code> method will read the onSamples control and
+return this value (elapsed time since last tick). Our timer is now operational.
+
+   <p>Timers may also require the definition of special time units. In the case of
+real time we may want to define what milliseconds or seconds mean with respect
+to sample count. To do this we must override the
+<code>mrs_natural intervalsize(string interval)</code> method. For our timer, we will
+simply call the static method <code>time2samples(string)</code> defined in
+<samp><span class="file">Conversions</span></samp> and pass it the string and the current sample rate. Now our
+timer supports time defined in samples, microseconds, milliseconds, seconds,
+minutes, and hours.
+
+   <div class="float">
+<a name="fig_003asch3"></a>
+<pre class="example">     <b>#ifndef</b> MARSYAS_TM_SAMPLE_COUNT_H
+     <b>#define</b> MARSYAS_TM_SAMPLE_COUNT_H
+     
+     <b>#include</b> <tt>"TmTimer.h"</tt>
+     <b>#include</b> <tt>"MarControlValue.h"</tt>
+     <b>#include</b> <tt>"MarSystem.h"</tt>
+     
+     <b>namespace</b> Marsyas
+     {
+       <i>// forward declaration of MarSystem allows Scheduler.getctrl("insamples")</i>
+       <i>// for scheduler count</i>
+       <b>class</b> MarSystem; <i>// forward declaration</i>
+     
+       <b>class</b> TmSampleCount : <b>public</b> TmTimer {
+       <b>protected</b>:
+         MarSystem* read_src_;
+         MarControlPtr read_ctrl_;
+     
+       <b>public</b>:
+         <i>// Constructors </i>
+         <b>TmSampleCount</b>(MarSystem*);
+         <b>TmSampleCount</b>(<b>const</b> TmSampleCount&amp; s);
+         <b>virtual</b> ~<b>TmSampleCount</b>();
+         TmTimer* <b>clone</b>();
+     
+         void <b>setReadCtrl</b>(MarSystem* ms);
+         mrs_natural <b>readTimeSrc</b>();
+         mrs_natural <b>intervalsize</b>(std::string interval);
+     
+         <b>virtual</b> void <b>updtimer</b>(std::string cname, TmControlValue value);
+     };
+     
+     }<i>//namespace Marsyas</i>
+     
+     <b>#endif</b>
+     
+</pre>
+   <p><strong class="float-caption">Figure 9.3: TmSampleCount header file example.</strong></p></div>
+
+   <div class="float">
+<a name="fig_003asch4"></a>
+<pre class="example">     <b>#include</b> <tt>"TmSampleCount.h"</tt>
+     <b>#include</b> <tt>"MarSystem.h"</tt>
+     <b>#include</b> <tt>"Scheduler.h"</tt>
+     
+     <b>using</b> <b>namespace</b> std;
+     <b>using</b> <b>namespace</b> Marsyas;
+     
+     TmSampleCount::<b>TmSampleCount</b>(MarSystem* ms) : <b>TmTimer</b>(<tt>"TmSampleCount"</tt>,<tt>"Virtual"</tt>)
+     {
+         <b>setReadCtrl</b>(ms);
+     }
+     TmSampleCount::<b>TmSampleCount</b>(<b>const</b> TmSampleCount&amp; s) : <b>TmTimer</b>(s)
+     {
+         <b>setReadCtrl</b>(s.read_src_);
+     }
+     TmSampleCount::~<b>TmSampleCount</b>(){ }
+     
+     TmTimer* TmSampleCount::<b>clone</b>()
+     {
+       <b>return</b> <b>new</b> <b>TmSampleCount</b>(*<b>this</b>);
+     }
+     void TmSampleCount::<b>setReadCtrl</b>(MarSystem* ms)
+     {
+         read_src_=ms;
+         <b>if</b> (read_src_!=NULL) read_ctrl_=read_src_-&gt;<b>getctrl</b>(<tt>"mrs_natural/onSamples"</tt>);
+     }
+     
+     mrs_natural TmSampleCount::<b>readTimeSrc</b>()
+     {
+         <b>if</b> (read_src_==NULL) {
+             <b>MRSWARN</b>(<tt>"TmSampleCount::readTimeSrc()  time source is NULL"</tt>);
+             <b>return</b> 0;
+         }
+         mrs_natural m = read_ctrl_-&gt;to&lt;mrs_natural&gt;();
+         <b>return</b> m;
+     }
+     mrs_natural TmSampleCount::<b>intervalsize</b>(string interval)
+     {
+         <b>return</b> (read_src_==NULL) ? 0 : <b>time2samples</b>(interval,read_src_-&gt;<b>getctrl</b>(<tt>"mrs_real/israte"</tt>)-&gt;to&lt;mrs_real&gt;());
+     }
+     void
+     TmSampleCount::<b>updtimer</b>(std::string cname, TmControlValue value)
+     {
+         bool type_error=<b>false</b>;
+         <b>if</b> (cname==<tt>"MarSystem/source"</tt>) {
+             <b>if</b> (value.<b>getType</b>()==tmcv_marsystem) { <b>setReadCtrl</b>(value.<b>toMarSystem</b>()); }
+             <b>else</b> type_error=<b>true</b>;
+         }
+         <b>else</b>
+             <b>MRSWARN</b>(<tt>"TmSampleCount::updtimer(string,TmControlValue)  unsupported control"</tt>);
+         <b>if</b> (type_error)
+             <b>MRSWARN</b>(<tt>"TmSampleCount::updtimer(string,TmControlValue)  wrong type to "</tt>+cname);
+     }
+</pre>
+   <p><strong class="float-caption">Figure 9.4: TmSampleCount C++ source file example.</strong></p></div>
+
+<h5 class="subsubsection">9.6.2.1 Updating timers at run-time</h5>
+
+<p>The TmTimer class also supports communication through the updtimer method. An
+example of this is shown in the TmSampleCount timer above. This
+is not necessary for the operation of our timer but we might want to support the
+changing of timer parameters at run-time through the updtimer interface. To do
+this we simply override the
+<code>void updtimer(std::string cname, TmControlValue value)</code> method. We can
+now parse the supplied timer control path and set the appropriate value.
+
+   <p>Timer control paths have the same format as MarSystem controls. For example, our
+timer could be accessed through:
+<div class="float">
+<a name="fig_003asch5"></a>
+<pre class="example">     marsys-&gt;<b>updtimer</b>(<tt>"TmSampleCount/Virtual/MarSystem/source"</tt>,marsys);
+</pre>
+   <p><strong class="float-caption">Figure 9.5: Setting timer parameters using the updtimer call.</strong></p></div>
+
+   <p>The TmControlValue defines the allowable values that may be passed to timers. 
+These values are limited to:
+<code>float, double, int, long, std::string, const char*, bool, MarSystem*</code>. 
+However, one could always modify the TmControlValue class to add additional
+types. Be careful of values clashing such as NULL pointers and the integer
+value 0.
+
+<h5 class="subsubsection">9.6.2.2 Timer Factory</h5>
+
+<p><a name="archtmrfac"></a>New timers can be added to the Timer Factory by modifying
+<samp><span class="file">TmTimerManager</span></samp>. Doing so allows the use of the addTimer method in
+<samp><span class="file">MarSystem</span></samp> by simply specifying the type/name of the timer as
+opposed to creating a new timer.
+
+   <div class="float">
+<a name="fig_003asch6"></a>
+<pre class="example">     net-&gt;<b>addTimer</b>(<tt>"TmSampleCount"</tt>,<tt>"counter"</tt>);
+</pre>
+   <p><strong class="float-caption">Figure 9.6: Adding a new timer to MarSystem net using the timer factory.</strong></p></div>
+
+   <p>The instructions for adding new timers to the factory are contained in
+<samp><span class="file">TmTimerManager</span></samp> and repeated here. Basically, a map is created
+from "TimerName"=&gt;TimerConstructorObject. This makes it possible to use
+a map for fast access to specific timers and it prevents having to
+instantiate each Timer type at startup. The constructor object simply
+wraps the new operator so that it constructs objects only when
+requested.
+
+     <ul>
+<li>Add the timer's header file to the top of <samp><span class="file">TmTimerManager.cpp</span></samp> as an #include. 
+<li>Underneath the includes, wrap the timer name in the macro <code>TimerCreateWrapper</code>. 
+<li>In the addTimers function wrap the timer name in the macro <code>registerTimer</code>. 
+</ul>
+
+   </body></html>
+

@@ -1,0 +1,206 @@
+<html lang="en">
+<head>
+<title>Code style - Marsyas Developer's Manual</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Marsyas Developer's Manual">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Contributing-to-Marsyas.html#Contributing-to-Marsyas" title="Contributing to Marsyas">
+<link rel="prev" href="Contributing-source-documentation.html#Contributing-source-documentation" title="Contributing source documentation">
+<link rel="next" href="Playing-in-the-mudbox.html#Playing-in-the-mudbox" title="Playing in the mudbox">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright 1998-2006 George Tzanetakis
+
+Permission is granted to make and distribute verbatim
+copies of this manual provided the copyright notice and
+this permission notice are preserved on all copies.
+
+Permission is granted to copy and distribute modified
+versions of this manual under the conditions for
+verbatim copying, provided also that the sections
+entitled "Copying" and "GNU General Public License"
+are included exactly as in the original, and provided
+that the entire resulting derived work is distributed
+under the terms of a permission notice identical to this
+one.
+
+Permission is granted to copy and distribute
+translations of this manual into another language,
+under the above conditions for modified versions,
+except that this permission notice may be stated in a
+translation approved by the Free Software Foundation.-->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+body {
+	font-family: Helvetica, sans-serif; font-weight: normal;
+ background-color: #fff;
+ margin: 10px;
+ line-height: 1.1em;
+}
+/* begin custom Marsyas css file.  Please leave "body" above this line,
+ * because otherwise this comment won't show up.  (?) */
+h3 { color: purple; }
+h4 { color: darkblue; }
+h5 { color: darkgreen; }
+hr { border: 0; color: green; background-color: green; }
+strong { color: red; }
+table.cartouche { color: red; }
+strong.float-caption {color:black;font-size:small;margin-top:0px;}
+h3.fn,span.fn
+{
+  margin-left: 1cm;
+  text-indent: -1cm;
+}
+
+a:link
+{
+  text-decoration: none
+}
+
+a:visited
+{
+  text-decoration: none
+}
+
+td.postheader
+{
+  font-family: sans-serif
+}
+
+tr.address
+{
+  font-family: sans-serif
+}
+
+table tr.odd {
+  background: #f0f0f0;
+}
+
+table tr.even {
+  background: #e4e4e4;
+}
+
+table.annotated th {
+  padding: 3px;
+  text-align: left
+}
+
+table.annotated td {
+  padding: 3px;
+}
+
+table tr pre
+{
+  padding-top: none;
+  padding-bottom: none;
+  padding-left: none;
+  padding-right: none;
+  border: none;
+  background: none
+}
+
+tr.qt-style
+{
+  background: #a2c511;
+}
+
+body pre
+{
+  padding: 0.2em;
+  border: #e7e7e7 1px solid;
+  background: #f1f1f1;
+}
+
+span.preprocessor, span.preprocessor a
+{
+  color: darkblue;
+}
+
+span.comment
+{
+  color: darkred;
+  font-style: italic
+}
+
+span.string,span.char
+{
+  color: darkgreen;
+}
+
+.subtitle
+{
+    font-size: 0.8em
+}
+
+.small-subtitle
+{
+    font-size: 0.65em
+}
+
+/* end custom marsyas.css */
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Code-style"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Playing-in-the-mudbox.html#Playing-in-the-mudbox">Playing in the mudbox</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Contributing-source-documentation.html#Contributing-source-documentation">Contributing source documentation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Contributing-to-Marsyas.html#Contributing-to-Marsyas">Contributing to Marsyas</a>
+<hr>
+</div>
+
+<h3 class="section">1.3 Code style</h3>
+
+     <ul>
+<li>We use the Allman  code style (also known as ANSI or BSD code style) with tabs as indentation. 
+Code style is of course somewhat personal
+and we can almost guarantee that everybody will hate <em>some</em> aspect of the style,
+but having a uniform style makes it much easier to understand other people's code and fix bugs.
+
+     <p>If possible, configure your editor/IDE to use this code style. 
+Otherwise, you can use the <code>astyle</code> tool (<a href="http://astyle.sourceforge.net/">Artistic Style</a>)
+(with the <code>ansi</code> style) for automated clean up of code style issues (braces, indentation, whitespace). 
+For ease of use, we have a file <samp><span class="file">misc/astylerc</span></samp> with predefined options. To use it, call
+
+     <pre class="example">          astyle --options=<em>/path/to/marsyas_topdir</em>/misc/astylerc filename.cpp
+</pre>
+     <p>&lsquo;<samp><span class="samp">filename.cpp</span></samp>&rsquo; can include wildcards, like &lsquo;<samp><span class="samp">*.h</span></samp>&rsquo; and &lsquo;<samp><span class="samp">*.cpp</span></samp>&rsquo;.
+
+     <p>You do not need to format your source code according to this style,
+but don't complain if someone else modifies/cleans up your file accordingly.
+
+     <p>Unfortunately, due to historical reasons the code style is not
+consistant within the Marsyas source code itself.
+
+     <li>Files should use unix line endings.
+
+     <li>We strongly encourage the use of underscores<code>_</code> after member
+variables (&ldquo;member variables&rdquo; are variables which can be used
+throughout the class).  In other words, in your <samp><span class="file">.h</span></samp> files use:
+
+     <pre class="example">          class MyMar: public MarSystem
+          {
+          private:
+          	mrs_real varname_;  // don't use a plain "varname"
+          	...
+          }
+</pre>
+     <li>By convention, a program (not a MarSystem) should return
+<code>exit(0)</code> upon successful completion.  If any problems arise, the
+program should return a number greater than 0.
+
+</ul>
+
+   </body></html>
+
