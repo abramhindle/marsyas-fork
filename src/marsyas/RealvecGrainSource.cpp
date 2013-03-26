@@ -61,8 +61,13 @@ RealvecGrainSource::addControls()
 	addctrl("mrs_bool/done", false);
 	setctrlState("mrs_bool/done", true);
 	addctrl("mrs_realvec/data", realvec(), ctrl_data_);
+	// reals as index? gross!
 	addctrl("mrs_natural/index", last_index, ctrl_index_);
 	addctrl("mrs_bool/commit", false, ctrl_commit_); // commit a slice
+	// alternating values
+	// sample_to_play, index, amp, window
+	addctrl("mrs_realvec/schedule", realvec(), ctrl_schedule_);
+	addctrl("mrs_bool/schedcommit", false, ctrl_schedcommit_); // commit a slice
 	setctrlState("mrs_natural/index", true);
 	setctrlState("mrs_realvec/data", true);
 	setctrlState("mrs_real/israte", true);
@@ -79,17 +84,23 @@ RealvecGrainSource::myUpdate(MarControlPtr sender)
 	inObservations_ = getctrl("mrs_natural/inObservations")->to<mrs_natural>();
 	israte_ = getctrl("mrs_real/israte")->to<mrs_real>();
 	
-	const bool& commit = ctrl_commit_->to<realvec> ();
-	if (commit)
-		const int& index = ctrl_index_->to<realvec> ();
+	const bool& commit = ctrl_commit_->to<bool> ();
+	if (commit) {
+		const int& index = ctrl_index_->to<int> ();
 		const realvec& data = ctrl_data_->to<realvec> ();
 		addGrain(index, data);
+	}
+	const bool& commit = ctrl_commit_->to<bool> ();
+	if (schedcommit) {
+		const realvec& data = ctrl_schedule_->to<realvec> ();
+		schedule( schedule );
 	}
 
 	setctrl("mrs_natural/onObservations", data.getRows());
 	setctrl("mrs_natural/onSamples", inSamples_);
 	setctrl("mrs_real/osrate", israte_);
 	setctrl("mrs_bool/commit", false);
+	setctrl("mrs_bool/schedcommit", false);
 	
 	count_ = 0;
 	
