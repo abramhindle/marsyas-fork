@@ -41,6 +41,11 @@ RealvecGrainSource::RealvecGrainSource(const RealvecGrainSource& a):MarSystem(a)
 {
 	count_ = 0;
 	ctrl_data_ = getctrl("mrs_realvec/data");
+        ctrl_index_ = getctrl("mrs_natural/index");
+        ctrl_commit_ = getctrl("mrs_bool/commit");
+        ctrl_schedule_ = getctrl("mrs_realvec/schedule");
+        ctrl_schedcommit_ = getctrl("msr_bool/schedcommit");
+        addControls();
 }
 
 
@@ -68,10 +73,14 @@ RealvecGrainSource::addControls()
 	// alternating values
 	// sample_to_play, index, amp
 	addctrl("mrs_realvec/schedule", realvec(), ctrl_schedule_);
-	addctrl("mrs_bool/schedcommit", false, ctrl_schedcommit_); // commit a slice
+	addctrl("mrs_bool/schedcommit", false, ctrl_schedcommit_); // commit a slice        
 	setctrlState("mrs_natural/index", true);
 	setctrlState("mrs_realvec/data", true);
 	setctrlState("mrs_real/israte", true);
+	setctrlState("mrs_bool/commit", true);
+	setctrlState("mrs_realvec/schedule", true);
+	setctrlState("mrs_bool/schedcommit", true);
+
 }
 
 
@@ -88,7 +97,7 @@ RealvecGrainSource::myUpdate(MarControlPtr sender)
 	// This is lame, basically we check if we want to commit a grain
 	const bool& commit = ctrl_commit_->to<bool> ();
 	if (commit) {
-		const int index = ctrl_index_->to<int> ();
+		const int index = ctrl_index_->to<mrs_natural> ();
 		const realvec& data = ctrl_data_->to<realvec> ();
 		addGrain(index, data);
 	}

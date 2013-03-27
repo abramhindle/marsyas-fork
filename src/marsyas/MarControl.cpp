@@ -220,7 +220,7 @@ namespace Marsyas {
 	{
 	  if(!this)
 	  {
-		MRSERR("MarControl::to() - trying to get a value from a NULL MarControl! Returning invalid value...");
+		MRSERR("MarControl::to() - trying to get a value from a NULL MarControl! Returning invalid value... [not this]");
 		return "";
 	  }
 	  const MarControlValueT<mrs_string> *ptr = dynamic_cast<const MarControlValueT<mrs_string>*>(value_);
