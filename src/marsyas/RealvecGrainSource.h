@@ -22,9 +22,34 @@
 #define MARSYAS_REALVECGRAINSOURCE_H
 
 #include "MarSystem.h"	
+	
+#include <vector>
+#include <map>
+#include <queue>
 
 namespace Marsyas
 {
+/**
+  Little Helper for Schedule
+*/
+class SchedTuple {
+public:
+  int when; // at what sample?
+  int current; // are we already playing? if so how far
+  int index; // what sample are we playing?
+  float amp; // how loud?
+  SchedTuple(int when_, int index_, float amp_ = 0.0, int current_=0) {
+      when = when_;
+      index = index_;
+      current = current_;
+      amp = amp_;
+  }
+  // this is slightly confusing
+  // basically NEAREST or SOONEST are LARGEST
+  inline bool operator< (const SchedTuple& lhs, const SchedTuple& rhs){ 
+      return (lhs.when > rhs.when || (lhs.when == rhs.when && lhs.index > rhs.index));
+  }
+};
 /** 
     \class RealvecGrainSource
 	\ingroup IO
@@ -54,20 +79,29 @@ private:
   MarControlPtr ctrl_data_;
   MarControlPtr ctrl_index_;
   MarControlPtr ctrl_commit_;
+  std::map<int, realvec> grains;
+  std::priority_queue<SchedTuple> schedule;
+  std::vector<SchedTuple> playlist;
+  std::vector<SchedTuple> newplaylist;
 
   void addControls();
   void myUpdate(MarControlPtr sender);
+  void myPlay(SchedTuple & st, int onSamples_);
   
   mrs_natural count_;
 
 public:
-  RealvecSource(std::string name);
-  RealvecSource(const RealvecSource& a);
-  ~RealvecSource();
+  RealvecGrainSource(std::string name);
+  RealvecGrainSource(const RealvecSource& a);
+  ~RealvecGrainSource();
   MarSystem* clone() const;  
   
   void myProcess(realvec& in, realvec& out);
+
+  void addGrain( int index, realvec& data );
+  void schedule( realvec& schedule );
 };
+
 
 }//namespace Marsyas
 

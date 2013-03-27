@@ -34,6 +34,7 @@ RealvecGrainSource::RealvecGrainSource(mrs_string name):MarSystem("RealvecGrainS
 {
 	count_= 0;
 	addControls();
+        
 }
 
 RealvecGrainSource::RealvecGrainSource(const RealvecGrainSource& a):MarSystem(a)
@@ -65,7 +66,7 @@ RealvecGrainSource::addControls()
 	addctrl("mrs_natural/index", last_index, ctrl_index_);
 	addctrl("mrs_bool/commit", false, ctrl_commit_); // commit a slice
 	// alternating values
-	// sample_to_play, index, amp, window
+	// sample_to_play, index, amp
 	addctrl("mrs_realvec/schedule", realvec(), ctrl_schedule_);
 	addctrl("mrs_bool/schedcommit", false, ctrl_schedcommit_); // commit a slice
 	setctrlState("mrs_natural/index", true);
@@ -84,15 +85,17 @@ RealvecGrainSource::myUpdate(MarControlPtr sender)
 	inObservations_ = getctrl("mrs_natural/inObservations")->to<mrs_natural>();
 	israte_ = getctrl("mrs_real/israte")->to<mrs_real>();
 	
+	// This is lame, basically we check if we want to commit a grain
 	const bool& commit = ctrl_commit_->to<bool> ();
 	if (commit) {
 		const int& index = ctrl_index_->to<int> ();
 		const realvec& data = ctrl_data_->to<realvec> ();
 		addGrain(index, data);
 	}
+	// This is lame, basically we check if we want to commit a schedule
 	const bool& commit = ctrl_commit_->to<bool> ();
 	if (schedcommit) {
-		const realvec& data = ctrl_schedule_->to<realvec> ();
+		const realvec& schedule = ctrl_schedule_->to<realvec> ();
 		schedule( schedule );
 	}
 
@@ -115,16 +118,78 @@ RealvecGrainSource::myProcess(realvec& in, realvec& out)
 	mrs_natural o,t;
 	(void) in; 
 	//checkFlow(in,out);
-	const realvec& data = ctrl_data_->to<realvec> ();
-	
+	//const realvec& data = ctrl_data_->to<realvec> ();
+	newplaylist.clear();
+	int lastCount = count + onSamples_;
 	for (o=0; o < onObservations_; o++)
 	{
+		//initialized
 		for (t=0; t < onSamples_; t++)
 		{
-			out(o,t) = data(o,count_ + t);
+			out(o,t) = 0.0;//data(o,count_ + t);
+		}
+		while( !schedule.empty() && schedule.top().when < lastCount) {
+			SchedTuple st = schedule.pop();
+			myPlay(st);
+		}
+		for (int i = 0; i < playlist.size(); i++) {
+			SchedTuple st = playlist[i];
+			myPlay(st);
 		}
 	}
-	count_ += onSamples_;
+	// we're done with the playlist
+	// now copy our newplaylist to playlist
+	playlist.clear();
+	playlist.swap(newplaylist);
+	count_ = lastCount;
 
 	//out.dump();
+}
+void RealvecGrainSource::myPlay(SchedTuple & st, int onSamples_ ) {
+	int start = st.when - count;
+	int lastCount = count + onSamples_;
+	float amp = st.amp;
+	std::map<int, realvec>::iterator it = grains.find(st.index);
+	int offset = 0;
+	if (it != std::map<int, realvec>::end) {
+		realvec &grain = grains[st.index];
+		int cols = grains.cols();
+		if (start < 0) {
+			// already playing?
+			start = 0;
+			offset = -1 * start;
+		} else {
+			int i = 0;
+			int msamp = min(onSamples_, cols - offset);
+			for (t = start; t < msamp; t++) {
+				// TODO: Windowing
+				out(o,t) = out(o,t) + amp * grain(0,t+offset);
+			}
+			int samples_played = lastCount - st.when;
+			if (cols > samples_played) {
+				// if not done playing add to playlist
+				newplaylist.push( st );
+			}
+		}
+	} else {
+		// warn the grain didn't exist!
+	}
+}
+void RealvecGrainSource::addGrain( int index, realvec& data )
+{
+	// grains is a map
+	grains[index] = data;
+}
+void RealvecGrainSource::schedule( realvec& data )
+{
+	// sample_to_play, index, amp
+	// maybe use observations..
+	for (int i = 0 ; i < data.size(); i += 3) {
+		int when = ((int)data(0, i)) + count;
+		int index = (int)data(0, i+1);
+		float amp = data(0, i+2);
+		//worry - do we need new/alloc?
+		SchedTuple s(when, index, amp);
+		schedule.push(s);
+	}
 }
