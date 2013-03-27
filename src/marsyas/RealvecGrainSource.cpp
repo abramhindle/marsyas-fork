@@ -88,7 +88,6 @@ void
 RealvecGrainSource::myUpdate(MarControlPtr sender)
 {
 	(void)sender;
-	MRSDIAG("RealvecGrainSource.cpp - RealvecGrainSource:myUpdate");
 	
 	inSamples_ = getctrl("mrs_natural/inSamples")->to<mrs_natural>();
 	inObservations_ = getctrl("mrs_natural/inObservations")->to<mrs_natural>();
@@ -104,6 +103,7 @@ RealvecGrainSource::myUpdate(MarControlPtr sender)
 	// This is lame, basically we check if we want to commit a schedule
 	const bool& schedcommit = ctrl_schedcommit_->to<bool> ();
 	if (schedcommit) {
+
 		const realvec& schedule = ctrl_schedule_->to<realvec> ();
 		scheduleGrain( schedule );
 	}
@@ -114,7 +114,7 @@ RealvecGrainSource::myUpdate(MarControlPtr sender)
 	setctrl("mrs_bool/commit", false);
 	setctrl("mrs_bool/schedcommit", false);
 	
-	count_ = 0;
+	//count_ = 0;
 	
 	if( getctrl("mrs_bool/done")->isTrue()){
 		setctrl("mrs_bool/done", false);
@@ -140,10 +140,12 @@ RealvecGrainSource::myProcess(realvec& in, realvec& out)
 		while( !schedule.empty() && schedule.top().when < lastCount) {
 			SchedTuple st = schedule.top();
                         schedule.pop();
+                        //MRSERR("Playing Scheduled " << st.index << " " << lastCount);
 			myPlay(st, out, onSamples_);
 		}
 		for (unsigned int i = 0; i < playlist.size(); i++) {
 			SchedTuple st = playlist[i];
+                        //MRSERR("Playing already playing " << st.index );
 			myPlay(st, out, onSamples_);
 		}
 	}
@@ -181,6 +183,7 @@ void RealvecGrainSource::myPlay(SchedTuple & st, realvec & out, int onSamples_ )
 		}
 	} else {
 		// warn the grain didn't exist!
+          MRSERR("Grain didn't exist!");
 	}
 }
 void RealvecGrainSource::addGrain(const int index, const realvec& data )
