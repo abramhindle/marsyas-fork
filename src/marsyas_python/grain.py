@@ -54,13 +54,13 @@ while 1:
     n = 3
     size = 3
     schedule = marsyas.realvec(n * size)
-    schedule[0] = buffsize + 0 #when
+    schedule[0] = t + 0 #when
     schedule[1] = 1
     schedule[2] = 1 #amp
-    schedule[3] = buffsize + 128 #when
+    schedule[3] = t + 128 #when
     schedule[4] = 2
     schedule[5] = 1 #amp
-    schedule[6] = buffsize + 256 #when
+    schedule[6] = t + 256 #when
     schedule[7] = 2
     schedule[8] = 1 #amp
     output_net_begin_control.setValue_realvec(schedule)
