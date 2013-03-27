@@ -58,7 +58,7 @@ RealvecGrainSource::clone() const
 void 
 RealvecGrainSource::addControls()
 {
-	last_index = 0;
+	int last_index = 0;
 	addctrl("mrs_bool/done", false);
 	setctrlState("mrs_bool/done", true);
 	addctrl("mrs_realvec/data", realvec(), ctrl_data_);
@@ -88,18 +88,18 @@ RealvecGrainSource::myUpdate(MarControlPtr sender)
 	// This is lame, basically we check if we want to commit a grain
 	const bool& commit = ctrl_commit_->to<bool> ();
 	if (commit) {
-		const int& index = ctrl_index_->to<int> ();
+		const int index = ctrl_index_->to<int> ();
 		const realvec& data = ctrl_data_->to<realvec> ();
 		addGrain(index, data);
 	}
 	// This is lame, basically we check if we want to commit a schedule
-	const bool& commit = ctrl_commit_->to<bool> ();
+	const bool& schedcommit = ctrl_schedcommit_->to<bool> ();
 	if (schedcommit) {
 		const realvec& schedule = ctrl_schedule_->to<realvec> ();
-		schedule( schedule );
+		scheduleGrain( schedule );
 	}
 
-	setctrl("mrs_natural/onObservations", data.getRows());
+	setctrl("mrs_natural/onObservations", 1);//data.getRows());
 	setctrl("mrs_natural/onSamples", inSamples_);
 	setctrl("mrs_real/osrate", israte_);
 	setctrl("mrs_bool/commit", false);
@@ -120,7 +120,7 @@ RealvecGrainSource::myProcess(realvec& in, realvec& out)
 	//checkFlow(in,out);
 	//const realvec& data = ctrl_data_->to<realvec> ();
 	newplaylist.clear();
-	int lastCount = count + onSamples_;
+	int lastCount = count_ + onSamples_;
 	for (o=0; o < onObservations_; o++)
 	{
 		//initialized
@@ -129,12 +129,13 @@ RealvecGrainSource::myProcess(realvec& in, realvec& out)
 			out(o,t) = 0.0;//data(o,count_ + t);
 		}
 		while( !schedule.empty() && schedule.top().when < lastCount) {
-			SchedTuple st = schedule.pop();
-			myPlay(st);
+			SchedTuple st = schedule.top();
+                        schedule.pop();
+			myPlay(st, out, onSamples_);
 		}
-		for (int i = 0; i < playlist.size(); i++) {
+		for (unsigned int i = 0; i < playlist.size(); i++) {
 			SchedTuple st = playlist[i];
-			myPlay(st);
+			myPlay(st, out, onSamples_);
 		}
 	}
 	// we're done with the playlist
@@ -145,22 +146,20 @@ RealvecGrainSource::myProcess(realvec& in, realvec& out)
 
 	//out.dump();
 }
-void RealvecGrainSource::myPlay(SchedTuple & st, int onSamples_ ) {
-	int start = st.when - count;
-	int lastCount = count + onSamples_;
+void RealvecGrainSource::myPlay(SchedTuple & st, realvec & out, int onSamples_ ) {
+	int start = st.when - count_;
+	int lastCount = count_ + onSamples_;
 	float amp = st.amp;
-	std::map<int, realvec>::iterator it = grains.find(st.index);
 	int offset = 0;
-	if (it != std::map<int, realvec>::end) {
+	if (grains.count(st.index) > 0) {
 		realvec &grain = grains[st.index];
-		int cols = grains.cols();
+		int cols = grain.getCols();
 		if (start < 0) {
 			// already playing?
 			start = 0;
 			offset = -1 * start;
 		} else {
-			int i = 0;
-			int msamp = min(onSamples_, cols - offset);
+                        int msamp = min(onSamples_, cols - offset);
 			for (t = start; t < msamp; t++) {
 				// TODO: Windowing
 				out(o,t) = out(o,t) + amp * grain(0,t+offset);
@@ -168,28 +167,29 @@ void RealvecGrainSource::myPlay(SchedTuple & st, int onSamples_ ) {
 			int samples_played = lastCount - st.when;
 			if (cols > samples_played) {
 				// if not done playing add to playlist
-				newplaylist.push( st );
+				newplaylist.push_back( st );
 			}
 		}
 	} else {
 		// warn the grain didn't exist!
 	}
 }
-void RealvecGrainSource::addGrain( int index, realvec& data )
+void RealvecGrainSource::addGrain(const int index, const realvec& data )
 {
 	// grains is a map
 	grains[index] = data;
 }
-void RealvecGrainSource::schedule( realvec& data )
+void RealvecGrainSource::scheduleGrain( const realvec& data )
 {
 	// sample_to_play, index, amp
 	// maybe use observations..
-	for (int i = 0 ; i < data.size(); i += 3) {
-		int when = ((int)data(0, i)) + count;
-		int index = (int)data(0, i+1);
-		float amp = data(0, i+2);
-		//worry - do we need new/alloc?
-		SchedTuple s(when, index, amp);
-		schedule.push(s);
-	}
+  int cols = data.getCols();
+  for (int i = 0 ; i < cols; i += 3) {
+    int when = ((int)data(0, i)) + count_;
+    int index = (int)data(0, i+1);
+    float amp = data(0, i+2);
+    //worry - do we need new/alloc?
+    SchedTuple s(when, index, amp);
+    schedule.push(s);
+  }
 }

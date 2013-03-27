@@ -246,6 +246,7 @@ RawFileSource.h
 RBF.h
 RealvecSink.h
 RealvecSource.h
+RealvecGrainSource.h
 Reassign.h
 Reciprocal.h
 RemoveObservations.h

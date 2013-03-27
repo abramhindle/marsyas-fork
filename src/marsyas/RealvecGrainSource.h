@@ -46,10 +46,13 @@ public:
   }
   // this is slightly confusing
   // basically NEAREST or SOONEST are LARGEST
-  inline bool operator< (const SchedTuple& lhs, const SchedTuple& rhs){ 
-      return (lhs.when > rhs.when || (lhs.when == rhs.when && lhs.index > rhs.index));
+  bool operator<(const SchedTuple& rhs) {
+      return (when > rhs.when || (when == rhs.when && index > rhs.index));
   }
 };
+inline bool operator< (const SchedTuple& lhs, const SchedTuple& rhs) { 
+    return (lhs.when > rhs.when || (lhs.when == rhs.when && lhs.index > rhs.index));
+}
 /** 
     \class RealvecGrainSource
 	\ingroup IO
@@ -79,6 +82,8 @@ private:
   MarControlPtr ctrl_data_;
   MarControlPtr ctrl_index_;
   MarControlPtr ctrl_commit_;
+  MarControlPtr ctrl_schedule_;
+  MarControlPtr ctrl_schedcommit_;
   std::map<int, realvec> grains;
   std::priority_queue<SchedTuple> schedule;
   std::vector<SchedTuple> playlist;
@@ -86,20 +91,20 @@ private:
 
   void addControls();
   void myUpdate(MarControlPtr sender);
-  void myPlay(SchedTuple & st, int onSamples_);
+  void myPlay(SchedTuple & st, realvec & out, int onSamples_);
   
   mrs_natural count_;
 
 public:
   RealvecGrainSource(std::string name);
-  RealvecGrainSource(const RealvecSource& a);
+  RealvecGrainSource(const RealvecGrainSource& a);
   ~RealvecGrainSource();
   MarSystem* clone() const;  
   
   void myProcess(realvec& in, realvec& out);
 
-  void addGrain( int index, realvec& data );
-  void schedule( realvec& schedule );
+  void addGrain( const int index, const realvec& data );
+  void scheduleGrain(const realvec& schedule );
 };
 
 

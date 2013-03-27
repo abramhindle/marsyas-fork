@@ -237,6 +237,7 @@ RawFileSource.cpp
 RBF.cpp
 RealvecSink.cpp
 RealvecSource.cpp
+RealvecGrainSource.cpp
 Reassign.cpp
 Reciprocal.cpp
 RemoveObservations.cpp
