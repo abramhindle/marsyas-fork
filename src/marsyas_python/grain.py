@@ -68,7 +68,7 @@ while 1:
     for j in range(0,size):
         schedule[j*nn + 0] = random.randint(0,44100) # in how many samples should be play it
         schedule[j*nn + 1] = random.randint(1,n) # which instrument
-        schedule[j*nn + 2] = 2*random.random()/size # amplitude
+        schedule[j*nn + 2] = 0.1
     # this sets a schedule
     output_net_begin_control = this_net.getControl("RealvecGrainSource/real_src/mrs_realvec/schedule")
     output_net_begin_control.setValue_realvec(schedule)

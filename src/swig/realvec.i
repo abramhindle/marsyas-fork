@@ -9,6 +9,8 @@ using namespace Marsyas;
 
 %include "types.i"
 
+%rename(__add__) realvec::operator+;
+%rename(__mul__) realvec::operator*;
 
 /* Class description for realvecs */
 class realvec {
@@ -56,5 +58,18 @@ class realvec {
 		void covariance2(realvec& res) const;//Marsyas0.1 covariance calculation (assumes standardized data, and uses biased estimation)
 
 		mrs_natural search(mrs_real val);
-};
 
+		realvec& operator+=(const realvec& vec);
+		realvec& operator-=(const realvec& vec);
+		realvec& operator*=(const realvec& vec);
+		realvec& operator/=(const realvec& vec);
+		realvec& operator*=(const mrs_real val);
+		realvec& operator/=(const mrs_real val);
+		realvec& operator+=(const mrs_real val);
+		realvec& operator-=(const mrs_real val);
+
+                realvec& operator+(const realvec& v);
+                realvec& operator*(const realvec& v);
+
+
+};

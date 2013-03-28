@@ -1751,6 +1751,21 @@ namespace Marsyas
 			data_[i] += vec.data_[i];
 		return *this;
 	}
+
+	realvec&
+	realvec::operator+(const realvec& vec)
+	{
+          realvec& v(*this);
+          v += vec;
+          return v;
+	}
+	realvec&
+	realvec::operator*(const realvec& vec)
+	{
+          realvec& v(*this);
+          v *= vec;
+          return v;
+	}
 	
 	
 	realvec&

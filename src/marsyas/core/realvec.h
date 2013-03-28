@@ -170,6 +170,9 @@ namespace Marsyas
 		mrs_real& getValueFenced(const mrs_natural i);
 		mrs_real& getValueFenced(const mrs_natural r, const mrs_natural c);
 
+                realvec& operator+(const realvec& v);
+                realvec& operator*(const realvec& v);
+
 
 		//@}
 

@@ -53,6 +53,13 @@
         self->getValueFenced(i) = x;
     }
 
+    realvec& __add__(realvec vec) {
+        return (*self) + vec;
+    }
+    realvec& __mul__(realvec vec) {
+        return (*self) * vec;
+    }
+
 };
 
 // Some Python specific extensions for MarSystem objects.
