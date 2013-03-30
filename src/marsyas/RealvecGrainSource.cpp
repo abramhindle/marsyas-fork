@@ -133,13 +133,14 @@ RealvecGrainSource::myProcess(realvec& in, realvec& out)
         //MRSERR("lc:" << lastCount);
         //MRSERR("Obs" << onObservations_);
         
-	for (o=0; o < onObservations_; o++)
-	{
+	//for (o=0; o < onObservations_; o++)
+	//for (o=0; o < 1; o++)//onObservations_; o++)
+	//{
           //initialized
                 //we can assume zero'd?
 		for (t=0; t < onSamples_; t++)
 		{
-			out(o,t) = 0.0;//data(o,count_ + t);
+                  out(0,t) = 0.0;//data(o,count_ + t);
                 }
 		while( !schedule.empty() && schedule.top().when < lastCount) {
 			SchedTuple st = schedule.top();
@@ -152,7 +153,7 @@ RealvecGrainSource::myProcess(realvec& in, realvec& out)
                         //MRSERR("Playing already playing " << st.index );
 			myPlay(st, out, onSamples_);
 		}
-	}
+                //}
 	// we're done with the playlist
 	// now copy our newplaylist to playlist
 	playlist.clear();
@@ -161,10 +162,10 @@ RealvecGrainSource::myProcess(realvec& in, realvec& out)
 
 	//out.dump();
 }
-void RealvecGrainSource::myPlay(SchedTuple & st, realvec & out, int onSamples_ ) {
+void RealvecGrainSource::myPlay(SchedTuple & st, realvec& out, int onSamples_ ) {
 	int start = st.when - count_;
 	int lastCount = count_ + onSamples_;
-	float amp = st.amp;
+	mrs_real amp = st.amp;
 	int offset = 0;
 	if (grains.count(st.index) > 0) {
 		realvec &grain = grains[st.index];
@@ -175,10 +176,10 @@ void RealvecGrainSource::myPlay(SchedTuple & st, realvec & out, int onSamples_ )
                   start = 0;
 		} 
                 int msamp = min(onSamples_, cols - offset);
-                MRSERR("Start "<< start << " end: "<<msamp << " offset: "<< offset);
+                //MRSERR("Start "<< start << " end: "<<msamp << " offset: "<< offset);
                 for (t = start; t < msamp; t++) {
                   // TODO: Windowing
-                  out(o,t) = out(o,t) + amp * grain(0,t+offset);
+                  out(0,t) = out(0,t) + amp * grain(0,t+offset);
                 }
                 int samples_played = lastCount - st.when;
                 if (cols > samples_played) {
@@ -203,7 +204,7 @@ void RealvecGrainSource::scheduleGrain( const realvec& data )
   for (int i = 0 ; i < cols; i += 3) {
     int when = ((int)data(0, i)) + count_;
     int index = (int)data(0, i+1);
-    float amp = data(0, i+2);
+    mrs_real amp = data(0, i+2);
     //worry - do we need new/alloc?
     SchedTuple s(when, index, amp);
     schedule.push(s);
