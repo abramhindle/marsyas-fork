@@ -130,13 +130,17 @@ RealvecGrainSource::myProcess(realvec& in, realvec& out)
 	//const realvec& data = ctrl_data_->to<realvec> ();
 	newplaylist.clear();
 	int lastCount = count_ + onSamples_;
+        //MRSERR("lc:" << lastCount);
+        //MRSERR("Obs" << onObservations_);
+        
 	for (o=0; o < onObservations_; o++)
 	{
-		//initialized
+          //initialized
+                //we can assume zero'd?
 		for (t=0; t < onSamples_; t++)
 		{
 			out(o,t) = 0.0;//data(o,count_ + t);
-		}
+                }
 		while( !schedule.empty() && schedule.top().when < lastCount) {
 			SchedTuple st = schedule.top();
                         schedule.pop();
@@ -167,20 +171,20 @@ void RealvecGrainSource::myPlay(SchedTuple & st, realvec & out, int onSamples_ )
 		int cols = grain.getCols();
 		if (start < 0) {
 			// already playing?
-			start = 0;
-			offset = -1 * start;
-		} else {
-                        int msamp = min(onSamples_, cols - offset);
-			for (t = start; t < msamp; t++) {
-				// TODO: Windowing
-				out(o,t) = out(o,t) + amp * grain(0,t+offset);
-			}
-			int samples_played = lastCount - st.when;
-			if (cols > samples_played) {
-				// if not done playing add to playlist
-				newplaylist.push_back( st );
-			}
-		}
+                  offset = -1 * start;
+                  start = 0;
+		} 
+                int msamp = min(onSamples_, cols - offset);
+                MRSERR("Start "<< start << " end: "<<msamp << " offset: "<< offset);
+                for (t = start; t < msamp; t++) {
+                  // TODO: Windowing
+                  out(o,t) = out(o,t) + amp * grain(0,t+offset);
+                }
+                int samples_played = lastCount - st.when;
+                if (cols > samples_played) {
+                  // if not done playing add to playlist
+                  newplaylist.push_back( st );
+                }
 	} else {
 		// warn the grain didn't exist!
           MRSERR("Grain didn't exist!");
