@@ -174,7 +174,9 @@ void RealvecGrainSource::myPlay(SchedTuple & st, realvec& out, int onSamples_ ) 
 			// already playing?
                   offset = -1 * start;
                   start = 0;
-		} 
+		} else if (start > 0) {
+                  offset = -start;
+                }
                 int msamp = min(onSamples_, cols - offset);
                 //MRSERR("Start "<< start << " end: "<<msamp << " offset: "<< offset);
                 for (t = start; t < msamp; t++) {
