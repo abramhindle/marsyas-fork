@@ -1755,16 +1755,17 @@ namespace Marsyas
 	realvec&
 	realvec::operator+(const realvec& vec)
 	{
-          realvec& v(*this);
-          v += vec;
-          return v;
+		realvec& v(*this);
+		v += vec;
+		return v;
 	}
+
 	realvec&
 	realvec::operator*(const realvec& vec)
 	{
-          realvec& v(*this);
-          v *= vec;
-          return v;
+		realvec& v(*this);
+		v *= vec;
+		return v;
 	}
 	
 	
