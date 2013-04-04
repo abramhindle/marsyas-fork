@@ -30,85 +30,88 @@
 namespace Marsyas
 {
 /**
-  Little Helper for Schedule
+   Little Helper for Schedule
 */
 class SchedTuple {
-public:
-  int when; // at what sample?
-  int current; // are we already playing? if so how far
-  int index; // what sample are we playing?
-  float amp; // how loud?
-  SchedTuple(int when_, int index_, float amp_ = 0.0, int current_=0) {
-      when = when_;
-      index = index_;
-      current = current_;
-      amp = amp_;
-  }
-  // this is slightly confusing
-  // basically NEAREST or SOONEST are LARGEST
-  bool operator<(const SchedTuple& rhs) {
-      return (when > rhs.when || (when == rhs.when && index > rhs.index));
-  }
+ public:
+	int when; // at what sample?
+	int current; // are we already playing? if so how far
+	int index; // what sample are we playing?
+	float amp; // how loud?
+	SchedTuple(int when_, int index_, float amp_ = 0.0, int current_=0) 
+	{
+		when = when_;
+		index = index_;
+		current = current_;
+		amp = amp_;
+	}
+	// this is slightly confusing
+	// basically NEAREST or SOONEST are LARGEST
+	bool operator<(const SchedTuple& rhs) 
+	{
+		return (when > rhs.when || (when == rhs.when && index > rhs.index));
+	}
 };
-inline bool operator< (const SchedTuple& lhs, const SchedTuple& rhs) { 
-    return (lhs.when > rhs.when || (lhs.when == rhs.when && lhs.index > rhs.index));
-}
-/** 
-    \class RealvecGrainSource
-	\ingroup IO
+ inline bool operator< (const SchedTuple& lhs, const SchedTuple& rhs) 
+ { 
+	 return (lhs.when > rhs.when || (lhs.when == rhs.when && lhs.index > rhs.index));
+ }
+ /** 
+     \class RealvecGrainSource
+     \ingroup IO
+     
+     A RealvecGrainSource takes a realvec and uses it as a source for your
+     MarSystem network.  It is similar to a SoundFileSource except that
+     as taking a sound file as the input, it takes a realvec that you
+     create as input.
+     
+     It is very useful for getting numbers from external sources into
+     your Marsystems, for example when reading external files of data.
+     
+     It is also very useful when writing tests for your Marsystems.
+     You can load up a realvec with data, and then run it through a
+     Marsystem to test it.
+     
+     When you feed in a realvec, the rows turn into observations and
+     the columns turn into samples.
 
-	A RealvecGrainSource takes a realvec and uses it as a source for your
-	MarSystem network.  It is similar to a SoundFileSource except that
-	as taking a sound file as the input, it takes a realvec that you
-	create as input.
+ */
 
-	It is very useful for getting numbers from external sources into
-	your Marsystems, for example when reading external files of data.
-
-	It is also very useful when writing tests for your Marsystems.
-	You can load up a realvec with data, and then run it through a
-	Marsystem to test it.
-
-	When you feed in a realvec, the rows turn into observations and
-	the columns turn into samples.
-
-*/
-
-
-class RealvecGrainSource: public MarSystem
-{
-private: 
-
-  MarControlPtr ctrl_data_;
-  MarControlPtr ctrl_index_;
-  MarControlPtr ctrl_commit_;
-  MarControlPtr ctrl_schedule_;
-  MarControlPtr ctrl_schedcommit_;
-  std::map<int, realvec> grains;
-  std::priority_queue<SchedTuple> schedule;
-  std::vector<SchedTuple> playlist;
-  std::vector<SchedTuple> newplaylist;
-
-  void addControls();
-  void myUpdate(MarControlPtr sender);
-  void myPlay(SchedTuple & st, realvec & out, int onSamples_);
-  
-  mrs_natural count_;
-
-public:
-  RealvecGrainSource(std::string name);
-  RealvecGrainSource(const RealvecGrainSource& a);
-  ~RealvecGrainSource();
-  MarSystem* clone() const;  
-  
-  void myProcess(realvec& in, realvec& out);
-
-  void addGrain( const int index, const realvec& data );
-  void scheduleGrain(const realvec& schedule );
-};
-
-
+ 
+ class RealvecGrainSource: public MarSystem
+ {
+ private: 
+	 
+	 MarControlPtr ctrl_data_;
+	 MarControlPtr ctrl_index_;
+	 MarControlPtr ctrl_commit_;
+	 MarControlPtr ctrl_schedule_;
+	 MarControlPtr ctrl_schedcommit_;
+	 std::map<int, realvec> grains;
+	 std::priority_queue<SchedTuple> schedule;
+	 std::vector<SchedTuple> playlist;
+	 std::vector<SchedTuple> newplaylist;
+	 
+	 void addControls();
+	 void myUpdate(MarControlPtr sender);
+	 void myPlay(SchedTuple & st, realvec & out, int onSamples_);
+	
+	 mrs_natural count_;
+	 
+ public:
+	 RealvecGrainSource(std::string name);
+	 RealvecGrainSource(const RealvecGrainSource& a);
+	 ~RealvecGrainSource();
+	 MarSystem* clone() const;  
+	 
+	 void myProcess(realvec& in, realvec& out);
+	 
+	 void addGrain( const int index, const realvec& data );
+	 void scheduleGrain(const realvec& schedule );
+ };
+ 
+ 
 }//namespace Marsyas
 
 #endif
-	
+
